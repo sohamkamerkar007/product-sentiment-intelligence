@@ -60,7 +60,7 @@ def prediction_panel(review_text: str) -> None:
         dissatisfied, rating = predictors()
         outcome = dissatisfied.predict(review_text)
         rating_outcome = rating.predict(review_text)
-    except (FileNotFoundError, ValueError, ImportError) as exc:
+    except (FileNotFoundError, ValueError, ImportError):
         st.info("These estimates are temporarily unavailable. The review analysis above is still available.")
         return
     first, second = st.columns(2)
@@ -74,7 +74,7 @@ def prediction_panel(review_text: str) -> None:
         for title, model in (("negative-review chance", dissatisfied), ("estimated rating", rating)):
             try:
                 contributions = pd.DataFrame(model.explain(review_text, top_n=8))
-            except (ImportError, ValueError) as exc:
+            except (ImportError, ValueError):
                 st.info(f"The explanation for {title} is unavailable right now.")
                 continue
             if contributions.empty:
@@ -174,13 +174,13 @@ def discovery_page(page_intro) -> None:
         indices = subset.index.to_numpy()
         if len(indices) > 2500:
             indices = np.sort(np.random.default_rng(42).choice(indices, 2500, replace=False))
-        with st.spinner("Grouping semantically similar reviews..."):
+        with st.spinner("Grouping reviews with similar wording..."):
             try:
                 labels, report = discover(reviews, embedding_matrix(), indices, method=method,
                                           n_clusters=parameter if method == "K-Means" else 8,
                                           min_cluster_size=parameter if method == "HDBSCAN" else 25)
-            except (ValueError, MemoryError) as exc:
-                st.info(f"Clustering could not produce a useful result: {exc}")
+            except (ValueError, MemoryError):
+                st.info("These reviews could not be grouped with the current choices. Try another phone, brand, or group setting.")
                 return
         st.session_state["discovery_result"] = (labels, report)
         st.session_state["discovery_signature"] = (selected_brand, selected_model, method, parameter)
@@ -227,7 +227,7 @@ def relationships_page(page_intro) -> None:
     try:
         neighbors = related_models(subset, embedding_matrix(), model,
                                    brand=None if brand == "All brands" else brand)
-    except ValueError as exc:
+    except ValueError:
         st.info("There are not enough matching reviews to compare this selection. Try another feature or brand.")
         return
     if neighbors.empty:
