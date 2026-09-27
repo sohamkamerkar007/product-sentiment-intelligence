@@ -1,0 +1,66 @@
+{
+  "data": {
+    "rows": 7969,
+    "models": 50,
+    "train": 5441,
+    "validation": 1255,
+    "test": 1273,
+    "split": "grouped by smartphone model; final test held out from fitting and selection",
+    "target_dissatisfaction": "sentiment == Negative (synthetic source label)",
+    "target_rating": "integer rating on the observed 1\u20135 scale"
+  },
+  "dissatisfaction": {
+    "baseline_logistic": {
+      "accuracy": 0.8020424194815396,
+      "precision": 0.5382830626450116,
+      "recall": 0.8140350877192982,
+      "f1": 0.6480446927374302,
+      "macro_f1": 0.7551698873523216,
+      "roc_auc": 0.8917323673556361,
+      "decision_threshold": 0.5,
+      "confusion_matrix": [
+        [
+          789,
+          199
+        ],
+        [
+          53,
+          232
+        ]
+      ]
+    },
+    "xgboost": {
+      "accuracy": 0.8020424194815396,
+      "precision": 0.539568345323741,
+      "recall": 0.7894736842105263,
+      "f1": 0.6410256410256411,
+      "macro_f1": 0.7521831025084822,
+      "roc_auc": 0.8844697776830741,
+      "decision_threshold": 0.35,
+      "confusion_matrix": [
+        [
+          796,
+          192
+        ],
+        [
+          60,
+          225
+        ]
+      ]
+    },
+    "selected_max_depth": 5
+  },
+  "rating": {
+    "baseline_mean": {
+      "mae": 0.9161362920065321,
+      "rmse": 1.0451518026333533,
+      "r2": -0.09053945012533937
+    },
+    "xgboost": {
+      "mae": 0.6497918019965232,
+      "rmse": 0.7805814806225531,
+      "r2": 0.39169817471131985
+    },
+    "selected_max_depth": 5
+  }
+}

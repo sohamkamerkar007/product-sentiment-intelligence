@@ -1,0 +1,11 @@
+aspect_1,aspect_2,conflict_count,unique_reviews,avg_conflict_strength
+battery,display,398,398,0.8977926938670381
+display,performance,392,392,0.9345241607426326
+camera,display,371,371,0.9499540381770286
+camera,performance,359,359,0.9217190179204128
+battery,performance,356,356,0.8775784870413453
+battery,camera,352,352,0.8895382074743536
+design,display,298,298,0.9374523786238753
+camera,design,277,277,0.9257762478720234
+battery,design,265,265,0.8799023589504813
+design,performance,263,263,0.9066706271291306

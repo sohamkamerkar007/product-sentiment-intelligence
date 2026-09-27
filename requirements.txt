@@ -1,0 +1,22 @@
+# Streamlit application
+streamlit==1.63.0
+pandas==3.0.5
+numpy==2.5.3
+plotly==7.0.0
+torch==2.14.0
+transformers==5.17.0
+sentence-transformers==6.0.1
+
+# Baseline modelling and persisted artefacts
+scikit-learn==1.9.1
+joblib==1.6.0
+xgboost==3.4.1
+shap==0.52.0
+
+# Research notebooks and visualisation
+matplotlib==3.11.2
+seaborn==0.13.2
+jupyter==1.1.1
+datasets==5.0.1
+accelerate==1.15.0
+pytest==8.4.2

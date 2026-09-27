@@ -1,0 +1,31 @@
+# Python environments and generated Python files
+.venv/
+.devdeps/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Jupyter and Streamlit runtime files
+.ipynb_checkpoints/
+.streamlit/secrets.toml
+.streamlit/config.toml
+notebooks/tmp_trainer/
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local logs and temporary artefacts
+*.log
+tmp/
+temp/
+*.tmp
+
+# Intermediate training artefacts and models not used by the deployed app
+models/trained_models/**/checkpoint-*/
+models/trained_models/**/training_args.bin
+models/trained_models/distilbert_sentiment/
+models/trained_models/distilbert_sentiment_v2/

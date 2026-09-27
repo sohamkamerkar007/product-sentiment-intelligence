@@ -1,0 +1,9 @@
+# Evaluation notes
+
+`supervised_metrics.json` contains held-out test metrics for new XGBoost models and baselines. Data is split by smartphone model (5,441 training / 1,255 validation / 1,273 test reviews). Review text is the only prediction input. Validation selected model depth and dissatisfaction threshold; the test set was not used for those choices. The Logistic Regression dissatisfaction baseline is marginally stronger than XGBoost on F1, macro F1 and ROC-AUC, and this is reported rather than hidden.
+
+`expanded_absa_metrics.json` evaluates the **unchanged** saved DistilBERT ABSA model on 1,488 synthetic aspect-evidence mentions from eight held-out phone models. Generated aspect annotations are reference labels. This tests the evidence-span workflow, not performance on independent real reviews. The original DistilBERT sentiment notebook has two incompatible summaries: its classification-report cell prints accuracy 0.8000 and macro F1 0.7756, while a later manually assembled comparison cell states accuracy 0.792857 and macro F1 0.770687. Neither should be presented as a newly verified result.
+
+`discovery_metrics.json` records a fixed-seed 1,200-review clustering sample, cosine silhouette scores, noise count and a model-relationship example. These are descriptive checks, not externally validated clustering quality. Its emerging-issue count is for the unfiltered synthetic corpus; filtered runs may differ. The generator deliberately simulates later Google battery complaints, so detection of that theme checks the pipeline rather than revealing a real product issue. Benjamini–Hochberg correction covers all topic/period comparisons, including themes that declined.
+
+Every result is subject to synthetic-data bias, template overlap, label construction and distribution shift. Real deployment would require independent human-labelled smartphone reviews, calibration and prospective monitoring.

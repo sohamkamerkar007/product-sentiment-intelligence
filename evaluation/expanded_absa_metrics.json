@@ -1,0 +1,31 @@
+{
+  "test_aspect_mentions": 1488,
+  "test_review_models": 8,
+  "accuracy": 0.8044354838709677,
+  "macro_precision": 0.8138925764673024,
+  "macro_recall": 0.7879763049685998,
+  "macro_f1": 0.7933190519426474,
+  "confusion_matrix": [
+    [
+      305,
+      72,
+      83
+    ],
+    [
+      14,
+      307,
+      75
+    ],
+    [
+      22,
+      25,
+      585
+    ]
+  ],
+  "labels": [
+    "Negative",
+    "Neutral",
+    "Positive"
+  ],
+  "caveat": "Synthetic generated labels; the saved ABSA model was not retrained."
+}

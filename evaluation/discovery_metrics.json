@@ -1,0 +1,47 @@
+{
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_shape": [
+    7969,
+    384
+  ],
+  "clustering": {
+    "K-Means": {
+      "sample_reviews": 1200,
+      "clusters_excluding_noise": 8,
+      "noise_reviews": 0,
+      "cosine_silhouette": 0.1056722030043602
+    },
+    "HDBSCAN": {
+      "sample_reviews": 1200,
+      "clusters_excluding_noise": 2,
+      "noise_reviews": 583,
+      "cosine_silhouette": 0.09417831897735596
+    }
+  },
+  "emerging_issue_count": 2,
+  "emerging_issue_method": "One-sided Fisher exact test on adjacent calendar years; Benjamini-Hochberg FDR <= 0.10 across every topic-period comparison; minimum 40 reviews per period and 5 current complaints. The partial 2026 year is normalized by review volume.",
+  "example_related_model": "Realme Study A",
+  "example_related_models": [
+    {
+      "model": "OnePlus Study B",
+      "similarity": 0.9945901036262512
+    },
+    {
+      "model": "OnePlus Study A",
+      "similarity": 0.993728756904602
+    },
+    {
+      "model": "Xiaomi Study B",
+      "similarity": 0.993599534034729
+    },
+    {
+      "model": "OPPO Study A",
+      "similarity": 0.9931808710098267
+    },
+    {
+      "model": "Motorola Study A",
+      "similarity": 0.9926716089248657
+    }
+  ],
+  "limitations": "All reviews are synthetic. Clusters and similarities are descriptive, and the later-period Google battery change was deliberately simulated in generated rows."
+}
