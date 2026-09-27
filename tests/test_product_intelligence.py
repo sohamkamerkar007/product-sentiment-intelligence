@@ -15,11 +15,28 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from emerging import detect_issues  # noqa: E402
 from generate_dataset import build, validate  # noqa: E402
+from model_registry import ADDED_MODELS, registry, validate_reviews  # noqa: E402
 from semantic import discover, related_models  # noqa: E402
 from supervised import load_predictors  # noqa: E402
 
 
 class DatasetTests(unittest.TestCase):
+    def test_active_phone_registry_and_saved_outputs(self):
+        reviews = pd.read_csv(ROOT / "data" / "processed" / "reviews_expanded.csv")
+        validate_reviews(reviews)
+        names = registry()
+        self.assertEqual(len(names), 50)
+        self.assertEqual(len(ADDED_MODELS), 9)
+        self.assertEqual(reviews.model.nunique(), 50)
+        self.assertTrue(reviews.groupby("model").size().between(140, 180).all())
+        self.assertFalse(reviews.model.str.contains(r"\bStudy\s+[AB]\b", regex=True).any())
+        for filename in ("supervised_predictions.csv", "absa_expanded_predictions.csv",
+                         "conflicts_by_phone.csv", "phone_aspect_conflicts.csv",
+                         "review_aspect_conflicts.csv"):
+            saved = pd.read_csv(ROOT / "data" / "processed" / filename)
+            self.assertFalse(saved.model.astype(str).str.contains(r"\bStudy\s+[AB]\b", regex=True).any(), filename)
+            self.assertTrue(set(saved.model.dropna()) <= set(names.model), filename)
+
     def test_generated_schema_and_group_split(self):
         reviews, partitions, annotations = build()
         validate(reviews)

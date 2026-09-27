@@ -1,174 +1,160 @@
-/* Consumer Opinion Intelligence — shared research-product visual system */
-
+/* Shared light interface for every page. Streamlit's theme is in config.toml. */
 :root {
-  --surface: #0b111a;
-  --surface-raised: #101722;
-  --surface-soft: #151f2d;
-  --border: #263548;
-  --border-soft: rgba(148, 163, 184, 0.16);
-  --text: #edf4fb;
-  --muted: #9caec1;
-  --accent: #6ee7d1;
-  --accent-strong: #2dd4bf;
-  --blue: #7aa7ff;
+  --page: #f7f8fc;
+  --surface: #ffffff;
+  --surface-soft: #f2f4f9;
+  --ink: #1f2937;
+  --muted: #566174;
+  --border: #e1e5ed;
+  --accent: #4f46e5;
+  --accent-soft: #eef0ff;
+  --teal: #0f766e;
 }
 
-html, body, [class*="css"] {
-  font-family: Inter, "Segoe UI", Arial, sans-serif;
-}
+html, body, [class*="css"] { font-family: Inter, "Segoe UI", Arial, sans-serif; }
+.stApp { background: var(--page); color: var(--ink); }
+.block-container { max-width: 1280px; padding: 4.25rem 2.5rem 4rem; }
+[data-testid="stHeader"] { background: rgba(247, 248, 252, 0.96); }
 
-.stApp {
+/* The native top navigation stays visible and works at mobile widths. */
+[data-testid="stTopNav"] {
   background: var(--surface);
-  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 14px rgba(33, 45, 71, 0.04);
 }
+[data-testid="stTopNav"] a { color: var(--ink); font-weight: 600; }
 
-.block-container {
-  max-width: 1440px;
-  padding: 2.1rem 3rem 3.5rem;
-}
-
-/* Sidebar */
-[data-testid="stSidebar"] {
-  background: #0d141e;
-  border-right: 1px solid var(--border);
-}
-
-[data-testid="stSidebar"] > div:first-child {
-  padding-top: 1.25rem;
-}
-
-.sidebar-brand {
-  padding: 0.9rem 0.4rem 1.3rem;
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.sidebar-kicker, .sidebar-section-label, .page-eyebrow {
-  color: var(--accent);
-  font-size: 0.69rem;
-  font-weight: 750;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.sidebar-name {
-  margin-top: 0.5rem;
-  color: var(--text);
-  font-size: 1.55rem;
+.app-wordmark {
+  align-items: center;
+  color: var(--ink);
+  display: flex;
+  font-size: 0.96rem;
   font-weight: 760;
-  letter-spacing: -0.055em;
-  line-height: 0.95;
+  gap: 0.65rem;
+  letter-spacing: -0.025em;
+  margin: 0.3rem 0 0.25rem;
 }
-
-.sidebar-description {
-  margin-top: 0.8rem;
+.app-mark {
+  align-items: center;
+  background: var(--accent);
+  border-radius: 10px;
+  color: white;
+  display: inline-flex;
+  font-size: 0.9rem;
+  height: 29px;
+  justify-content: center;
+  width: 29px;
+}
+.block-container > div > [data-testid="stElementContainer"] .stCaption {
   color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.45;
 }
 
-.sidebar-section-label { margin: 1.2rem 0 0.35rem 0.35rem; }
-
-[data-testid="stSidebar"] [data-testid="stRadio"] label {
-  border: 1px solid transparent;
-  border-radius: 9px;
-  color: #cbd5e1;
-  margin: 0.08rem 0;
-  padding: 0.26rem 0.48rem;
-  transition: background 150ms ease, border-color 150ms ease;
-}
-
-[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-  background: rgba(110, 231, 209, 0.08);
-  border-color: rgba(110, 231, 209, 0.18);
-}
-
-[data-testid="stSidebar"] [data-testid="stRadio"] input:checked + div {
-  color: var(--accent) !important;
-  font-weight: 650;
-}
-
-.sidebar-footer {
-  border-top: 1px solid var(--border-soft);
-  color: var(--muted);
-  display: grid;
-  font-size: 0.73rem;
-  gap: 0.2rem;
-  letter-spacing: 0.04em;
-  margin-top: 1.4rem;
-  padding: 1.15rem 0.4rem;
-  text-transform: uppercase;
-}
-.sidebar-footer strong { color: #cbd5e1; font-size: 0.72rem; }
-
-/* Page framing */
 .page-intro {
-  border-bottom: 1px solid var(--border-soft);
-  margin-bottom: 1.7rem;
-  padding: 0.35rem 0 1.45rem;
+  border-bottom: 1px solid var(--border);
+  margin: 1.5rem 0 1.8rem;
+  padding: 0 0 1.3rem;
+}
+.page-eyebrow {
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 .page-intro h1 {
-  color: var(--text);
-  font-size: clamp(2rem, 3vw, 2.85rem);
-  letter-spacing: -0.055em;
-  line-height: 1.05;
-  margin: 0.48rem 0 0.7rem;
+  color: var(--ink);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  letter-spacing: -0.05em;
+  line-height: 1.12;
+  margin: 0.45rem 0 0.55rem;
 }
-.page-intro p { color: var(--muted); font-size: 1.02rem; line-height: 1.6; margin: 0; max-width: 760px; }
+.page-intro p {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 760px;
+}
 
-h2, h3 { color: var(--text) !important; letter-spacing: -0.025em; }
-h2 { font-size: 1.35rem !important; margin-top: 1.75rem !important; }
-hr { border-color: var(--border-soft) !important; margin: 1.6rem 0 !important; }
+h1, h2, h3 { color: var(--ink) !important; letter-spacing: -0.025em; }
+h2 { margin-top: 1.7rem !important; }
+hr { border-color: var(--border) !important; margin: 1.4rem 0 !important; }
 
-/* Controls and results */
+/* Inputs use the same radius and focus treatment on all modules. */
 [data-testid="stTextArea"] textarea,
-[data-testid="stSelectbox"] [data-baseweb="select"] > div {
-  background: #111b28 !important;
-  border-color: #32465e !important;
+[data-testid="stTextInput"] input,
+[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+[data-testid="stDateInput"] input {
+  background: var(--surface) !important;
+  border-color: #cdd4e1 !important;
   border-radius: 10px !important;
-  color: var(--text) !important;
+  color: var(--ink) !important;
 }
 [data-testid="stTextArea"] textarea:focus,
+[data-testid="stTextInput"] input:focus,
 [data-testid="stSelectbox"] [data-baseweb="select"] > div:focus-within {
   border-color: var(--accent) !important;
-  box-shadow: 0 0 0 1px var(--accent) !important;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.16) !important;
 }
-
-.stButton > button {
-  background: var(--accent-strong);
+[data-testid="stWidgetLabel"] { color: var(--ink); font-weight: 600; }
+.stButton > button[kind="primary"] {
+  background: var(--accent);
   border: 1px solid var(--accent);
   border-radius: 10px;
-  color: #06201e;
-  font-weight: 750;
-  min-height: 2.75rem;
-  transition: transform 150ms ease, background 150ms ease;
+  color: #fff;
+  font-weight: 700;
+  min-height: 2.7rem;
 }
-.stButton > button:hover { background: #8cf0df; border-color: #8cf0df; color: #06201e; transform: translateY(-1px); }
+.stButton > button[kind="primary"]:hover { background: #4338ca; border-color: #4338ca; color: #fff; }
+.stButton > button:not([kind="primary"]) { border-radius: 10px; border-color: #cdd4e1; }
+.stButton > button:focus-visible, a:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 2px; }
 
-[data-testid="stMetric"] {
-  background: var(--surface-raised);
-  border: 1px solid var(--border-soft);
-  border-radius: 12px;
-  padding: 0.85rem 1rem;
+[data-testid="stMetric"],
+[data-testid="stExpander"],
+[data-testid="stPlotlyChart"] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(33, 45, 71, 0.035);
 }
+[data-testid="stMetric"] { padding: 0.95rem 1.05rem; }
 [data-testid="stMetricLabel"] { color: var(--muted); }
-[data-testid="stMetricValue"] { color: var(--text); font-size: 1.45rem; }
+[data-testid="stMetricValue"] { color: var(--ink); font-size: 1.55rem; }
+[data-testid="stDataFrame"] { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+[data-testid="stPlotlyChart"] { overflow: hidden; }
+[data-testid="stAlert"] { border-radius: 12px; }
+[data-testid="stCaptionContainer"] { color: var(--muted); }
 
-[data-testid="stDataFrame"] {
-  border: 1px solid var(--border-soft);
-  border-radius: 12px;
-  overflow: hidden;
+/* The landing page is intentionally a guide, not a KPI dashboard. */
+.home-hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 10px 32px rgba(33, 45, 71, 0.045);
+  margin: 1.4rem 0 1.25rem;
+  padding: clamp(2rem, 5vw, 3.25rem);
 }
-
-[data-testid="stExpander"] {
-  background: var(--surface-raised);
-  border: 1px solid var(--border-soft);
-  border-radius: 10px;
+.home-eyebrow { color: var(--teal); font-size: 0.78rem; font-weight: 760; letter-spacing: 0.09em; text-transform: uppercase; }
+.home-hero h1 { font-size: clamp(2.35rem, 4.4vw, 3.7rem); line-height: 1.08; letter-spacing: -0.06em; max-width: 780px; margin: 0.75rem 0 1rem; }
+.home-hero p { color: var(--muted); font-size: 1.1rem; line-height: 1.65; max-width: 760px; margin: 0; }
+.home-section { margin: 2rem 0 0.7rem; }
+.home-section h2 { font-size: 1.55rem !important; margin: 0 0 0.35rem !important; }
+.home-section p { color: var(--muted); line-height: 1.6; margin: 0; }
+.home-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  height: 100%;
+  min-height: 125px;
+  padding: 1.2rem 1.25rem;
 }
-
-[data-testid="stAlert"] { border-radius: 10px; }
-[data-testid="stPlotlyChart"] { border: 1px solid var(--border-soft); border-radius: 12px; overflow: hidden; }
+.home-card h3 { font-size: 1.04rem; margin: 0 0 0.4rem; }
+.home-card p { color: var(--muted); font-size: 0.91rem; line-height: 1.5; margin: 0; }
+.home-note { background: #eef7f6; border: 1px solid #cce9e5; border-radius: 12px; color: #175c55; line-height: 1.55; padding: 0.95rem 1.1rem; }
 
 @media (max-width: 900px) {
-  .block-container { padding: 1.4rem 1rem 2.5rem; }
-  .page-intro { margin-bottom: 1.25rem; }
+  .block-container { padding: 4.25rem 1rem 2.5rem; }
+  .page-intro { margin-top: 1.1rem; }
+  .home-hero { padding: 1.75rem; }
+  .home-card { min-height: 0; margin-bottom: 0.65rem; }
 }

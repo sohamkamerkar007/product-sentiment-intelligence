@@ -54,38 +54,41 @@ def predictors():
 
 
 def prediction_panel(review_text: str) -> None:
-    st.markdown("### Consumer response predictions")
-    st.caption("These are model estimates from synthetic review text, not an actual customer's rating or a measured outcome.")
+    st.markdown("### What this review suggests")
+    st.caption("These estimates come from generated research data, not a real buyer's experience.")
     try:
         dissatisfied, rating = predictors()
         outcome = dissatisfied.predict(review_text)
         rating_outcome = rating.predict(review_text)
     except (FileNotFoundError, ValueError, ImportError) as exc:
-        st.info(f"Predictions are unavailable: {exc}")
+        st.info("These estimates are temporarily unavailable. The review analysis above is still available.")
         return
     first, second = st.columns(2)
-    first.metric("Dissatisfaction", "Likely" if outcome["dissatisfied"] else "Unlikely",
-                 help=f"Estimated probability: {outcome['probability']:.1%}; decision threshold: {outcome['threshold']:.0%}.")
-    second.metric("Predicted rating", f"{rating_outcome['predicted_rating']:.1f} / 5",
-                  help="A text-based regression estimate on the dataset's 1–5 rating scale.")
-    st.caption(f"Dissatisfaction probability: {outcome['probability']:.1%}. The label uses a validation-selected threshold of {outcome['threshold']:.0%}.")
-    if st.checkbox("Explain these predictions", key="show_shap"):
-        for title, model in (("Dissatisfaction", dissatisfied), ("Rating", rating)):
+    first.metric("Chance of a negative review", f"{outcome['probability']:.0%}",
+                 help="An estimate based on the words in this review and synthetic training examples.")
+    second.metric("Estimated rating", f"{rating_outcome['predicted_rating']:.1f} / 5",
+                  help="An estimate on the dataset's 1–5 scale, not an observed rating.")
+    st.caption("The negative-review estimate is " + ("above" if outcome["dissatisfied"] else "below") +
+               " the system's decision cutoff.")
+    if st.checkbox("Why did the system give these results?", key="show_shap"):
+        for title, model in (("negative-review chance", dissatisfied), ("estimated rating", rating)):
             try:
                 contributions = pd.DataFrame(model.explain(review_text, top_n=8))
             except (ImportError, ValueError) as exc:
-                st.info(f"{title} explanation is unavailable: {exc}")
+                st.info(f"The explanation for {title} is unavailable right now.")
                 continue
             if contributions.empty:
                 st.info(f"No informative features were found for the {title.lower()} explanation.")
                 continue
             contributions["Direction"] = np.where(contributions["contribution"] >= 0, "Raises estimate", "Lowers estimate")
             figure = px.bar(contributions.sort_values("contribution"), x="contribution", y="feature",
-                            color="Direction", orientation="h", title=f"What influenced the {title.lower()} estimate",
-                            color_discrete_map={"Raises estimate": "#f49b80", "Lowers estimate": "#6ee7d1"})
-            figure.update_layout(yaxis_title="Review word or text feature", xaxis_title="SHAP contribution")
+                            color="Direction", orientation="h", title=f"Words affecting the {title}",
+                            color_discrete_map={"Raises estimate": "#c24158", "Lowers estimate": "#0f766e"})
+            figure.update_layout(yaxis_title="Word or text pattern", xaxis_title="Effect on this estimate")
             st.plotly_chart(figure, width="stretch")
-        st.caption("SHAP describes this model's calculation for this review. It does not establish cause and effect.")
+        with st.expander("Technical details about these explanations"):
+            st.write("SHAP shows how the saved XGBoost models used text features for this review. "
+                     "It explains a calculation, not why a person would feel a certain way.")
 
 
 def comparison_prediction_panel(models: list[str]) -> None:
@@ -98,9 +101,13 @@ def comparison_prediction_panel(models: list[str]) -> None:
         mean_dissatisfaction_probability=("dissatisfaction_probability", "mean"),
         mean_predicted_rating=("predicted_rating", "mean")
     ).reset_index()
-    st.subheader("Predicted opinion patterns")
-    st.caption("Averages of model predictions over synthetic review text. These are exploratory summaries, not observed ratings.")
-    st.dataframe(summary.round(3), width="stretch", hide_index=True)
+    st.subheader("Estimated review patterns")
+    st.caption("Averages across generated reviews. These are not observed customer ratings.")
+    summary["mean_dissatisfaction_probability"] = (100 * summary["mean_dissatisfaction_probability"]).round(1)
+    st.dataframe(summary.rename(columns={"model": "Phone", "reviews": "Reviews",
+                                         "mean_dissatisfaction_probability": "Estimated negative reviews (%)",
+                                         "mean_predicted_rating": "Estimated rating / 5"}).round(1),
+                 width="stretch", hide_index=True)
 
 
 def aspect_evidence_panel(model: str) -> None:
@@ -110,17 +117,17 @@ def aspect_evidence_panel(model: str) -> None:
     selected = aspects[aspects["model"] == model]
     if selected.empty:
         return
-    st.subheader("Supporting review evidence")
+    st.subheader("Example reviews behind these results")
     left, right = st.columns(2)
-    aspect = left.selectbox("Aspect to inspect", sorted(selected["aspect"].unique()), key="evidence_aspect")
+    aspect = left.selectbox("Phone feature", sorted(selected["aspect"].unique()), key="evidence_aspect")
     sentiment = right.selectbox("Opinion", ["Negative", "Positive", "Neutral"], key="evidence_sentiment")
     evidence = selected[(selected["aspect"] == aspect) & (selected["predicted_sentiment"] == sentiment)]
     if evidence.empty:
-        st.info("No matching aspect predictions were found for this selection.")
+        st.info("No reviews match this feature and opinion choice.")
     else:
         for _, row in evidence.head(4).iterrows():
             st.markdown(f"> {row['review_text']}")
-        st.caption(f"Showing {min(4, len(evidence))} of {len(evidence)} matching aspect predictions.")
+        st.caption(f"Showing {min(4, len(evidence))} of {len(evidence)} matching review examples.")
 
 
 def weakness_evidence_panel(aspect: str, model: str | None = None, brand: str | None = None) -> None:
@@ -132,7 +139,7 @@ def weakness_evidence_panel(aspect: str, model: str | None = None, brand: str | 
         filtered = filtered[filtered["model"] == model]
     if brand:
         filtered = filtered[filtered["brand"] == brand]
-    st.subheader("Negative review evidence")
+    st.subheader("Examples of negative comments")
     if filtered.empty:
         st.info("No negative reviews match these filters.")
     else:
@@ -141,25 +148,26 @@ def weakness_evidence_panel(aspect: str, model: str | None = None, brand: str | 
 
 
 def discovery_page(page_intro) -> None:
-    page_intro("Unsupervised analysis", "Consumer Opinion Discovery",
-               "Explore groups of semantically similar reviews without assigning predefined categories to them.")
+    page_intro("Explore reviews", "Discover Review Patterns",
+               "Group reviews that use similar language, then read examples from each group.")
     reviews = expanded_reviews()
     if not EMBEDDINGS.exists():
-        st.info("Sentence embeddings are missing. Run `python src/semantic.py` to prepare this module.")
+        st.info("Review patterns are temporarily unavailable because prepared review data is missing.")
         return
     brands = ["All brands", *sorted(reviews["brand"].unique())]
     selected_brand = st.selectbox("Brand", brands, key="discovery_brand")
     subset = reviews if selected_brand == "All brands" else reviews[reviews["brand"] == selected_brand]
-    selected_model = st.selectbox("Model", ["All models", *sorted(subset["model"].unique())], key="discovery_model")
+    selected_model = st.selectbox("Phone", ["All models", *sorted(subset["model"].unique())], key="discovery_model")
     if selected_model != "All models":
         subset = subset[subset["model"] == selected_model]
-    method = st.radio("Clustering method", ["K-Means", "HDBSCAN"], horizontal=True)
+    method_label = st.radio("How should reviews be grouped?", ["Choose the number of groups", "Find natural groups"], horizontal=True)
+    method = "K-Means" if method_label == "Choose the number of groups" else "HDBSCAN"
     if method == "K-Means":
-        parameter = st.slider("Number of clusters", 3, 16, 8)
+        parameter = st.slider("Number of review groups", 3, 16, 8)
     else:
-        parameter = st.slider("Minimum reviews per cluster", 10, 80, 25, step=5)
-    st.caption(f"{len(subset):,} matching reviews. For responsive exploration, clustering uses up to 2,500 sampled reviews.")
-    if st.button("Discover opinion patterns", type="primary"):
+        parameter = st.slider("Smallest group size", 10, 80, 25, step=5)
+    st.caption(f"{len(subset):,} matching reviews. Up to 2,500 are sampled to keep this page responsive.")
+    if st.button("Find review groups", type="primary"):
         if subset.empty:
             st.info("Choose a brand or model with reviews first.")
             return
@@ -177,59 +185,66 @@ def discovery_page(page_intro) -> None:
         st.session_state["discovery_result"] = (labels, report)
         st.session_state["discovery_signature"] = (selected_brand, selected_model, method, parameter)
     if st.session_state.get("discovery_signature") != (selected_brand, selected_model, method, parameter):
-        st.info("Choose settings and run discovery to inspect clusters.")
+        st.info("Choose your settings and select ‘Find review groups’ to begin.")
         return
     labels, report = st.session_state["discovery_result"]
     summaries = pd.DataFrame([{k: v for k, v in cluster.items() if k != "representative_reviews"}
                               for cluster in report["clusters"]])
-    st.subheader("Discovered patterns")
-    st.dataframe(summaries, width="stretch", hide_index=True)
-    if report["silhouette_cosine"] is not None:
-        st.caption(f"Cosine silhouette score on a sample: {report['silhouette_cosine']:.3f}. This measures separation, not category truth.")
-    selected_cluster = st.selectbox("Inspect cluster", summaries["cluster"].tolist(),
-                                    format_func=lambda value: "Unassigned reviews" if value == -1 else f"Cluster {value}")
+    st.subheader("Review groups")
+    st.dataframe(summaries.rename(columns={"cluster": "Group", "size": "Reviews",
+                                            "top_terms": "Common words"}), width="stretch", hide_index=True)
+    selected_cluster = st.selectbox("Explore a group", summaries["cluster"].tolist(),
+                                    format_func=lambda value: "Reviews without a clear group" if value == -1 else f"Group {value + 1}")
     cluster_info = next(item for item in report["clusters"] if item["cluster"] == selected_cluster)
-    st.markdown(f"**Frequent terms:** {cluster_info['top_terms']}")
+    st.markdown(f"**Common words:** {cluster_info['top_terms']}")
     for review in cluster_info["representative_reviews"]:
         st.markdown(f"> {review}")
     st.dataframe(labels[labels["cluster"] == selected_cluster][["brand", "model", "review_text", "sentiment"]].head(100),
                  width="stretch", hide_index=True)
-    st.caption("Cluster names are derived from frequent words. A cluster can contain multiple aspects or sentiment labels.")
+    st.caption("A group can contain different phone features and both positive and negative comments.")
+    with st.expander("How the grouping works — technical details"):
+        st.write("The first option uses K-Means; the second uses HDBSCAN. Both work on saved "
+                 "Sentence-BERT review embeddings. Groups are described by common TF-IDF terms. "
+                 "No human-verified topic labels are available.")
+        if report["silhouette_cosine"] is not None:
+            st.write(f"Sample cosine silhouette score: {report['silhouette_cosine']:.3f}.")
 
 
 def relationships_page(page_intro) -> None:
-    page_intro("Semantic exploration", "Model Relationships",
-               "Find phones whose review language is similar, then compare the opinion patterns behind the match.")
+    page_intro("Compare review language", "Find Similar Phones",
+               "Find phones with similar-sounding reviews and inspect what those reviews discuss.")
     reviews = expanded_reviews()
     if not EMBEDDINGS.exists():
-        st.info("Sentence embeddings are missing. Run `python src/semantic.py` first.")
+        st.info("Similar-phone results are temporarily unavailable because prepared review data is missing.")
         return
     first, second = st.columns(2)
-    model = first.selectbox("Reference smartphone", sorted(reviews["model"].unique()), key="relation_model")
-    brand = second.selectbox("Related brand", ["All brands", *sorted(reviews["brand"].unique())], key="relation_brand")
-    aspect = st.selectbox("Opinion focus", ["All aspects", *ASPECT_TERMS.keys()], key="relation_aspect")
+    model = first.selectbox("Start with this phone", sorted(reviews["model"].unique()), key="relation_model")
+    brand = second.selectbox("Show phones from", ["All brands", *sorted(reviews["brand"].unique())], key="relation_brand")
+    aspect = st.selectbox("Focus on a feature", ["All features", *ASPECT_TERMS.keys()], key="relation_aspect")
     subset = reviews
-    if aspect != "All aspects":
+    if aspect != "All features":
         subset = reviews[reviews["review_text"].str.contains(ASPECT_TERMS[aspect], case=False, regex=True, na=False)]
     try:
         neighbors = related_models(subset, embedding_matrix(), model,
                                    brand=None if brand == "All brands" else brand)
     except ValueError as exc:
-        st.info(str(exc))
+        st.info("There are not enough matching reviews to compare this selection. Try another feature or brand.")
         return
     if neighbors.empty:
-        st.info("No related models match this brand and aspect filter.")
+        st.info("No other phones match these choices. Try another brand or feature.")
         return
-    neighbors["similarity"] = neighbors["similarity"].round(3)
-    st.dataframe(neighbors, width="stretch", hide_index=True)
+    neighbors["similarity"] = (100 * neighbors["similarity"]).round(1)
+    st.dataframe(neighbors.rename(columns={"model": "Phone", "brand": "Brand",
+                                               "similarity": "How similar the reviews are (%)",
+                                               "review_count": "Reviews"}), width="stretch", hide_index=True)
     selected = st.selectbox("Compare with", neighbors["model"].tolist(), key="related_comparison")
-    st.caption("Similarity is cosine similarity between mean normalized Sentence-BERT review embeddings. It measures language overlap, not product quality.")
+    st.caption("This measures similarity in review wording, not how well the phones perform.")
     aspects = expanded_aspects()
     if not aspects.empty:
         comparison = aspects[aspects["model"].isin([model, selected])]
         comparison = comparison.groupby(["model", "aspect"])["predicted_sentiment"].apply(
             lambda values: 100 * (values.eq("Positive").mean() - values.eq("Negative").mean())).reset_index(name="sentiment_score")
-        st.subheader("Aspect sentiment patterns")
+        st.subheader("Opinions about each feature")
         st.dataframe(comparison.pivot(index="aspect", columns="model", values="sentiment_score").round(1), width="stretch")
     topics = complaint_topics()
     if not topics.empty:
@@ -238,55 +253,67 @@ def relationships_page(page_intro) -> None:
         shared = each[model] & each[selected]
         if shared:
             descriptions = topics[topics["topic"].isin(shared)]["top_terms"].drop_duplicates().head(3).tolist()
-            st.markdown("**Shared complaint vocabulary:** " + "; ".join(descriptions))
+            st.markdown("**Complaint themes seen in both phones:** " + "; ".join(descriptions))
     comparison_prediction_panel([model, selected])
-    st.caption("These relationships describe patterns within a synthetic dataset; they do not establish equivalent product performance.")
+    with st.expander("How similarity is calculated — technical details"):
+        st.write("Each phone is represented by the mean of its saved Sentence-BERT review "
+                 "embeddings. Cosine similarity compares those representations. Review wording "
+                 "in this synthetic dataset does not establish equivalent product performance.")
 
 
 def emerging_page(page_intro, selected_model: str | None = None) -> None:
-    page_intro("Temporal signal detection", "Emerging Issues",
-               "Compare complaint-theme prevalence across calendar years while accounting for review volume.")
+    page_intro("Changes in complaints", "Spot New Problems",
+               "See which complaint themes appear more often in the later review period.")
     reviews = expanded_reviews()
     topics = complaint_topics()
     if topics.empty:
-        st.info("Complaint topics are missing. Run `python src/emerging.py` first.")
+        st.info("Complaint patterns are temporarily unavailable because prepared review data is missing.")
         return
     a, b, c = st.columns(3)
     brand = a.selectbox("Brand", ["All brands", *sorted(reviews["brand"].unique())], key="issues_brand")
     candidates = reviews if brand == "All brands" else reviews[reviews["brand"] == brand]
     model_options = ["All models", *sorted(candidates["model"].unique())]
     model_index = model_options.index(selected_model) if selected_model in model_options else 0
-    model = b.selectbox("Smartphone", model_options, index=model_index, key="issues_model")
-    aspect = c.selectbox("Aspect", ["All aspects", *ASPECT_TERMS.keys()], key="issues_aspect")
+    model = b.selectbox("Phone", model_options, index=model_index, key="issues_model")
+    aspect = c.selectbox("Phone feature", ["All features", *ASPECT_TERMS.keys()], key="issues_aspect")
     dates = pd.to_datetime(reviews["review_date"])
-    date_range = st.date_input("Review window", value=(dates.min().date(), dates.max().date()),
+    date_range = st.date_input("Dates to include", value=(dates.min().date(), dates.max().date()),
                                min_value=dates.min().date(), max_value=dates.max().date(), key="issues_dates")
-    if st.button("Find increasing complaint themes", type="primary"):
+    if st.button("Find growing complaints", type="primary"):
         if len(date_range) != 2:
             st.info("Choose both a start and an end date.")
             return
         with st.spinner("Comparing complaint prevalence by period..."):
             result = detect_issues(reviews, topics, brand=None if brand == "All brands" else brand,
                                    model=None if model == "All models" else model,
-                                   aspect=None if aspect == "All aspects" else aspect,
+                                   aspect=None if aspect == "All features" else aspect,
                                    start=str(date_range[0]), end=str(date_range[1]))
         st.session_state["issue_result"] = result
         st.session_state["issue_signature"] = (brand, model, aspect, tuple(date_range))
     if st.session_state.get("issue_signature") != (brand, model, aspect, tuple(date_range)):
-        st.info("Select filters and run detection to investigate period-over-period changes.")
+        st.info("Choose a brand, phone or feature, then select ‘Find growing complaints’.")
         return
     result = st.session_state["issue_result"]
     if result.empty:
-        st.info("No complaint theme met the sample-size and statistical evidence requirements for these filters.")
+        st.info("No growing complaint theme passed the reliability checks for these choices.")
         return
-    display = result[["top_terms", "previous_period", "current_period", "previous_share", "current_share", "increase_pp", "adjusted_p"]].copy()
+    display = result[["top_terms", "previous_period", "current_period", "previous_share", "current_share", "increase_pp"]].copy()
     display[["previous_share", "current_share"]] = (display[["previous_share", "current_share"]] * 100).round(1)
-    st.dataframe(display.round(3), width="stretch", hide_index=True)
-    selected = st.selectbox("Inspect an increasing theme", result.index.tolist(),
-                            format_func=lambda i: f"{result.loc[i, 'top_terms']} · +{result.loc[i, 'increase_pp']:.1f} pp")
+    display = display.rename(columns={"top_terms": "Complaint theme", "previous_period": "Earlier year",
+                                      "current_period": "Later year", "previous_share": "Earlier reviews (%)",
+                                      "current_share": "Later reviews (%)", "increase_pp": "Increase (percentage points)"})
+    st.dataframe(display.round(1), width="stretch", hide_index=True)
+    selected = st.selectbox("Read examples", result.index.tolist(),
+                            format_func=lambda i: f"{result.loc[i, 'top_terms']} · +{result.loc[i, 'increase_pp']:.1f} percentage points")
     row = result.loc[selected]
     st.markdown(f"**{row['previous_period']}:** {row['previous_count']} of {row['previous_total']} reviews · "
                 f"**{row['current_period']}:** {row['current_count']} of {row['current_total']} reviews")
     for review in row["evidence"]:
         st.markdown(f"> {review}")
-    st.caption("Topics come from historical negative-review clustering. A result requires at least 40 reviews in each period, five current topic reviews and a one-sided Fisher test with false-discovery adjustment ≤ 0.10. These are synthetic patterns, not market trends.")
+    st.caption("These changes describe generated reviews, not actual problems with the named phones.")
+    with st.expander("How growing complaints are checked — technical details"):
+        st.write("Complaint topics are learned from earlier negative reviews. A result requires "
+                 "at least 40 reviews in each calendar year, five later complaints, and a "
+                 "one-sided Fisher exact test with Benjamini–Hochberg adjusted p ≤ 0.10. "
+                 "The later year is incomplete, so shares are divided by review volume.")
+        st.write(f"Adjusted p-value for this theme: {row['adjusted_p']:.3f}.")

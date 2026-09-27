@@ -1,7 +1,8 @@
 """Reproducibly extend the original synthetic review corpus for research demos.
 
-The original 4,200 rows are retained byte-for-byte at the field level. Added rows
-are explicitly marked as synthetic; product identifiers are fictional study IDs.
+The original 4,200 synthetic records retain their source fields. Added rows
+are explicitly marked as synthetic; names come from the phone registry and
+must never be interpreted as genuine customer feedback about those products.
 """
 
 from __future__ import annotations
@@ -12,6 +13,8 @@ from pathlib import Path
 
 import pandas as pd
 from sklearn.model_selection import GroupShuffleSplit
+
+from model_registry import ADDED_MODELS, legacy_mapping, validate_reviews
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -101,7 +104,7 @@ def build(seed: int = 20260927) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFram
     assert original["source"].eq("Synthetic-V2").all(), "Unexpected source provenance"
     used = {" ".join(t.lower().split()) for t in original["review_text"].astype(str)}
     brands = sorted(original["brand"].unique())
-    new_models = [(brand, f"{brand} Study {series}") for brand in brands for series in ("A", "B")]
+    new_models = [(brand, entry.model) for brand in brands for entry in ADDED_MODELS[brand]]
     target_counts = {model: rng.randint(154, 168) for model in original["model"].unique()}
     target_counts.update({model: rng.randint(150, 170) for _, model in new_models})
     model_brand = dict(zip(original["model"], original["brand"]))
@@ -134,9 +137,10 @@ def build(seed: int = 20260927) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFram
     expanded = pd.concat([original, pd.DataFrame(rows, columns=original.columns)], ignore_index=True)
     expanded = expanded.sort_values(["review_date", "review_id"]).reset_index(drop=True)
     validate(expanded)
-    # Group by model: evaluation tests transfer to unseen study products and keeps
-    # every review for a model in one partition. No rating or target fields enter features.
-    groups = expanded["model"].astype(str)
+    # Preserve the pre-migration grouped split exactly. The stable historical
+    # grouping keys are used only for split assignment, never as ML features.
+    old_group_key = {entry.model: legacy for legacy, entry in legacy_mapping().items()}
+    groups = expanded["model"].map(lambda name: old_group_key.get(name, name)).astype(str)
     train_val, test = next(GroupShuffleSplit(n_splits=1, test_size=0.16, random_state=seed).split(expanded, groups=groups))
     train, val_local = next(GroupShuffleSplit(n_splits=1, test_size=0.19, random_state=seed + 1).split(expanded.iloc[train_val], groups=groups.iloc[train_val]))
     split = pd.Series("test", index=expanded.index)
@@ -154,6 +158,7 @@ def validate(frame: pd.DataFrame) -> None:
     assert set(frame["sentiment"]) == {"Positive", "Neutral", "Negative"}
     assert pd.to_datetime(frame["review_date"], errors="coerce").notna().all()
     assert not frame.isna().any().any()
+    validate_reviews(frame)
 
 
 def main() -> None:

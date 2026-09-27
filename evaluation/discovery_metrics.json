@@ -20,26 +20,26 @@
   },
   "emerging_issue_count": 2,
   "emerging_issue_method": "One-sided Fisher exact test on adjacent calendar years; Benjamini-Hochberg FDR <= 0.10 across every topic-period comparison; minimum 40 reviews per period and 5 current complaints. The partial 2026 year is normalized by review volume.",
-  "example_related_model": "Realme Study A",
+  "example_related_model": "Realme GT 6",
   "example_related_models": [
     {
-      "model": "OnePlus Study B",
+      "model": "OnePlus 12",
       "similarity": 0.9945901036262512
     },
     {
-      "model": "OnePlus Study A",
+      "model": "OnePlus 11 5G",
       "similarity": 0.993728756904602
     },
     {
-      "model": "Xiaomi Study B",
+      "model": "Xiaomi 14 Ultra",
       "similarity": 0.993599534034729
     },
     {
-      "model": "OPPO Study A",
+      "model": "OPPO Reno11 Pro 5G",
       "similarity": 0.9931808710098267
     },
     {
-      "model": "Motorola Study A",
+      "model": "Motorola Edge 50 Pro",
       "similarity": 0.9926716089248657
     }
   ],

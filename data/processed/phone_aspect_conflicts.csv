@@ -1,470 +1,470 @@
 brand,model,aspect_1,aspect_2,conflict_count,unique_reviews,avg_conflict_strength
-OnePlus,OnePlus Study A,camera,display,22,22,0.9462554414163936
-OPPO,OPPO Study A,display,performance,22,22,0.9383915066719055
-Nothing,Nothing Study B,design,display,21,21,0.9175033987987609
-OnePlus,OnePlus Study A,battery,display,21,21,0.9193759851512455
-Nothing,Nothing Study B,display,performance,21,21,0.9398444678102221
-Nothing,Nothing Study B,design,performance,20,20,0.8947568632662296
-Apple,Apple Study A,battery,performance,20,20,0.8924973785877228
-Xiaomi,Xiaomi Study B,display,performance,19,19,0.9124292856768558
-Apple,Apple Study B,camera,display,19,19,0.9517539896463093
-Xiaomi,Xiaomi Study A,display,performance,19,19,0.9425638537657889
-Google,Google Study B,battery,camera,19,19,0.8946639566045058
-OnePlus,OnePlus Study A,camera,performance,19,19,0.9248595629867754
-OPPO,OPPO Study B,camera,performance,19,19,0.916464804034484
-OPPO,OPPO Study B,camera,display,19,19,0.9471781316556429
-Realme,Realme Study A,camera,display,18,18,0.9301216767893897
-Motorola,Motorola Study B,battery,display,18,18,0.8986232851942381
-Realme,Realme Study A,camera,performance,18,18,0.9220633705457052
-OnePlus,OnePlus Study A,battery,camera,17,17,0.9084854423999786
-Realme,Realme Study B,display,performance,17,17,0.9485103593153112
-OPPO,OPPO Study B,battery,performance,17,17,0.8917849221650291
-Apple,Apple Study A,battery,display,17,17,0.9049126909059637
-Nothing,Nothing Study A,battery,camera,17,17,0.8474610447883606
-Motorola,Motorola Study B,design,display,17,17,0.957408540389117
-Google,Google Study B,design,display,17,17,0.9259050304398817
-OPPO,OPPO Study A,battery,performance,17,17,0.8534563849954044
-Nothing,Nothing Study B,battery,performance,17,17,0.8697321038035786
-Nothing,Nothing Study A,camera,display,16,16,0.9583744499832392
-OPPO,OPPO Study B,design,display,16,16,0.9240207895636559
-Realme,Realme Study A,battery,camera,16,16,0.8943667374551296
-Samsung,Samsung Study B,battery,display,16,16,0.8820939539000392
-Samsung,Samsung Study B,display,performance,16,16,0.95183758251369
-Realme,Realme Study B,camera,display,16,16,0.9357991963624954
-Apple,Apple Study B,camera,performance,16,16,0.9190739188343287
-Apple,Apple Study A,camera,display,16,16,0.930498506873846
-OPPO,OPPO Study B,battery,display,15,15,0.9266034076611201
-OnePlus,OnePlus Study B,display,performance,15,15,0.9213243246078491
-Nothing,Nothing Study B,battery,display,15,15,0.9131402323643366
-Nothing,Nothing Study A,design,display,15,15,0.9572319477796555
-OnePlus,OnePlus Study B,camera,performance,15,15,0.9008183062076569
-OnePlus,OnePlus Study B,battery,display,15,15,0.8558946122725805
-Nothing,Nothing Study A,design,performance,15,15,0.9231634388367335
-Apple,Apple Study B,battery,performance,15,15,0.8778227766354879
-Google,Google Study B,battery,display,15,15,0.8678829610347748
-Google,Google Study A,battery,performance,15,15,0.8826676030953725
-OPPO,OPPO Study A,battery,design,15,15,0.8774654984474182
-Apple,Apple Study B,camera,design,14,14,0.9214655363133976
-Samsung,Samsung Study A,battery,display,14,14,0.9015829882451466
-Samsung,Samsung Study A,display,performance,14,14,0.9219001936061042
-Apple,Apple Study A,camera,performance,14,14,0.9160691435847964
-Nothing,Nothing Study A,battery,display,14,14,0.8934550870742116
-Motorola,Motorola Study B,display,performance,14,14,0.9073131446327481
-Motorola,Motorola Study B,battery,performance,14,14,0.8431687993662698
-Xiaomi,Xiaomi Study B,battery,camera,14,14,0.8822249014462743
+OnePlus,OnePlus 11 5G,camera,display,22,22,0.9462554414163936
+OPPO,OPPO Reno11 Pro 5G,display,performance,22,22,0.9383915066719055
+Nothing,Nothing Phone (2a),display,performance,21,21,0.9398444678102221
+OnePlus,OnePlus 11 5G,battery,display,21,21,0.9193759851512455
+Nothing,Nothing Phone (2a),design,display,21,21,0.9175033987987609
+Nothing,Nothing Phone (2a),design,performance,20,20,0.8947568632662296
+Apple,iPhone 15,battery,performance,20,20,0.8924973785877228
+Xiaomi,Xiaomi 14,display,performance,19,19,0.9425638537657889
+OPPO,OPPO Reno12 Pro 5G,camera,display,19,19,0.9471781316556429
+Apple,iPhone 15 Pro,camera,display,19,19,0.9517539896463093
+OPPO,OPPO Reno12 Pro 5G,camera,performance,19,19,0.916464804034484
+OnePlus,OnePlus 11 5G,camera,performance,19,19,0.9248595629867754
+Google,Pixel 8 Pro,battery,camera,19,19,0.8946639566045058
+Xiaomi,Xiaomi 14 Ultra,display,performance,19,19,0.9124292856768558
+Realme,Realme GT 6,camera,display,18,18,0.9301216767893897
+Motorola,Motorola Razr 50,battery,display,18,18,0.8986232851942381
+Realme,Realme GT 6,camera,performance,18,18,0.9220633705457052
+OPPO,OPPO Reno12 Pro 5G,battery,performance,17,17,0.8917849221650291
+Nothing,Nothing Phone (2),battery,camera,17,17,0.8474610447883606
+Nothing,Nothing Phone (2a),battery,performance,17,17,0.8697321038035786
+Motorola,Motorola Razr 50,design,display,17,17,0.957408540389117
+OPPO,OPPO Reno11 Pro 5G,battery,performance,17,17,0.8534563849954044
+Google,Pixel 8 Pro,design,display,17,17,0.9259050304398817
+Apple,iPhone 15,battery,display,17,17,0.9049126909059637
+Realme,Realme 13 Pro+ 5G,display,performance,17,17,0.9485103593153112
+OnePlus,OnePlus 11 5G,battery,camera,17,17,0.9084854423999786
+Samsung,Galaxy A55 5G,battery,display,16,16,0.8820939539000392
+Realme,Realme 13 Pro+ 5G,camera,display,16,16,0.9357991963624954
+Apple,iPhone 15 Pro,camera,performance,16,16,0.9190739188343287
+Nothing,Nothing Phone (2),camera,display,16,16,0.9583744499832392
+Realme,Realme GT 6,battery,camera,16,16,0.8943667374551296
+Samsung,Galaxy A55 5G,display,performance,16,16,0.95183758251369
+OPPO,OPPO Reno12 Pro 5G,design,display,16,16,0.9240207895636559
+Apple,iPhone 15,camera,display,16,16,0.930498506873846
+Google,Pixel 8,battery,performance,15,15,0.8826676030953725
+Apple,iPhone 15 Pro,battery,performance,15,15,0.8778227766354879
+Google,Pixel 8 Pro,battery,display,15,15,0.8678829610347748
+OnePlus,OnePlus 12,display,performance,15,15,0.9213243246078491
+OnePlus,OnePlus 12,camera,performance,15,15,0.9008183062076569
+OnePlus,OnePlus 12,battery,display,15,15,0.8558946122725805
+Nothing,Nothing Phone (2),design,performance,15,15,0.9231634388367335
+Nothing,Nothing Phone (2a),battery,display,15,15,0.9131402323643366
+OPPO,OPPO Reno11 Pro 5G,battery,design,15,15,0.8774654984474182
+OPPO,OPPO Reno12 Pro 5G,battery,display,15,15,0.9266034076611201
+Nothing,Nothing Phone (2),design,display,15,15,0.9572319477796555
+OnePlus,OnePlus 11 5G,battery,performance,14,14,0.8930076988680022
+Samsung,Galaxy S24,battery,display,14,14,0.9015829882451466
+Samsung,Galaxy S24,display,performance,14,14,0.9219001936061042
 Motorola,Moto G Power 2025,battery,display,14,14,0.9465288281475749
-Nothing,Nothing Study A,display,performance,14,14,0.9435747947011676
-OnePlus,OnePlus Study B,battery,performance,14,14,0.8904971150415284
-OnePlus,OnePlus Study A,battery,performance,14,14,0.8930076988680022
-Realme,Realme Study A,camera,design,14,14,0.9222918333751815
-OPPO,OPPO Study A,camera,display,14,14,0.9111640751361847
-Xiaomi,Xiaomi Study B,camera,performance,13,13,0.9246281614670386
-Motorola,Motorola Study A,display,performance,13,13,0.9368087557645944
-Motorola,Motorola Study A,camera,display,13,13,0.950111950819309
-OPPO,OPPO Study B,display,performance,13,13,0.9388556090685037
-Xiaomi,Xiaomi Study A,camera,performance,13,13,0.9198547189052289
-Samsung,Samsung Study A,design,display,13,13,0.9344809949398041
-Realme,Realme Study A,design,display,13,13,0.9320377329221139
-Realme,Realme Study A,battery,display,13,13,0.8839627022926624
-Realme,Realme Study B,design,display,13,13,0.9467983612647424
-Samsung,Samsung Study B,camera,display,13,13,0.9490609902601975
+Motorola,Motorola Razr 50,display,performance,14,14,0.9073131446327481
+Apple,iPhone 15,camera,performance,14,14,0.9160691435847964
+Apple,iPhone 15 Pro,camera,design,14,14,0.9214655363133976
+Motorola,Motorola Razr 50,battery,performance,14,14,0.8431687993662698
+Nothing,Nothing Phone (2),battery,display,14,14,0.8934550870742116
+Nothing,Nothing Phone (2),display,performance,14,14,0.9435747947011676
+OPPO,OPPO Reno11 Pro 5G,camera,display,14,14,0.9111640751361847
+OnePlus,OnePlus 12,battery,performance,14,14,0.8904971150415284
+Xiaomi,Xiaomi 14 Ultra,battery,camera,14,14,0.8822249014462743
+Realme,Realme GT 6,camera,design,14,14,0.9222918333751815
+Xiaomi,Xiaomi 14 Ultra,camera,performance,13,13,0.9246281614670386
+Xiaomi,Xiaomi 14 Ultra,battery,display,13,13,0.8146952814780749
+Motorola,Motorola Razr 50,camera,display,13,13,0.9485346331046178
+Realme,Realme GT 6,battery,display,13,13,0.8839627022926624
+Realme,Realme GT 6,design,display,13,13,0.9320377329221139
+Realme,Realme GT 6,battery,performance,13,13,0.898489787028386
+Samsung,Galaxy A55 5G,camera,display,13,13,0.9490609902601975
+Samsung,Galaxy A55 5G,camera,performance,13,13,0.9471849363583785
+Samsung,Galaxy S24,design,display,13,13,0.9344809949398041
+Xiaomi,Xiaomi 14,camera,display,13,13,0.9578366279602051
+Xiaomi,Xiaomi 14,camera,performance,13,13,0.9198547189052289
 Apple,iPhone 16e,battery,display,13,13,0.9515250984727772
-Samsung,Samsung Study B,camera,performance,13,13,0.9471849363583785
-Realme,Realme Study A,battery,performance,13,13,0.898489787028386
-Xiaomi,Xiaomi Study B,battery,display,13,13,0.8146952814780749
-Xiaomi,Xiaomi Study A,camera,display,13,13,0.9578366279602051
-Google,Google Study A,battery,design,13,13,0.9080437971995428
-OPPO,OPPO Study A,battery,camera,13,13,0.877681131546314
-Google,Google Study B,camera,design,13,13,0.9447841472350634
-Nothing,Nothing Study B,camera,performance,13,13,0.92531068279193
-Motorola,Motorola Study B,camera,display,13,13,0.9485346331046178
-Motorola,Motorola Study A,battery,performance,13,13,0.8590592386630865
-Google,Google Study B,camera,performance,13,13,0.9087896874317756
-Google,Google Study B,display,performance,13,13,0.9439714871920072
-Google,Google Study A,camera,display,13,13,0.9655997202946589
-OPPO,OPPO Study B,battery,camera,13,13,0.938739598943637
-Realme,Realme Study A,design,performance,12,12,0.8915940274794897
-Apple,Apple Study A,battery,camera,12,12,0.8383110389113426
-Samsung,Samsung Study A,battery,camera,12,12,0.8178117697437605
-Realme,Realme Study B,battery,camera,12,12,0.8440418268243471
-OnePlus,OnePlus Study B,design,performance,12,12,0.9210761189460754
-OnePlus,OnePlus Study A,camera,design,12,12,0.9357863242427508
+Realme,Realme 13 Pro+ 5G,design,display,13,13,0.9467983612647424
+Google,Pixel 8 Pro,display,performance,13,13,0.9439714871920072
+Google,Pixel 8 Pro,camera,performance,13,13,0.9087896874317756
+OPPO,OPPO Reno12 Pro 5G,battery,camera,13,13,0.938739598943637
+OPPO,OPPO Reno11 Pro 5G,battery,camera,13,13,0.877681131546314
+Motorola,Motorola Edge 50 Pro,camera,display,13,13,0.950111950819309
+Motorola,Motorola Edge 50 Pro,battery,performance,13,13,0.8590592386630865
+Google,Pixel 8,battery,design,13,13,0.9080437971995428
+Google,Pixel 8 Pro,camera,design,13,13,0.9447841472350634
+Nothing,Nothing Phone (2a),camera,performance,13,13,0.92531068279193
+OPPO,OPPO Reno12 Pro 5G,display,performance,13,13,0.9388556090685037
+Motorola,Motorola Edge 50 Pro,display,performance,13,13,0.9368087557645944
+Google,Pixel 8,camera,display,13,13,0.9655997202946589
+Samsung,Galaxy S24,battery,camera,12,12,0.8178117697437605
+Xiaomi,Xiaomi 14 Ultra,battery,design,12,12,0.8701173861821493
+Realme,Realme 13 Pro+ 5G,battery,camera,12,12,0.8440418268243471
+Realme,Realme GT 6,design,performance,12,12,0.8915940274794897
+OnePlus,OnePlus 11 5G,camera,design,12,12,0.9357863242427508
+OnePlus,OnePlus 12,design,performance,12,12,0.9210761189460754
+Nothing,Nothing Phone (2a),camera,design,12,12,0.9480113784472147
+Nothing,Nothing Phone (2),camera,performance,12,12,0.9327183489998182
+OPPO,OPPO Reno11 Pro 5G,camera,design,12,12,0.9081193084518114
+OPPO,OPPO Reno11 Pro 5G,camera,performance,12,12,0.9464714129765829
 Nothing,Phone 3a Pro,display,performance,12,12,0.9545120653249487
 Nothing,Phone 2a Plus,battery,camera,12,12,0.9200135121843688
-Google,Google Study B,battery,performance,12,12,0.8842587843537331
-Google,Google Study A,battery,camera,12,12,0.9475499093532562
-OPPO,OPPO Study A,camera,performance,12,12,0.9464714129765829
-OPPO,OPPO Study A,camera,design,12,12,0.9081193084518114
-Nothing,Nothing Study A,camera,performance,12,12,0.9327183489998182
-Nothing,Nothing Study B,camera,design,12,12,0.9480113784472147
-Motorola,Motorola Study A,battery,display,12,12,0.9051081451276938
-Nothing,Nothing Study A,camera,design,12,12,0.9485749279459318
+Nothing,Nothing Phone (2),camera,design,12,12,0.9485749279459318
+Google,Pixel 8,battery,camera,12,12,0.9475499093532562
+Motorola,Motorola Edge 50 Pro,battery,display,12,12,0.9051081451276938
+Google,Pixel 8 Pro,battery,performance,12,12,0.8842587843537331
 Motorola,Moto G Power 2025,battery,performance,12,12,0.9590051669125398
-Motorola,Motorola Study A,battery,camera,12,12,0.9127216649552187
-Xiaomi,Xiaomi Study B,battery,design,12,12,0.8701173861821493
-Apple,Apple Study B,battery,design,12,12,0.8953877948224545
-Apple,Apple Study B,battery,camera,11,11,0.8533493348143317
-Xiaomi,Xiaomi Study A,battery,design,11,11,0.7996441478079016
-Apple,Apple Study A,design,performance,11,11,0.8646860908378254
-Xiaomi,Xiaomi Study A,battery,camera,11,11,0.8692964965646918
-Motorola,Motorola Study A,design,display,11,11,0.9590212756937201
-Nothing,Nothing Study B,battery,design,11,11,0.8743352605537935
-Nothing,Nothing Study A,battery,design,11,11,0.8549186953089454
-Nothing,Nothing Study A,battery,performance,11,11,0.8670383014462211
-Samsung,Samsung Study A,camera,display,11,11,0.9426549239592119
-Motorola,Motorola Study B,design,performance,11,11,0.8860640783201564
-Apple,Apple Study B,display,performance,11,11,0.9466445500200446
-Motorola,Motorola Study B,camera,performance,11,11,0.9184786000035026
-Realme,Realme Study A,battery,design,11,11,0.863724107092077
-Samsung,Samsung Study B,battery,design,11,11,0.8998118083585392
+Motorola,Motorola Edge 50 Pro,battery,camera,12,12,0.9127216649552187
+Apple,iPhone 15 Pro,battery,design,12,12,0.8953877948224545
+Apple,iPhone 15,battery,camera,12,12,0.8383110389113426
+Xiaomi,Xiaomi 14,battery,design,11,11,0.7996441478079016
+Xiaomi,Xiaomi 14,battery,camera,11,11,0.8692964965646918
 Motorola,Moto G Power 2025,battery,camera,11,11,0.9569929838474759
-OnePlus,OnePlus Study B,camera,display,11,11,0.9586131952025674
-Google,Google Study A,battery,display,11,11,0.9322510795159773
-OnePlus,OnePlus Study A,display,performance,11,11,0.9278856001117013
-OPPO,OPPO Study A,design,performance,11,11,0.9294209290634502
-Google,Google Study B,camera,display,11,11,0.9481567334045063
-OnePlus,OnePlus Study A,design,performance,11,11,0.8670091276819055
-Nothing,Nothing Study B,battery,camera,10,10,0.9309067875146866
-Samsung,Samsung Study A,camera,performance,10,10,0.9327348619699478
-Samsung,Samsung Study A,design,performance,10,10,0.9101509153842926
-Motorola,Motorola Study B,camera,design,10,10,0.8856694668531417
-Realme,Realme Study B,camera,design,10,10,0.9150572687387466
-Realme,Realme Study B,battery,performance,10,10,0.8192962825298309
+Samsung,Galaxy S24,camera,display,11,11,0.9426549239592119
+Realme,Realme GT 6,battery,design,11,11,0.863724107092077
+Samsung,Galaxy A55 5G,battery,design,11,11,0.8998118083585392
+Motorola,Motorola Edge 50 Pro,design,display,11,11,0.9590212756937201
+Google,Pixel 8 Pro,camera,display,11,11,0.9481567334045063
+Motorola,Motorola Razr 50,design,performance,11,11,0.8860640783201564
+Motorola,Motorola Razr 50,camera,performance,11,11,0.9184786000035026
+OnePlus,OnePlus 11 5G,design,performance,11,11,0.8670091276819055
+OPPO,OPPO Reno11 Pro 5G,design,performance,11,11,0.9294209290634502
+OnePlus,OnePlus 11 5G,display,performance,11,11,0.9278856001117013
+OnePlus,OnePlus 12,camera,display,11,11,0.9586131952025674
+Nothing,Nothing Phone (2a),battery,design,11,11,0.8743352605537935
+Nothing,Nothing Phone (2),battery,performance,11,11,0.8670383014462211
+Apple,iPhone 15 Pro,display,performance,11,11,0.9466445500200446
+Google,Pixel 8,battery,display,11,11,0.9322510795159773
+Apple,iPhone 15 Pro,battery,camera,11,11,0.8533493348143317
+Apple,iPhone 15,design,performance,11,11,0.8646860908378254
+Nothing,Nothing Phone (2),battery,design,11,11,0.8549186953089454
+Realme,Realme 13 Pro+ 5G,battery,performance,10,10,0.8192962825298309
+Google,Pixel 8 Pro,battery,design,10,10,0.836188805103302
+Motorola,Motorola Edge 50 Pro,camera,design,10,10,0.9575155049562454
+Xiaomi,Xiaomi 14 Ultra,battery,performance,10,10,0.8619125783443451
+Samsung,Galaxy S24,design,performance,10,10,0.9101509153842926
+Samsung,Galaxy S24,battery,performance,10,10,0.8896317943930626
+Samsung,Galaxy S24,camera,performance,10,10,0.9327348619699478
+Apple,iPhone 15,battery,design,10,10,0.858598256111145
+Xiaomi,Xiaomi 14 Ultra,camera,design,10,10,0.9286343172192574
+Google,Pixel 8,camera,design,10,10,0.9406136378645897
+Google,Pixel 8,design,display,10,10,0.9261027470231056
+Nothing,Nothing Phone (2a),camera,display,10,10,0.9723302066326142
+Xiaomi,Xiaomi 14,design,display,10,10,0.9711101412773132
+Motorola,Motorola Razr 50,camera,design,10,10,0.8856694668531417
 Motorola,Razr 60 Ultra,battery,performance,10,10,0.9310152667196885
-Samsung,Samsung Study A,battery,performance,10,10,0.8896317943930626
-Realme,Realme Study B,design,performance,10,10,0.8783851861953735
-Nothing,Nothing Study B,camera,display,10,10,0.9723302066326142
-Realme,Realme Study B,camera,performance,10,10,0.9193686783313751
-Xiaomi,Xiaomi Study A,design,display,10,10,0.9711101412773132
-Xiaomi,Xiaomi Study B,camera,design,10,10,0.9286343172192574
-OPPO,OPPO Study A,battery,display,10,10,0.9105804339051247
-Google,Google Study A,camera,design,10,10,0.9406136378645897
-Google,Google Study B,battery,design,10,10,0.836188805103302
-Apple,Apple Study A,display,performance,10,10,0.9202600538730621
-Apple,Apple Study B,battery,display,10,10,0.9060283690690994
-Xiaomi,Xiaomi Study B,battery,performance,10,10,0.8619125783443451
-Motorola,Motorola Study B,battery,camera,10,10,0.8962741613388061
-Motorola,Motorola Study A,camera,design,10,10,0.9575155049562454
-Apple,Apple Study A,battery,design,10,10,0.858598256111145
-Realme,Realme Study B,battery,display,10,10,0.8564868479967117
-Google,Google Study A,design,display,10,10,0.9261027470231056
 Nothing,Phone 2a Plus,display,performance,10,10,0.9332525646610718
-OPPO,OPPO Study B,camera,design,10,10,0.8445771634578705
-Xiaomi,Xiaomi Study A,battery,performance,10,10,0.8614769399166107
-Apple,Apple Study B,design,display,9,9,0.9668928417894576
-Google,Pixel 10 Pro XL,battery,display,9,9,0.875476544102033
-Samsung,Samsung Study B,battery,camera,9,9,0.9400000969568888
-Motorola,Motorola Study B,battery,design,9,9,0.8798617174228033
-Xiaomi,Xiaomi Study A,camera,design,9,9,0.9441082692808576
-Xiaomi,Redmi Note 14 Pro+,battery,display,9,9,0.8624830499928199
-Samsung,Samsung Study B,battery,performance,9,9,0.8239968352847629
-Google,Google Study A,display,performance,9,9,0.8996365964412689
-OnePlus,OnePlus Study B,camera,design,9,9,0.9245323422882292
-OnePlus,OnePlus Study B,battery,camera,9,9,0.8472762604554495
+Nothing,Nothing Phone (2a),battery,camera,10,10,0.9309067875146866
+Apple,iPhone 15 Pro,battery,display,10,10,0.9060283690690994
+Realme,Realme 13 Pro+ 5G,camera,performance,10,10,0.9193686783313751
+Realme,Realme 13 Pro+ 5G,battery,display,10,10,0.8564868479967117
+Realme,Realme 13 Pro+ 5G,camera,design,10,10,0.9150572687387466
+Realme,Realme 13 Pro+ 5G,design,performance,10,10,0.8783851861953735
+Motorola,Motorola Razr 50,battery,camera,10,10,0.8962741613388061
+OPPO,OPPO Reno12 Pro 5G,camera,design,10,10,0.8445771634578705
+OPPO,OPPO Reno11 Pro 5G,battery,display,10,10,0.9105804339051247
+Apple,iPhone 15,display,performance,10,10,0.9202600538730621
+Xiaomi,Xiaomi 14,battery,performance,10,10,0.8614769399166107
+Google,Pixel 8,display,performance,9,9,0.8996365964412689
 Realme,Realme 14 Pro+,camera,performance,9,9,0.9723125996691131
+Samsung,Galaxy A55 5G,battery,performance,9,9,0.8239968352847629
+Apple,iPhone 15 Pro,design,performance,9,9,0.9248063531186845
+Xiaomi,Redmi Note 14 Pro+,battery,display,9,9,0.8624830499928199
+Samsung,Galaxy A55 5G,design,display,9,9,0.9569449292288886
+Apple,iPhone 15 Pro,design,display,9,9,0.9668928417894576
 OnePlus,OnePlus 13T,camera,performance,9,9,0.9480257893800099
-Samsung,Samsung Study B,design,display,9,9,0.9569449292288886
-Apple,Apple Study B,design,performance,9,9,0.9248063531186845
-Realme,Realme GT 7,camera,performance,8,8,0.9323229801551247
-OPPO,OPPO Study A,design,display,8,8,0.9308824557811022
-Samsung,Samsung Study B,camera,design,8,8,0.9086887296289206
-OPPO,Reno 13 Pro,battery,display,8,8,0.9420000692808056
-Realme,Realme 14 Pro+,display,performance,8,8,0.9397498705575943
-Google,Google Study B,design,performance,8,8,0.9248501509428024
-Motorola,Motorola Edge 60 Pro,design,performance,8,8,0.857985223133459
-Xiaomi,Redmi Note 14 Pro+,battery,camera,8,8,0.9515139277163506
-Samsung,Samsung Study A,battery,design,8,8,0.9212698768824339
-Apple,iPhone 16e,camera,display,8,8,0.9672001962677574
-Motorola,Motorola Study A,battery,design,8,8,0.9000183679163456
-Motorola,Motorola Study A,camera,performance,8,8,0.9126147478818893
-Xiaomi,Xiaomi Study A,design,performance,8,8,0.9199789073318243
-Motorola,Razr 60 Ultra,battery,display,8,8,0.9735661837092018
-Realme,Realme Study B,battery,design,8,8,0.8145057186484337
-Xiaomi,Redmi Note 14 Pro+,camera,display,8,8,0.9600665717047405
-Xiaomi,Redmi Note 14 Pro+,camera,performance,8,8,0.9253878298037053
-Realme,Realme 14 Pro+,camera,display,8,8,0.978751894525013
-Samsung,Galaxy A56 5G,camera,performance,8,8,0.8977673112788487
-OnePlus,OnePlus Study B,design,display,8,8,0.9258146397769451
+Samsung,Galaxy A55 5G,battery,camera,9,9,0.9400000969568888
+OnePlus,OnePlus 12,camera,design,9,9,0.9245323422882292
+Google,Pixel 10 Pro XL,battery,display,9,9,0.875476544102033
+Motorola,Motorola Razr 50,battery,design,9,9,0.8798617174228033
+OnePlus,OnePlus 12,battery,camera,9,9,0.8472762604554495
+Xiaomi,Xiaomi 14,camera,design,9,9,0.9441082692808576
+Xiaomi,Xiaomi 14 Ultra,camera,display,8,8,0.940141960978508
 Samsung,Galaxy Z Flip7,battery,design,8,8,0.9666301999765492
-OnePlus,OnePlus Study A,battery,design,8,8,0.8713903147727251
-Xiaomi,Xiaomi Study B,camera,display,8,8,0.940141960978508
+Motorola,Motorola Edge 50 Pro,camera,performance,8,8,0.9126147478818893
+Google,Pixel 8 Pro,design,performance,8,8,0.9248501509428024
+OnePlus,OnePlus 11 5G,battery,design,8,8,0.8713903147727251
+Xiaomi,Xiaomi 14,design,performance,8,8,0.9199789073318243
+Apple,iPhone 16e,camera,display,8,8,0.9672001962677574
+Motorola,Motorola Edge 60 Pro,design,performance,8,8,0.857985223133459
+Motorola,Razr 60 Ultra,battery,display,8,8,0.9735661837092018
+Xiaomi,Redmi Note 14 Pro+,camera,display,8,8,0.9600665717047405
+OnePlus,OnePlus 12,design,display,8,8,0.9258146397769451
+Xiaomi,Redmi Note 14 Pro+,camera,performance,8,8,0.9253878298037053
+Xiaomi,Redmi Note 14 Pro+,battery,camera,8,8,0.9515139277163506
+Motorola,Motorola Edge 50 Pro,battery,design,8,8,0.9000183679163456
+OPPO,Reno 13 Pro,battery,display,8,8,0.9420000692808056
+OPPO,OPPO Reno11 Pro 5G,design,display,8,8,0.9308824557811022
+Realme,Realme 14 Pro+,camera,display,8,8,0.978751894525013
+Realme,Realme 13 Pro+ 5G,battery,design,8,8,0.8145057186484337
+Realme,Realme GT 7,camera,performance,8,8,0.9323229801551247
+Samsung,Galaxy S24,battery,design,8,8,0.9212698768824339
+Samsung,Galaxy A55 5G,camera,design,8,8,0.9086887296289206
+Samsung,Galaxy A56 5G,camera,performance,8,8,0.8977673112788487
+Realme,Realme 14 Pro+,display,performance,8,8,0.9397498705575943
 Nothing,Phone 2a Plus,battery,display,7,7,0.950275120712847
-Motorola,Razr 60 Ultra,battery,camera,7,7,0.8645290465631758
-Apple,Apple Study A,camera,design,7,7,0.9385721832513809
-Realme,Realme Study A,display,performance,7,7,0.9228810199669429
-Motorola,Motorola Edge 60 Pro,camera,design,7,7,0.928204895941233
-Apple,iPhone 16e,battery,performance,7,7,0.8522479933948135
-Apple,iPhone 16e,battery,camera,7,7,0.9406074910870689
-Samsung,Galaxy A56 5G,camera,design,7,7,0.9762064461710793
-OPPO,OPPO Study B,battery,design,7,7,0.7422381596905845
-Motorola,Moto G Power 2025,camera,performance,7,7,0.860607284057748
+Apple,iPhone 15,camera,design,7,7,0.9385721832513809
+OPPO,OPPO Reno12 Pro 5G,battery,design,7,7,0.7422381596905845
 Motorola,Moto G Power 2025,battery,design,7,7,0.9157090874390248
+Motorola,Moto G Power 2025,camera,performance,7,7,0.860607284057748
+Google,Pixel 8,camera,performance,7,7,0.8935045642512185
+Samsung,Galaxy A56 5G,camera,design,7,7,0.9762064461710793
 Nothing,Phone 3a Pro,camera,display,7,7,0.9481598507227434
-Google,Google Study A,camera,performance,7,7,0.8935045642512185
-Xiaomi,Xiaomi Study A,battery,display,7,7,0.8871979713439941
-Samsung,Galaxy A56 5G,display,performance,6,6,0.9613014908501943
+Motorola,Motorola Edge 60 Pro,camera,design,7,7,0.928204895941233
+Motorola,Razr 60 Ultra,battery,camera,7,7,0.8645290465631758
+Realme,Realme GT 6,display,performance,7,7,0.9228810199669429
+Xiaomi,Xiaomi 14,battery,display,7,7,0.8871979713439941
+Apple,iPhone 16e,battery,camera,7,7,0.9406074910870689
+Apple,iPhone 16e,battery,performance,7,7,0.8522479933948135
+Google,Pixel 10 Pro XL,battery,performance,6,6,0.9368594586849213
+OnePlus,OnePlus 13,battery,display,6,6,0.8673736900091171
+Realme,Realme 14 Pro+,battery,camera,6,6,0.9440960778846105
 OnePlus,OnePlus 13T,design,display,6,6,0.930547207128741
 Realme,Realme 14 Pro+,battery,display,6,6,0.8490639313949266
-Motorola,Moto G Power 2025,design,performance,6,6,0.8931827610198529
-Realme,Realme 14 Pro+,battery,camera,6,6,0.9440960778846105
-OnePlus,OnePlus Study A,design,display,6,6,0.9552026142676672
-Samsung,Galaxy Z Flip7,battery,performance,6,6,0.9481715275085704
-Motorola,Moto G Power 2025,camera,design,6,6,0.9214535294578553
-Xiaomi,Xiaomi 15,display,performance,6,6,0.9054830202628962
-OnePlus,OnePlus 13,display,performance,6,6,0.9598726878563563
-Realme,Realme GT 7,camera,display,6,6,0.9471670907658386
-OnePlus,OnePlus Study B,battery,design,6,6,0.8899648860096931
 Google,Pixel 10,battery,camera,6,6,0.9451875703484852
-Realme,Realme GT 7,battery,display,6,6,0.8691135449388504
-OPPO,Reno 13 Pro,camera,display,6,6,0.9578367863103866
-OPPO,Reno 13 Pro,display,performance,6,6,0.9071967888553493
-OnePlus,OnePlus 13R,design,display,6,6,0.9348004811246046
-Google,Google Study A,design,performance,6,6,0.8967564677198728
-Nothing,Phone 3a Pro,battery,display,6,6,0.9323733397468058
-Nothing,Phone 3a Pro,camera,performance,6,6,0.9510292334187063
+Motorola,Motorola Edge 50 Pro,design,performance,6,6,0.861116441587607
+OnePlus,OnePlus 11 5G,design,display,6,6,0.9552026142676672
+Google,Pixel 10,battery,design,6,6,0.8410122470843951
 Nothing,Phone 3a Pro,design,performance,6,6,0.9298801372481028
-OnePlus,OnePlus 13,battery,display,6,6,0.8673736900091171
-Nothing,Phone 3a Pro,camera,design,6,6,0.9109401546810214
-Realme,Realme GT 7 Pro,design,performance,6,6,0.9698583538012567
-Apple,iPhone 16e,camera,performance,6,6,0.9636785915430705
+Samsung,Galaxy A56 5G,display,performance,6,6,0.9613014908501943
+Nothing,Phone 3a Pro,battery,display,6,6,0.9323733397468058
+OPPO,Reno 13 Pro,camera,display,6,6,0.9578367863103866
+Realme,Realme GT 7,battery,display,6,6,0.8691135449388504
+Motorola,Moto G Power 2025,camera,design,6,6,0.9214535294578553
+Samsung,Galaxy Z Flip7,battery,performance,6,6,0.9481715275085704
+Google,Pixel 8,design,performance,6,6,0.8967564677198728
+Motorola,Moto G Power 2025,design,performance,6,6,0.8931827610198529
+OnePlus,OnePlus 13,display,performance,6,6,0.9598726878563563
+OnePlus,OnePlus 12,battery,design,6,6,0.8899648860096931
+OnePlus,OnePlus 13R,design,display,6,6,0.9348004811246046
+Xiaomi,Xiaomi 15,display,performance,6,6,0.9054830202628962
 Samsung,Galaxy A56 5G,battery,camera,6,6,0.8648950025945282
 Nothing,Nothing Phone 3,camera,performance,6,6,0.9337432263421123
 Nothing,Phone 2a Plus,camera,display,6,6,0.902733861178716
-Google,Pixel 10 Pro XL,battery,performance,6,6,0.9368594586849213
-Motorola,Motorola Edge 60 Pro,display,performance,6,6,0.9414289907695771
-Samsung,Samsung Study A,camera,design,6,6,0.9216533551613489
-Motorola,Motorola Study A,design,performance,6,6,0.861116441587607
+Apple,iPhone 16e,camera,performance,6,6,0.9636785915430705
 Nothing,Phone 3a Pro,battery,performance,6,6,0.9030266152424303
-Google,Pixel 10,battery,design,6,6,0.8410122470843951
-Google,Pixel 9a,display,performance,5,5,0.9770919650520324
+Realme,Realme GT 7 Pro,design,performance,6,6,0.9698583538012567
+Nothing,Phone 3a Pro,camera,design,6,6,0.9109401546810214
+Nothing,Phone 3a Pro,camera,performance,6,6,0.9510292334187063
+Realme,Realme GT 7,camera,display,6,6,0.9471670907658386
+OPPO,Reno 13 Pro,display,performance,6,6,0.9071967888553493
+Motorola,Motorola Edge 60 Pro,display,performance,6,6,0.9414289907695771
+Samsung,Galaxy S24,camera,design,6,6,0.9216533551613489
 OnePlus,OnePlus 13T,camera,display,5,5,0.936753863279602
-Realme,Realme 14 Pro+,battery,performance,5,5,0.9087684518915176
-Samsung,Galaxy A56 5G,camera,display,5,5,0.9820690070238495
-Samsung,Galaxy Z Flip7,battery,display,5,5,0.946754548
-Google,Pixel 9a,battery,display,5,5,0.8846402538360977
 Xiaomi,Redmi Note 14 Pro+,display,performance,5,5,0.9325809378592682
-OPPO,Find X8 Pro,battery,display,5,5,0.8602372258901596
-Google,Pixel 9a,battery,design,5,5,0.9452139089268494
 Apple,iPhone 16e,camera,design,5,5,0.89473016631884
-Google,Pixel 10 Pro XL,battery,design,5,5,0.8553411424160003
-Motorola,Razr 60 Ultra,display,performance,5,5,0.9729557764717102
-Google,Pixel 10 Pro,design,performance,5,5,0.8620241295267105
-Nothing,Phone 2a Plus,camera,design,5,5,0.9636323468031769
-Xiaomi,Xiaomi 15 Ultra,display,performance,5,5,0.9594790697097778
-Apple,iPhone 16e,display,performance,5,5,0.9711296806585998
-Xiaomi,Xiaomi Study B,design,display,5,5,0.8967129081487656
-Xiaomi,Xiaomi 15 Ultra,camera,performance,5,5,0.9203981339931488
-Motorola,Motorola Edge 60 Pro,camera,display,5,5,0.9478314623642732
-Samsung,Samsung Study B,design,performance,5,5,0.959751546382904
-Google,Pixel 9a,design,display,5,5,0.9575089076873169
-Google,Pixel 9a,design,performance,5,5,0.9713716371067658
 OnePlus,OnePlus 13R,display,performance,5,5,0.9411956965923309
 OnePlus,OnePlus 13,camera,display,5,5,0.9842727291796113
-Apple,iPhone 17 Pro Max,camera,display,5,5,0.9742525041103363
-Realme,Realme GT 7,camera,design,5,5,0.9145407471150971
-Realme,Realme GT 7 Pro,camera,display,5,5,0.9516719816625214
-OPPO,Find X8 Pro,battery,performance,5,5,0.868286406993866
-OPPO,Find N5,battery,display,5,5,0.903396523
-OPPO,Find N5,battery,performance,5,5,0.8368958105951462
 Nothing,Phone 3a Pro,battery,camera,5,5,0.9600731362989501
-Realme,Realme 14 Pro+,camera,design,5,5,0.8998491823197938
-Realme,Realme 14 Pro+,design,performance,5,5,0.9124100685214996
+Samsung,Galaxy Z Flip7,battery,display,5,5,0.946754548
+Xiaomi,Xiaomi 15 Ultra,display,performance,5,5,0.9594790697097778
 Motorola,Moto G Power 2025,camera,display,5,5,0.9851209076256409
-Nothing,Phone 2a Plus,design,display,4,4,0.9540207119002342
+Xiaomi,Xiaomi 14 Ultra,design,display,5,5,0.8967129081487656
+Xiaomi,Xiaomi 15 Ultra,camera,performance,5,5,0.9203981339931488
+Motorola,Razr 60 Ultra,display,performance,5,5,0.9729557764717102
+Realme,Realme 14 Pro+,battery,performance,5,5,0.9087684518915176
+Google,Pixel 9a,battery,display,5,5,0.8846402538360977
+Google,Pixel 9a,battery,design,5,5,0.9452139089268494
+Apple,iPhone 17 Pro Max,camera,display,5,5,0.9742525041103363
+Realme,Realme 14 Pro+,camera,design,5,5,0.8998491823197938
+Realme,Realme GT 7,camera,design,5,5,0.9145407471150971
+Google,Pixel 9a,design,display,5,5,0.9575089076873169
+Google,Pixel 9a,design,performance,5,5,0.9713716371067658
+Google,Pixel 9a,display,performance,5,5,0.9770919650520324
+Realme,Realme GT 7 Pro,camera,display,5,5,0.9516719816625214
+OPPO,Find N5,battery,performance,5,5,0.8368958105951462
+Google,Pixel 10 Pro,design,performance,5,5,0.8620241295267105
+Apple,iPhone 16e,display,performance,5,5,0.9711296806585998
+Google,Pixel 10 Pro XL,battery,design,5,5,0.8553411424160003
+OPPO,Find N5,battery,display,5,5,0.903396523
+Nothing,Phone 2a Plus,camera,design,5,5,0.9636323468031769
+Samsung,Galaxy A56 5G,camera,display,5,5,0.9820690070238495
+Realme,Realme 14 Pro+,design,performance,5,5,0.9124100685214996
+OPPO,Find X8 Pro,battery,performance,5,5,0.868286406993866
+Motorola,Motorola Edge 60 Pro,camera,display,5,5,0.9478314623642732
+OPPO,Find X8 Pro,battery,display,5,5,0.8602372258901596
+Samsung,Galaxy A55 5G,design,performance,5,5,0.959751546382904
+Xiaomi,Xiaomi 14 Ultra,design,performance,4,4,0.9083430618047714
 Xiaomi,Xiaomi 15 Ultra,camera,display,4,4,0.9803611040115356
-Realme,Realme GT 7 Pro,design,display,4,4,0.8871896567134762
-Xiaomi,Xiaomi Study B,design,performance,4,4,0.9083430618047714
-Realme,Realme GT 7 Pro,camera,performance,4,4,0.9019045479680061
-Apple,Apple Study A,design,display,4,4,0.8826541341841221
-Nothing,Phone 2a Plus,battery,performance,4,4,0.94267224125
-Samsung,Galaxy Z Flip7,display,performance,4,4,0.9541841562026978
-Nothing,Phone 2a Plus,battery,design,4,4,0.950722245
-Realme,Realme GT 7 Pro,display,performance,4,4,0.8963542357087135
-Google,Pixel 10,battery,performance,4,4,0.8965218078013039
-Google,Pixel 10,battery,display,4,4,0.8801154016835689
-Google,Pixel 10 Pro,battery,design,4,4,0.9521170820674896
-Motorola,Razr 60 Ultra,camera,performance,4,4,0.9170748912590218
-Motorola,Razr 60 Ultra,battery,design,4,4,0.9322153790570641
-Motorola,Motorola Edge 60 Pro,battery,performance,4,4,0.8110204123853015
-Google,Pixel 9a,battery,camera,4,4,0.8976868714639378
-Nothing,Phone 3a Pro,battery,design,4,4,0.894301788488741
-Nothing,Phone 3a Pro,design,display,4,4,0.968545638024807
-OPPO,Find N5,camera,performance,4,4,0.9544336152329445
-OPPO,Find N5,display,performance,4,4,0.8812183600624084
-OnePlus,OnePlus 13R,camera,display,4,4,0.9570522618333626
-OnePlus,OnePlus 13R,battery,display,4,4,0.91252825781703
-Realme,Realme GT 7,display,performance,4,4,0.9187412877172089
-Realme,Realme GT 7 Pro,battery,camera,4,4,0.8223539964412976
-Realme,Realme GT 7,design,display,4,4,0.9235240742564201
-OPPO,Reno 13 Pro,design,display,4,4,0.9738264326687049
-Realme,Realme GT 7,battery,design,4,4,0.907626647612381
-Realme,Realme GT 7,battery,camera,4,4,0.989532500715332
-OPPO,Find X8 Pro,design,display,4,4,0.9081157185137272
-OPPO,Reno 13 Pro,battery,performance,4,4,0.8200981505215168
-Google,Pixel 10 Pro,design,display,4,4,0.9740848006223679
-Google,Pixel 10 Pro,camera,performance,4,4,0.8654361814260483
-OnePlus,OnePlus 13T,design,performance,4,4,0.9292780235409737
-Samsung,Galaxy Z Flip7,camera,design,4,4,0.9081348888576031
-OnePlus,OnePlus 13T,display,performance,4,4,0.93071149289608
-Samsung,Galaxy Z Flip7,battery,camera,4,4,0.8569337166236877
-OnePlus,OnePlus 13R,camera,performance,4,4,0.9344310159210014
-OnePlus,OnePlus 13T,camera,design,4,4,0.9398099705576897
-Samsung,Galaxy S26 Ultra,battery,display,4,4,0.777524221688509
-Motorola,Motorola Edge 60 Pro,battery,display,4,4,0.906755343079567
-OnePlus,OnePlus 13T,battery,performance,4,4,0.7694824908453465
-Motorola,Motorola Edge 60 Pro,battery,camera,4,4,0.8559190675963402
-OnePlus,OnePlus 13T,battery,camera,4,4,0.8679445323263836
-OnePlus,OnePlus 13T,battery,display,4,4,0.8683072231975555
-Xiaomi,Redmi Note 14 Pro+,camera,design,4,4,0.881531891771965
-Xiaomi,Redmi Note 14 Pro+,battery,design,4,4,0.8467379801344586
-Google,Pixel 9a,battery,performance,4,4,0.8596280327153969
-Google,Pixel 9a,camera,performance,4,4,0.9585409977566147
-Xiaomi,Xiaomi 15,battery,display,4,4,0.8834351077675819
-Xiaomi,Redmi Note 14 Pro+,design,performance,4,4,0.9104337903749085
-Xiaomi,Xiaomi 15,design,display,4,4,0.871202889829874
 Xiaomi,Xiaomi 15,battery,performance,4,4,0.9323272815122604
-Google,Pixel 9a,camera,design,3,3,0.9227384798205058
+Xiaomi,Xiaomi 15,battery,display,4,4,0.8834351077675819
+Xiaomi,Xiaomi 15,design,display,4,4,0.871202889829874
+Nothing,Phone 3a Pro,battery,design,4,4,0.894301788488741
+Samsung,Galaxy S26 Ultra,battery,display,4,4,0.777524221688509
+Samsung,Galaxy Z Flip7,battery,camera,4,4,0.8569337166236877
+Samsung,Galaxy Z Flip7,camera,design,4,4,0.9081348888576031
+Google,Pixel 9a,camera,performance,4,4,0.9585409977566147
+Motorola,Razr 60 Ultra,camera,performance,4,4,0.9170748912590218
+Nothing,Phone 2a Plus,battery,design,4,4,0.950722245
+Realme,Realme GT 7 Pro,camera,performance,4,4,0.9019045479680061
+Nothing,Phone 2a Plus,battery,performance,4,4,0.94267224125
+Nothing,Phone 2a Plus,design,display,4,4,0.9540207119002342
+Google,Pixel 10 Pro,camera,performance,4,4,0.8654361814260483
+Realme,Realme GT 7,battery,camera,4,4,0.989532500715332
+OPPO,Find N5,camera,performance,4,4,0.9544336152329445
+Realme,Realme GT 7 Pro,display,performance,4,4,0.8963542357087135
+Realme,Realme GT 7 Pro,design,display,4,4,0.8871896567134762
+Nothing,Phone 3a Pro,design,display,4,4,0.968545638024807
+OPPO,Reno 13 Pro,design,display,4,4,0.9738264326687049
+Motorola,Motorola Edge 60 Pro,battery,performance,4,4,0.8110204123853015
+Motorola,Razr 60 Ultra,battery,design,4,4,0.9322153790570641
+Google,Pixel 10 Pro,battery,design,4,4,0.9521170820674896
+Realme,Realme GT 7,display,performance,4,4,0.9187412877172089
+Realme,Realme GT 7,design,display,4,4,0.9235240742564201
+Realme,Realme GT 7,battery,design,4,4,0.907626647612381
+Google,Pixel 10 Pro,design,display,4,4,0.9740848006223679
+Realme,Realme GT 7 Pro,battery,camera,4,4,0.8223539964412976
+OPPO,Find N5,display,performance,4,4,0.8812183600624084
+OPPO,Reno 13 Pro,battery,performance,4,4,0.8200981505215168
+OnePlus,OnePlus 13T,display,performance,4,4,0.93071149289608
+OPPO,Find X8 Pro,design,display,4,4,0.9081157185137272
+Motorola,Motorola Edge 60 Pro,battery,display,4,4,0.906755343079567
+OnePlus,OnePlus 13T,design,performance,4,4,0.9292780235409737
+OnePlus,OnePlus 13T,camera,design,4,4,0.9398099705576897
+Google,Pixel 9a,battery,camera,4,4,0.8976868714639378
+Google,Pixel 9a,battery,performance,4,4,0.8596280327153969
+Motorola,Motorola Edge 60 Pro,battery,camera,4,4,0.8559190675963402
+OnePlus,OnePlus 13T,battery,display,4,4,0.8683072231975555
+OnePlus,OnePlus 13T,battery,performance,4,4,0.7694824908453465
+OnePlus,OnePlus 13R,camera,performance,4,4,0.9344310159210014
+OnePlus,OnePlus 13R,battery,display,4,4,0.91252825781703
+OnePlus,OnePlus 13T,battery,camera,4,4,0.8679445323263836
+Apple,iPhone 15,design,display,4,4,0.8826541341841221
+Google,Pixel 10,battery,display,4,4,0.8801154016835689
+Google,Pixel 10,battery,performance,4,4,0.8965218078013039
+OnePlus,OnePlus 13R,camera,display,4,4,0.9570522618333626
+Samsung,Galaxy Z Flip7,display,performance,4,4,0.9541841562026978
+Xiaomi,Redmi Note 14 Pro+,battery,design,4,4,0.8467379801344586
+Xiaomi,Redmi Note 14 Pro+,camera,design,4,4,0.881531891771965
+Xiaomi,Redmi Note 14 Pro+,design,performance,4,4,0.9104337903749085
 Xiaomi,Xiaomi 15 Ultra,battery,camera,3,3,0.8143140623966852
-Motorola,Moto G Power 2025,design,display,3,3,0.9893725649665323
-OnePlus,OnePlus 13R,design,performance,3,3,0.9613658519717152
-Samsung,Galaxy S25 Ultra,battery,performance,3,3,0.7911722362041473
-Samsung,Galaxy A56 5G,design,performance,3,3,0.9241482495409649
-Samsung,Galaxy A56 5G,design,display,3,3,0.987063956264394
-Samsung,Galaxy S26 Ultra,design,display,3,3,0.8182689646879832
-Samsung,Galaxy S25 Ultra,design,performance,3,3,0.9426162044207255
-Samsung,Galaxy S25 Ultra,camera,performance,3,3,0.9430917898813883
-Realme,Realme GT 7 Pro,battery,display,3,3,0.7969162265459696
-Realme,Realme GT 7,battery,performance,3,3,0.9185499152089437
-OPPO,Find X8 Pro,display,performance,3,3,0.9369543393452963
-OPPO,Find X8 Pro,camera,performance,3,3,0.878749152024587
-OPPO,Reno 13 Pro,camera,performance,3,3,0.89890025495135
-OPPO,Reno 13 Pro,camera,design,3,3,0.9097708322489421
-Apple,iPhone 17 Pro Max,display,performance,3,3,0.9381621479988098
-Apple,iPhone 17 Pro Max,design,display,3,3,0.9704993665218353
-OPPO,Find N5,design,display,3,3,0.975949227809906
-Apple,iPhone 17 Pro Max,battery,camera,3,3,0.8182991594076157
-Samsung,Galaxy Z Flip7,camera,performance,3,3,0.8563844660917918
-OPPO,Find N5,camera,display,3,3,0.9403939966885376
-Samsung,Galaxy Z Flip7,design,display,3,3,0.8937944620847702
-Nothing,Nothing Phone 3,display,performance,3,3,0.8430611675109864
-Nothing,Phone 2a Plus,design,performance,3,3,0.8653516908974076
-Google,Pixel 10 Pro XL,battery,camera,3,3,0.8368684599796931
-Apple,iPhone 17 Pro,camera,design,3,3,0.9197414219379425
+Xiaomi,Xiaomi 15 Ultra,battery,design,3,3,0.8979262232088724
+Apple,iPhone 16,design,display,3,3,0.9720236162344614
+Apple,iPhone 16e,design,display,3,3,0.9051850571194331
 Apple,iPhone 17,display,performance,3,3,0.8809695144494375
 Apple,iPhone 17,design,performance,3,3,0.9389126698176066
 Apple,iPhone 17,camera,display,3,3,0.9786879519621531
 Apple,iPhone 17,battery,display,3,3,0.9297867010403951
-Apple,iPhone 16e,design,display,3,3,0.9051850571194331
-Apple,iPhone 16,design,display,3,3,0.9720236162344614
-Google,Pixel 10,display,performance,3,3,0.9727517098791759
-Google,Pixel 10,design,display,3,3,0.9886871012822468
 Motorola,Motorola Edge 60 Pro,camera,performance,3,3,0.8890469570954641
-Nothing,Nothing Phone 3,battery,performance,3,3,0.8055394192536672
-Motorola,Razr 60 Ultra,design,performance,3,3,0.9254714548587799
-Motorola,Razr 60 Ultra,design,display,3,3,0.9276620745658875
+Apple,iPhone 17 Pro Max,design,display,3,3,0.9704993665218353
+Apple,iPhone 17 Pro Max,display,performance,3,3,0.9381621479988098
+OPPO,Find X8 Pro,display,performance,3,3,0.9369543393452963
+OPPO,Reno 13 Pro,camera,design,3,3,0.9097708322489421
+OPPO,Reno 13 Pro,camera,performance,3,3,0.89890025495135
+Apple,iPhone 17 Pro Max,battery,camera,3,3,0.8182991594076157
+OnePlus,OnePlus 13R,design,performance,3,3,0.9613658519717152
+Google,Pixel 9a,camera,design,3,3,0.9227384798205058
+Samsung,Galaxy S26 Ultra,design,display,3,3,0.8182689646879832
 Motorola,Razr 60 Ultra,camera,display,3,3,0.9845673964807129
+Motorola,Razr 60 Ultra,design,display,3,3,0.9276620745658875
+Motorola,Razr 60 Ultra,design,performance,3,3,0.9254714548587799
 Google,Pixel 10 Pro XL,display,performance,3,3,0.9773316482702891
-Apple,iPhone 17,battery,camera,3,3,0.9170576135317484
+Xiaomi,Xiaomi 15 Ultra,battery,performance,3,3,0.8435875723759333
+Xiaomi,Xiaomi 15 Ultra,camera,design,3,3,0.9702287415663401
+Samsung,Galaxy Z Flip7,camera,performance,3,3,0.8563844660917918
+Samsung,Galaxy Z Flip7,design,display,3,3,0.8937944620847702
+Motorola,Moto G Power 2025,design,display,3,3,0.9893725649665323
 Xiaomi,Xiaomi 15 Ultra,design,performance,3,3,0.870449518163999
 Xiaomi,Xiaomi 15 Ultra,design,display,3,3,0.9656266371409098
-Xiaomi,Xiaomi 15 Ultra,camera,design,3,3,0.9702287415663401
-Xiaomi,Xiaomi 15 Ultra,battery,performance,3,3,0.8435875723759333
-Xiaomi,Xiaomi 15 Ultra,battery,design,3,3,0.8979262232088724
-Motorola,Moto G Power 2025,display,performance,2,2,0.9507060029942322
-Motorola,Motorola Edge 60 Pro,battery,design,2,2,0.9547296315431595
-Xiaomi,Xiaomi 15,design,performance,2,2,0.9333114326000214
-Xiaomi,Xiaomi 15 Ultra,battery,display,2,2,0.974856898188591
-Apple,iPhone 16e,design,performance,2,2,0.9778404413724899
-Apple,iPhone 17 Pro,battery,camera,2,2,0.8151132687926292
-Samsung,Galaxy A56 5G,battery,design,2,2,0.9157676390447617
-Apple,iPhone 17 Pro,design,performance,2,2,0.9596200287342072
-Apple,iPhone 17 Pro,design,display,2,2,0.9248058497905731
-Apple,iPhone 17 Pro,camera,performance,2,2,0.9043092429637909
-Samsung,Galaxy A56 5G,battery,display,2,2,0.9873085075
-Realme,Realme GT 7,design,performance,2,2,0.8236039827306747
-Realme,Realme GT 7 Pro,battery,design,2,2,0.9856444406141281
-OnePlus,OnePlus 13,battery,camera,2,2,0.8325268179178238
-Samsung,Galaxy S25 Ultra,battery,camera,2,2,0.7318776771426201
-Samsung,Galaxy S25 Ultra,camera,design,2,2,0.9703616499900818
-Realme,Realme 14 Pro+,design,display,2,2,0.9222247749567032
-Realme,Realme GT 7 Pro,camera,design,2,2,0.9736612141132355
-OnePlus,OnePlus 13,battery,performance,2,2,0.903489962220192
-OnePlus,OnePlus 13,battery,design,2,2,0.7735656276345253
-Samsung,Galaxy S26,camera,design,2,2,0.9214486926794052
-Samsung,Galaxy S26,battery,camera,2,2,0.8695309609174728
-Apple,iPhone 17 Pro Max,battery,display,2,2,0.7886862680315971
-OPPO,Find X8 Pro,battery,camera,2,2,0.8386949449777603
-OPPO,Find N5,design,performance,2,2,0.9915697225
-Apple,iPhone 17 Pro Max,battery,performance,2,2,0.7073119729757309
-Samsung,Galaxy Z Flip7,design,performance,2,2,0.8322858148446083
-Samsung,Galaxy S26 Ultra,camera,display,2,2,0.9722578376531601
-Samsung,Galaxy S26 Ultra,battery,design,2,2,0.9331739544868469
-Samsung,Galaxy S26 Ultra,display,performance,2,2,0.9626775085926056
-Apple,iPhone 17 Pro Max,camera,performance,2,2,0.8696280419826508
-OPPO,OPPO Study B,design,performance,2,2,0.8704295456409454
-Samsung,Galaxy Z Flip7,camera,display,2,2,0.8506443735002136
-OnePlus,OnePlus 13R,battery,design,2,2,0.8520354389987754
-Xiaomi,Redmi Note 14 Pro+,design,display,2,2,0.9170679444477463
-Nothing,Nothing Phone 3,camera,display,2,2,0.9849781283605576
-Google,Pixel 10 Pro XL,camera,display,2,2,0.967417448759079
-Motorola,Motorola Edge 60 Pro,design,display,2,2,0.8953897207975388
-Xiaomi,Redmi Note 14 Pro+,battery,performance,2,2,0.990754025
-Xiaomi,Xiaomi 15,battery,design,2,2,0.7927491366863251
-Nothing,Nothing Phone 3,battery,camera,2,2,0.7383041177861023
-Apple,iPhone 16e,battery,design,2,2,0.9484717547893524
+Samsung,Galaxy A56 5G,design,performance,3,3,0.9241482495409649
+Realme,Realme GT 7 Pro,battery,display,3,3,0.7969162265459696
+Realme,Realme GT 7,battery,performance,3,3,0.9185499152089437
+OPPO,Find X8 Pro,camera,performance,3,3,0.878749152024587
+Apple,iPhone 17,battery,camera,3,3,0.9170576135317484
+Google,Pixel 10,design,display,3,3,0.9886871012822468
+Google,Pixel 10 Pro XL,battery,camera,3,3,0.8368684599796931
+Google,Pixel 10,display,performance,3,3,0.9727517098791759
+Apple,iPhone 17 Pro,camera,design,3,3,0.9197414219379425
+Nothing,Phone 2a Plus,design,performance,3,3,0.8653516908974076
+Nothing,Nothing Phone 3,battery,performance,3,3,0.8055394192536672
+Nothing,Nothing Phone 3,display,performance,3,3,0.8430611675109864
+Samsung,Galaxy S25 Ultra,camera,performance,3,3,0.9430917898813883
+Samsung,Galaxy S25 Ultra,design,performance,3,3,0.9426162044207255
+Samsung,Galaxy S25 Ultra,battery,performance,3,3,0.7911722362041473
+Samsung,Galaxy A56 5G,design,display,3,3,0.987063956264394
+OPPO,Find N5,design,display,3,3,0.975949227809906
+OPPO,Find N5,camera,display,3,3,0.9403939966885376
 Apple,iPhone 16,battery,design,2,2,0.903227373957634
 Apple,iPhone 16,battery,performance,2,2,0.9903040875
-Google,Pixel 10 Pro,battery,camera,2,2,0.8869592249393463
+Xiaomi,Xiaomi 15,battery,design,2,2,0.7927491366863251
+Motorola,Moto G Power 2025,display,performance,2,2,0.9507060029942322
+Xiaomi,Xiaomi 15 Ultra,battery,display,2,2,0.974856898188591
+Nothing,Nothing Phone 3,battery,camera,2,2,0.7383041177861023
+Xiaomi,Xiaomi 15,design,performance,2,2,0.9333114326000214
+OnePlus,OnePlus 13,battery,performance,2,2,0.903489962220192
+OnePlus,OnePlus 13,battery,design,2,2,0.7735656276345253
+OnePlus,OnePlus 13,battery,camera,2,2,0.8325268179178238
+Samsung,Galaxy Z Flip7,design,performance,2,2,0.8322858148446083
+Xiaomi,Redmi Note 14 Pro+,battery,performance,2,2,0.990754025
+Xiaomi,Redmi Note 14 Pro+,design,display,2,2,0.9170679444477463
+Apple,iPhone 16e,battery,design,2,2,0.9484717547893524
+Apple,iPhone 16e,design,performance,2,2,0.9778404413724899
 Google,Pixel 10 Pro,battery,display,2,2,0.873295933008194
-OPPO,Find X8 Pro,design,performance,2,2,0.8736440688371658
-Apple,iPhone 17 Pro Max,battery,design,2,2,0.8397472873330116
-OPPO,Find X8 Pro,camera,display,2,2,0.9328880906105042
-OPPO,Reno 13 Pro,battery,camera,2,2,0.9919899225
-OPPO,Find N5,battery,camera,2,2,0.7935836475
-Nothing,Nothing Phone 3,camera,design,2,2,0.857401467859745
-Nothing,Phone 2a Plus,camera,performance,2,2,0.8821280598640442
-Google,Pixel 10 Pro,camera,design,2,2,0.9788328558277511
 Google,Pixel 10,design,performance,2,2,0.9762294125
+Apple,iPhone 17 Pro,camera,performance,2,2,0.9043092429637909
+OPPO,Find N5,battery,camera,2,2,0.7935836475
+Google,Pixel 10 Pro,camera,design,2,2,0.9788328558277511
+Apple,iPhone 17 Pro,battery,camera,2,2,0.8151132687926292
+Motorola,Motorola Edge 60 Pro,design,display,2,2,0.8953897207975388
+Google,Pixel 10 Pro,battery,camera,2,2,0.8869592249393463
+OPPO,Reno 13 Pro,battery,camera,2,2,0.9919899225
+OPPO,Find X8 Pro,design,performance,2,2,0.8736440688371658
+OPPO,Find X8 Pro,battery,camera,2,2,0.8386949449777603
+OPPO,Find X8 Pro,camera,display,2,2,0.9328880906105042
+Apple,iPhone 17 Pro Max,battery,performance,2,2,0.7073119729757309
+Apple,iPhone 17 Pro Max,camera,performance,2,2,0.8696280419826508
+OnePlus,OnePlus 13R,battery,design,2,2,0.8520354389987754
+Apple,iPhone 17 Pro Max,battery,display,2,2,0.7886862680315971
+Apple,iPhone 17 Pro Max,battery,design,2,2,0.8397472873330116
+Apple,iPhone 17 Pro,design,performance,2,2,0.9596200287342072
+Apple,iPhone 17 Pro,design,display,2,2,0.9248058497905731
+Nothing,Phone 2a Plus,camera,performance,2,2,0.8821280598640442
+Nothing,Nothing Phone 3,camera,display,2,2,0.9849781283605576
+Realme,Realme 14 Pro+,design,display,2,2,0.9222247749567032
+Realme,Realme GT 7,design,performance,2,2,0.8236039827306747
+Samsung,Galaxy Z Flip7,camera,display,2,2,0.8506443735002136
+Samsung,Galaxy S26 Ultra,battery,design,2,2,0.9331739544868469
+Samsung,Galaxy S26 Ultra,display,performance,2,2,0.9626775085926056
+Samsung,Galaxy S26 Ultra,camera,display,2,2,0.9722578376531601
+Google,Pixel 10 Pro XL,camera,display,2,2,0.967417448759079
+Nothing,Nothing Phone 3,camera,design,2,2,0.857401467859745
+Samsung,Galaxy S26,camera,design,2,2,0.9214486926794052
+Samsung,Galaxy A56 5G,battery,display,2,2,0.9873085075
+Samsung,Galaxy S25 Ultra,camera,design,2,2,0.9703616499900818
+Samsung,Galaxy S25 Ultra,battery,camera,2,2,0.7318776771426201
+Samsung,Galaxy A56 5G,battery,design,2,2,0.9157676390447617
+OPPO,Find N5,design,performance,2,2,0.9915697225
 Nothing,Nothing Phone 3,design,performance,2,2,0.9459817727220917
-Samsung,Galaxy S26,battery,design,1,1,0.9817374050617218
-Samsung,Galaxy S25 Ultra,battery,display,1,1,0.9863807559013367
+Realme,Realme GT 7 Pro,camera,design,2,2,0.9736612141132355
+Realme,Realme GT 7 Pro,battery,design,2,2,0.9856444406141281
+Samsung,Galaxy S26,battery,camera,2,2,0.8695309609174728
+OPPO,OPPO Reno12 Pro 5G,design,performance,2,2,0.8704295456409454
+Motorola,Motorola Edge 60 Pro,battery,design,2,2,0.9547296315431595
+Apple,iPhone 16,camera,performance,1,1,0.9525384902954102
+Apple,iPhone 16,design,performance,1,1,0.953180342912674
+OnePlus,OnePlus 13,camera,performance,1,1,0.8163583999999999
+Apple,iPhone 16,camera,display,1,1,0.9857637584209442
+OnePlus,OnePlus 13R,camera,design,1,1,0.960773766040802
+OnePlus,OnePlus 13,design,performance,1,1,0.8902943730354309
+Realme,Realme 14 Pro+,battery,design,1,1,0.9581893980503082
+OPPO,Reno 13 Pro,battery,design,1,1,0.9667438566684723
+OPPO,Reno 13 Pro,design,performance,1,1,0.8456989526748657
+OPPO,Find X8 Pro,camera,design,1,1,0.9515602290630341
+OPPO,Find N5,battery,design,1,1,0.991327675
+Google,Pixel 10 Pro,battery,performance,1,1,0.8601581156253815
+Google,Pixel 10,camera,performance,1,1,0.9623363614082336
+Google,Pixel 10,camera,design,1,1,0.9515602290630341
 Apple,iPhone 17 Pro,camera,display,1,1,0.9126294553279877
 Apple,iPhone 17 Pro,battery,performance,1,1,0.8927811682224274
-Apple,iPhone 17,design,display,1,1,0.9857821762561798
 Apple,iPhone 17,camera,design,1,1,0.9816107153892517
-Realme,Realme 14 Pro+,battery,design,1,1,0.9581893980503082
-Realme,Realme GT 7 Pro,battery,performance,1,1,0.7073119729757309
-OnePlus,OnePlus 13T,battery,design,1,1,0.9865700304508209
-Samsung,Galaxy A56 5G,battery,performance,1,1,0.7856472134590149
-OPPO,Reno 13 Pro,design,performance,1,1,0.8456989526748657
-Samsung,Galaxy S26,battery,performance,1,1,0.9816307723522186
+Apple,iPhone 17,design,display,1,1,0.9857821762561798
 Apple,iPhone 17 Pro Max,camera,design,1,1,0.9798226952552795
-OPPO,Find N5,battery,design,1,1,0.991327675
-OPPO,Find X8 Pro,camera,design,1,1,0.9515602290630341
-OPPO,Reno 13 Pro,battery,design,1,1,0.9667438566684723
-Samsung,Galaxy S26 Ultra,camera,design,1,1,0.934907466173172
 Apple,iPhone 17 Pro,display,performance,1,1,0.9882867634296416
+OnePlus,OnePlus 13,design,display,1,1,0.8742055892944336
+OnePlus,OnePlus 13T,battery,design,1,1,0.9865700304508209
+Realme,Realme GT 7 Pro,battery,performance,1,1,0.7073119729757309
+OPPO,Find N5,camera,design,1,1,0.9921082299999999
+Samsung,Galaxy A56 5G,battery,performance,1,1,0.7856472134590149
+Samsung,Galaxy S25 Ultra,battery,display,1,1,0.9863807559013367
 Samsung,Galaxy S26,display,performance,1,1,0.7635670602321625
 Samsung,Galaxy S26,camera,performance,1,1,0.987716019153595
 Samsung,Galaxy S26,camera,display,1,1,0.980944961309433
-OnePlus,OnePlus 13R,camera,design,1,1,0.960773766040802
-OnePlus,OnePlus 13,design,performance,1,1,0.8902943730354309
-OnePlus,OnePlus 13,design,display,1,1,0.8742055892944336
+Samsung,Galaxy S26,battery,performance,1,1,0.9816307723522186
+Samsung,Galaxy S26,battery,design,1,1,0.9817374050617218
 Samsung,Galaxy S26 Ultra,battery,camera,1,1,0.9027707576751709
-OnePlus,OnePlus 13,camera,performance,1,1,0.8163583999999999
-OPPO,Find N5,camera,design,1,1,0.9921082299999999
-Apple,iPhone 16,design,performance,1,1,0.953180342912674
-Apple,iPhone 16,camera,performance,1,1,0.9525384902954102
-Apple,iPhone 16,camera,display,1,1,0.9857637584209442
-Google,Pixel 10,camera,design,1,1,0.9515602290630341
-Google,Pixel 10,camera,performance,1,1,0.9623363614082336
-Google,Pixel 10 Pro,battery,performance,1,1,0.8601581156253815
-Nothing,Nothing Phone 3,battery,design,1,1,0.841870125
-Google,Pixel 10 Pro XL,camera,performance,1,1,0.8436743319034576
+Samsung,Galaxy S26 Ultra,camera,design,1,1,0.934907466173172
 Google,Pixel 10 Pro XL,camera,design,1,1,0.7440425604581833
-Nothing,Nothing Phone 3,battery,display,1,1,0.9675925076007844
-Google,Pixel 10 Pro XL,design,performance,1,1,0.9417049884796143
 Google,Pixel 10 Pro XL,design,display,1,1,0.7430625706911087
-Xiaomi,Xiaomi 15,camera,design,1,1,0.8772991597652435
-Xiaomi,Xiaomi 15,camera,display,1,1,0.9315259456634521
+Google,Pixel 10 Pro XL,camera,performance,1,1,0.8436743319034576
+Google,Pixel 10 Pro XL,design,performance,1,1,0.9417049884796143
+Nothing,Nothing Phone 3,battery,display,1,1,0.9675925076007844
+Nothing,Nothing Phone 3,battery,design,1,1,0.841870125
 Xiaomi,Xiaomi 15,camera,performance,1,1,0.963009387254715
+Xiaomi,Xiaomi 15,camera,display,1,1,0.9315259456634521
+Xiaomi,Xiaomi 15,camera,design,1,1,0.8772991597652435

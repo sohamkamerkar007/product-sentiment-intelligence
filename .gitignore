@@ -9,7 +9,6 @@ __pycache__/
 # Jupyter and Streamlit runtime files
 .ipynb_checkpoints/
 .streamlit/secrets.toml
-.streamlit/config.toml
 notebooks/tmp_trainer/
 
 # Operating system and editor files

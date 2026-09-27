@@ -1,4 +1,4 @@
-"""Refresh conflict summaries after adding DistilBERT predictions for study models."""
+"""Refresh conflict summaries after model-keyed ABSA predictions change."""
 
 from __future__ import annotations
 

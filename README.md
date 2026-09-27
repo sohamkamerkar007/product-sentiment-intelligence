@@ -2,22 +2,22 @@
 
 An interactive NLP research application for studying smartphone reviews at both review and product level. It extends the completed **Fine-Grained Consumer Opinion Intelligence System** with dissatisfaction and rating prediction, semantic review discovery, related-product exploration, and screened complaint trends.
 
-> **Research-data notice:** Every included review is synthetic. The 18 “Study A/B” phones are fictional research identifiers, not real product releases. Predictions and emerging issues demonstrate a method on generated data—not measured market performance or consumer advice.
+> **Research-data notice:** The 50 phone names refer to real released models, but **every review, rating, and review date in this demonstration is synthetic**. The data is not authentic customer feedback. Predictions and emerging issues demonstrate a method on generated data—not measured market performance or consumer advice.
 
 ## Application modules
 
 | Page | Purpose |
 | --- | --- |
-| Overview | Research question, five aspects and analysis pipeline. |
-| Phone Comparison | Aspect sentiment comparison and predicted consumer response. |
+| Home | Research question, five phone features and analysis pipeline. |
+| Compare Phones | Feature-level opinion comparison and predicted consumer response. |
 | Review Analyzer | Aspect detection, saved DistilBERT ABSA inference, dissatisfaction/rating prediction and SHAP explanations. |
-| Aspect Sentiment | A phone's battery, camera, performance, design and display opinions with review evidence. |
-| Weakness Analyzer | Recurrent negative feedback across brands and models. |
-| Sentiment Evolution | Earlier-versus-later opinion patterns using the original six-month analysis. |
-| Conflict Detection | Within-review trade-offs: one positive aspect alongside a negative one. |
-| Opinion Discovery | K-Means or HDBSCAN groups of semantically similar reviews with terms and examples. |
-| Model Relationships | Phones ranked by cosine similarity of aggregated review embeddings. |
-| Emerging Issues | Complaint themes whose share of all reviews increased from 2025 to 2026. |
+| Phone Features | A phone's battery, camera, performance, design and display opinions with review evidence. |
+| Common Problems | Recurrent negative feedback across brands and models. |
+| Review Trends | Earlier-versus-later opinion patterns using the original six-month analysis. |
+| Likes & Dislikes | Within-review trade-offs: one positive feature alongside a negative one. |
+| Discover Patterns | K-Means or HDBSCAN groups of semantically similar reviews with terms and examples. |
+| Find Similar Phones | Phones ranked by cosine similarity of aggregated review embeddings. |
+| Spot New Problems | Complaint themes whose share of all reviews increased from 2025 to 2026. |
 
 The original seven analytical pages and saved ABSA weights remain in place. The new modules use the same Python, Streamlit and Plotly architecture.
 
@@ -25,8 +25,9 @@ The original seven analytical pages and saved ABSA weights remain in place. The 
 
 - `data/raw/Mobile_Reviews_GenData.csv`: original 4,200 `Synthetic-V2` reviews, unchanged.
 - `data/processed/reviews_expanded.csv`: 7,969 reviews for 50 models across 9 brands; 140–180 reviews per model. The 3,769 added rows are marked `Synthetic-Expansion`, with IDs beginning `SYNEXP_`.
-- The 18 added phone names are fictional `Brand Study A/B` identifiers; they must not be interpreted as real product releases.
-- `src/generate_dataset.py` uses a fixed seed and phrase templates, preserves original records at field level, validates schema/duplicates/labels/dates/model counts, and writes a train/validation/test split grouped by phone model.
+- The 18 former `Brand Study A/B` identifiers were replaced with real released phone names. Their [canonical registry and manufacturer references](src/model_registry.py) make each substitution traceable. All 50 names are real product names, **not** evidence that the generated reviews were written about those products.
+- Review dates are simulated for research comparisons and do not establish actual release chronology; some generated review dates may predate a phone's launch. Do not interpret time trends as historical market observations.
+- `src/generate_dataset.py` uses a fixed seed and phrase templates, preserves original records at field level, validates schema/duplicates/labels/dates/model counts, and writes a train/validation/test split grouped by phone model. `src/migrate_model_registry.py` updates saved model-keyed analytics without retraining models or changing review text, IDs, splits, or row order.
 - The generator **deliberately** increases negative battery wording in some later-period Google synthetic rows to exercise emerging-issue detection. This is simulated drift, not a discovery about Google products.
 
 Because the corpus is templated and synthetic, lexical overlap may inflate generalization estimates even with held-out models. Independent real-review validation is required before substantive use.

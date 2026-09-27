@@ -14,6 +14,7 @@ from transformers import (
 
 from sentence_transformers import SentenceTransformer
 import new_modules as intelligence
+import home
 
 
 # ============================================================
@@ -59,15 +60,15 @@ def page_intro(eyebrow, title, description):
 
 load_styles()
 
-research_template = pio.templates["plotly_dark"]
+research_template = pio.templates["plotly_white"]
 research_template.layout.update(
-    font={"family": "Inter, Segoe UI, sans-serif", "color": "#dbe4ef"},
-    paper_bgcolor="#101722",
-    plot_bgcolor="#101722",
-    colorway=["#6ee7d1", "#7aa7ff", "#f4c66a", "#f28b82", "#b49cff"],
+    font={"family": "Inter, Segoe UI, sans-serif", "color": "#1f2937"},
+    paper_bgcolor="#ffffff",
+    plot_bgcolor="#ffffff",
+    colorway=["#4f46e5", "#0f766e", "#d97706", "#c24158", "#64748b"],
     margin={"l": 20, "r": 20, "t": 60, "b": 30},
-    xaxis={"gridcolor": "rgba(148, 163, 184, 0.12)", "linecolor": "#334155"},
-    yaxis={"gridcolor": "rgba(148, 163, 184, 0.12)", "linecolor": "#334155"}
+    xaxis={"gridcolor": "#e9edf3", "linecolor": "#cdd4e1"},
+    yaxis={"gridcolor": "#e9edf3", "linecolor": "#cdd4e1"}
 )
 pio.templates["consumer_intelligence"] = research_template
 px.defaults.template = "consumer_intelligence"
@@ -617,46 +618,66 @@ aspect_conflict_summary = data["aspect_conflicts"]
 
 
 # ============================================================
-# SIDEBAR NAVIGATION
+# TOP NAVIGATION
 # ============================================================
 
-st.sidebar.markdown(
-    """
-    <div class="sidebar-brand">
-        <div class="sidebar-kicker">Research application</div>
-        <div class="sidebar-name">Product Sentiment<br>Intelligence</div>
-        <div class="sidebar-description">Smartphone opinion research platform</div>
-    </div>
-    <div class="sidebar-section-label">Navigation</div>
-    """,
-    unsafe_allow_html=True
-)
 
-page = st.sidebar.radio(
-    "Go to",
-    [
-        "🏠 Overview",
-        "📱 Phone Comparison",
-        "🔍 Review Analyzer",
-        "🧩 Aspect Sentiment",
-        "📉 Weakness Analyzer",
-        "📈 Sentiment Evolution",
-        "⚔️ Conflict Detection",
-        "🧭 Opinion Discovery",
-        "🔗 Model Relationships",
-        "🚨 Emerging Issues"
-    ]
-)
+def _show_selected_page():
+    """The existing analytics render below this router's common frame."""
 
-st.sidebar.markdown(
-    """
-    <div class="sidebar-footer">
-        <span>Synthetic research dataset</span>
-        <strong>Aspect-based insights</strong>
-    </div>
-    """,
-    unsafe_allow_html=True
+
+NAV_PAGES = {
+    "Home": st.Page(_show_selected_page, title="Home", icon="🏠", url_path="home", default=True),
+    "Compare Phones": st.Page(_show_selected_page, title="Compare Phones", icon="📱", url_path="compare-phones"),
+    "Review Analyzer": st.Page(_show_selected_page, title="Review Analyzer", icon="✍️", url_path="review-analyzer"),
+    "Phone Features": st.Page(_show_selected_page, title="Phone Features", icon="🔋", url_path="phone-features"),
+    "Common Problems": st.Page(_show_selected_page, title="Common Problems", icon="🔎", url_path="common-problems"),
+    "Review Trends": st.Page(_show_selected_page, title="Review Trends", icon="📈", url_path="review-trends"),
+    "Likes & Dislikes": st.Page(_show_selected_page, title="Likes & Dislikes", icon="⚖️", url_path="likes-dislikes"),
+    "Discover Patterns": st.Page(_show_selected_page, title="Discover Patterns", icon="🧭", url_path="discover-patterns"),
+    "Find Similar Phones": st.Page(_show_selected_page, title="Find Similar Phones", icon="🔗", url_path="similar-phones"),
+    "Spot New Problems": st.Page(_show_selected_page, title="Spot New Problems", icon="🚨", url_path="new-problems"),
+}
+selected_page = st.navigation(
+    {
+        "": [NAV_PAGES["Home"]],
+        "Explore": [NAV_PAGES[name] for name in (
+            "Compare Phones", "Review Analyzer", "Phone Features", "Common Problems",
+            "Review Trends", "Likes & Dislikes")],
+        "Discover": [NAV_PAGES[name] for name in (
+            "Discover Patterns", "Find Similar Phones", "Spot New Problems")],
+    },
+    position="top",
 )
+selected_page.run()
+page = {
+    "Home": "🏠 Overview",
+    "Compare Phones": "📱 Phone Comparison",
+    "Review Analyzer": "🔍 Review Analyzer",
+    "Phone Features": "🧩 Aspect Sentiment",
+    "Common Problems": "📉 Weakness Analyzer",
+    "Review Trends": "📈 Sentiment Evolution",
+    "Likes & Dislikes": "⚔️ Conflict Detection",
+    "Discover Patterns": "🧭 Opinion Discovery",
+    "Find Similar Phones": "🔗 Model Relationships",
+    "Spot New Problems": "🚨 Emerging Issues",
+}[selected_page.title]
+
+st.markdown(
+    '<div class="app-wordmark"><span class="app-mark">P</span>'
+    '<span>Product Sentiment Intelligence</span></div>',
+    unsafe_allow_html=True,
+)
+st.caption(
+    "Research demo: these reviews are synthetically generated. "
+    "They are not actual customer reviews of the named phones."
+)
+with st.expander("About this dataset"):
+    st.write(
+        "The phone model names identify real released products, but every review, "
+        "rating, date and opinion in this project is simulated. "
+        "Comparisons and predictions describe this research dataset only."
+    )
 
 
 # ============================================================
@@ -664,361 +685,8 @@ st.sidebar.markdown(
 # ============================================================
 
 if page == "🏠 Overview":
+    home.render_home(NAV_PAGES, len(reviews), reviews["model"].nunique() if not reviews.empty else 0)
 
-    # ========================================================
-    # PROJECT LANDING PAGE
-    # ========================================================
-
-    st.markdown(
-        """
-        <style>
-        .hero {
-            padding: 3.2rem 3.2rem 3rem 3.2rem;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #171b2d 0%, #10131f 55%, #181225 100%);
-            border: 1px solid rgba(255,255,255,0.10);
-            margin-bottom: 2rem;
-        }
-        .eyebrow {
-            font-size: 0.82rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #a9b7ff;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-        .hero h1 {
-            font-size: 3.1rem;
-            line-height: 1.08;
-            margin: 0 0 1rem 0;
-            color: #ffffff;
-            letter-spacing: -0.04em;
-        }
-        .hero p {
-            font-size: 1.08rem;
-            line-height: 1.75;
-            color: #d4d8e7;
-            max-width: 850px;
-            margin: 0;
-        }
-        .section-title {
-            font-size: 1.75rem;
-            font-weight: 750;
-            margin: 2.5rem 0 0.45rem 0;
-        }
-        .section-subtitle {
-            color: #aeb4c5;
-            margin-bottom: 1.4rem;
-            line-height: 1.65;
-        }
-        .card {
-            padding: 1.45rem 1.5rem;
-            min-height: 190px;
-            border-radius: 18px;
-            background: rgba(255,255,255,0.035);
-            border: 1px solid rgba(255,255,255,0.09);
-            margin-bottom: 1rem;
-        }
-        .card-icon {
-            font-size: 1.65rem;
-            margin-bottom: 0.55rem;
-        }
-        .card h3 {
-            margin: 0 0 0.55rem 0;
-            font-size: 1.08rem;
-        }
-        .card p {
-            color: #adb3c4;
-            line-height: 1.6;
-            font-size: 0.94rem;
-            margin: 0;
-        }
-        .aspect-card {
-            padding: 1.15rem 1.1rem;
-            min-height: 145px;
-            border-radius: 16px;
-            background: rgba(110,231,209,0.035);
-            border: 1px solid rgba(110,231,209,0.14);
-            margin-bottom: 1rem;
-        }
-        .aspect-card h3 { margin: 0.2rem 0 0.55rem; font-size: 1rem; }
-        .aspect-card p { color: #adb3c4; font-size: 0.88rem; line-height: 1.5; margin: 0; }
-        .pipeline {
-            padding: 1.5rem 1.6rem;
-            border-radius: 18px;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid rgba(255,255,255,0.08);
-            margin: 1rem 0 1.5rem 0;
-            color: #d9ddea;
-            line-height: 1.8;
-        }
-        .pipeline-step {
-            display: inline-block;
-            padding: 0.45rem 0.75rem;
-            border-radius: 10px;
-            background: rgba(124, 137, 255, 0.10);
-            border: 1px solid rgba(124, 137, 255, 0.18);
-            margin: 0.2rem;
-            font-size: 0.9rem;
-        }
-        .arrow {
-            color: #8f9cff;
-            font-weight: 700;
-            margin: 0 0.15rem;
-        }
-        .research-box {
-            padding: 1.6rem 1.7rem;
-            border-radius: 18px;
-            background: linear-gradient(135deg, rgba(93, 112, 255, 0.10), rgba(164, 91, 255, 0.07));
-            border: 1px solid rgba(140, 145, 255, 0.18);
-            line-height: 1.7;
-            color: #d8dbea;
-        }
-        .tech {
-            color: #c3c8d7;
-            line-height: 1.9;
-        }
-        .footer-note {
-            text-align: center;
-            color: #858b9d;
-            font-size: 0.88rem;
-            padding: 2.5rem 0 1rem 0;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # --------------------------------------------------------
-    # HERO
-    # --------------------------------------------------------
-
-    st.markdown(
-        f"""
-        <div class="hero">
-            <div class="eyebrow">NLP and machine learning research platform</div>
-            <h1>Product Sentiment<br>Intelligence</h1>
-            <p>
-                Fine-Grained Aspect-Based Sentiment Analysis for Smartphone Reviews.
-                This research system transforms synthetic smartphone reviews into
-                aspect-level evidence, predictions and discoverable opinion patterns.
-            </p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # --------------------------------------------------------
-    # PROJECT INTRODUCTION
-    # --------------------------------------------------------
-
-    st.markdown('<div class="section-title">The idea behind the project</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="section-subtitle">
-            Traditional sentiment analysis answers one broad question:
-            <b>“Is this review positive or negative?”</b>
-            This project asks a much more useful question: <b>“What exactly is
-            the customer happy or unhappy about?”</b>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        f"""
-        <div class="research-box">
-            The system analyzes <b>{len(reviews):,} consumer reviews</b> across
-            <b>{reviews['model'].nunique() if not reviews.empty else 0} smartphone models</b>
-            and extracts fine-grained opinions around battery, camera,
-            performance, design and display. Instead of treating every review
-            as a single sentiment label, the system builds an aspect-level view
-            of consumer experience.
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # --------------------------------------------------------
-    # CORE ASPECTS
-    # --------------------------------------------------------
-
-    st.markdown('<div class="section-title">The five core aspects</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="section-subtitle">Every review is interpreted through the product experiences customers most often describe.</div>',
-        unsafe_allow_html=True
-    )
-
-    aspect_cards = [
-        ("🔋", "Battery", "Daily endurance, charging behaviour and power consumption."),
-        ("◉", "Camera", "Photo, video, focus and low-light imaging experience."),
-        ("⚡", "Performance", "Responsiveness, speed, multitasking and gaming behaviour."),
-        ("◇", "Design", "Build quality, comfort, materials and physical form."),
-        ("▣", "Display", "Brightness, colour, sharpness, refresh rate and touch response."),
-    ]
-
-    aspect_cols = st.columns(5)
-    for col, (icon, title, description) in zip(aspect_cols, aspect_cards):
-        with col:
-            st.markdown(
-                f'''<div class="aspect-card"><div class="card-icon">{icon}</div><h3>{title}</h3><p>{description}</p></div>''',
-                unsafe_allow_html=True
-            )
-
-    # --------------------------------------------------------
-    # WHAT THE SYSTEM CAN DO
-    # --------------------------------------------------------
-
-    st.markdown('<div class="section-title">What the system does</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="section-subtitle">Six analytical capabilities work together to turn raw reviews into consumer insight.</div>',
-        unsafe_allow_html=True
-    )
-
-    feature_cards = [
-        ("🔍", "Review Analyzer", "Analyze a new review, discover the aspects being discussed, and determine the sentiment associated with each aspect."),
-        ("🧩", "Aspect Sentiment", "Explore how consumers feel about battery, camera, performance, design and display for an individual smartphone."),
-        ("📉", "Weakness Analyzer", "Look across the smartphone portfolio to identify recurring weaknesses and aspect-level problem areas."),
-        ("📈", "Sentiment Evolution", "Study how consumer sentiment changes over time and whether opinions about product aspects improve or decline."),
-        ("⚔️", "Conflict Detection", "Find cross-aspect trade-offs where a customer praises one part of a phone while criticizing another."),
-        ("📱", "Phone Comparison", "Compare two smartphones across their aspect-level consumer sentiment to understand where each product wins or loses."),
-        ("🧭", "Opinion Discovery", "Cluster semantically related review language and inspect representative examples."),
-        ("🔗", "Model Relationships", "Find phones with similar review language and compare their aspect sentiment patterns."),
-        ("🚨", "Emerging Issues", "Examine complaint themes whose share rises across six-month periods."),
-    ]
-
-    for row_start in range(0, len(feature_cards), 3):
-        cols = st.columns(3)
-        for col, (icon, title, description) in zip(cols, feature_cards[row_start:row_start + 3]):
-            with col:
-                st.markdown(
-                    f"""
-                    <div class="card">
-                        <div class="card-icon">{icon}</div>
-                        <h3>{title}</h3>
-                        <p>{description}</p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-
-    # --------------------------------------------------------
-    # HOW IT WORKS
-    # --------------------------------------------------------
-
-    st.markdown('<div class="section-title">How it works</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="section-subtitle">The system combines semantic aspect detection with transformer-based aspect sentiment analysis.</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        """
-        <div class="pipeline">
-            <span class="pipeline-step">Consumer Review</span>
-            <span class="arrow">→</span>
-            <span class="pipeline-step">Text Preprocessing</span>
-            <span class="arrow">→</span>
-            <span class="pipeline-step">Semantic Aspect Detection</span>
-            <span class="arrow">→</span>
-            <span class="pipeline-step">ABSA Transformer</span>
-            <span class="arrow">→</span>
-            <span class="pipeline-step">Aspect-Level Sentiment</span>
-            <span class="arrow">→</span>
-            <span class="pipeline-step">Consumer Intelligence</span>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # --------------------------------------------------------
-    # RESEARCH / PROJECT VALUE
-    # --------------------------------------------------------
-
-    st.markdown('<div class="section-title">Why this is more than a sentiment classifier</div>', unsafe_allow_html=True)
-
-    st.markdown(
-        """
-        <div class="research-box">
-            <b>Fine-grained analysis:</b> sentiment is attached to individual
-            product aspects rather than only to the complete review.<br><br>
-            <b>Semantic understanding:</b> the system can recognize relevant
-            opinions even when customers do not use the exact aspect keyword.<br><br>
-            <b>Comparative intelligence:</b> weaknesses and trade-offs can be
-            studied across different smartphones rather than only within one review.<br><br>
-            <b>Temporal intelligence:</b> aspect sentiment can be studied across
-            different periods to understand how consumer perception changes.<br><br>
-            <b>Explainability:</b> the Review Analyzer exposes the text evidence
-            behind detected aspects and reports model confidence alongside predictions.
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # --------------------------------------------------------
-    # TECHNOLOGY STACK
-    # --------------------------------------------------------
-
-    st.markdown('<div class="section-title">Technology stack</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="tech">
-            <b>Language & Data:</b> Python · Pandas · NumPy · Regex<br>
-            <b>Machine Learning:</b> Scikit-learn · TF-IDF · Logistic Regression<br>
-            <b>Deep Learning:</b> PyTorch · Transformers · DistilBERT<br>
-            <b>Semantic NLP:</b> Sentence Transformers · all-MiniLM-L6-v2<br>
-            <b>Application:</b> Streamlit · Plotly<br>
-            <b>Analysis:</b> Aspect-Based Sentiment Analysis · Semantic Similarity ·
-            Cross-Aspect Conflict Detection · Sentiment Evolution
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # --------------------------------------------------------
-    # HOW TO EXPLORE
-    # --------------------------------------------------------
-
-    st.markdown('<div class="section-title">Explore the system</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="section-subtitle">
-            Use the navigation panel to move from individual review analysis
-            to smartphone-level and portfolio-level intelligence.
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    nav_cols = st.columns(4)
-    nav_items = [
-        ("🔍", "Analyze a Review", "Review Analyzer"),
-        ("🧩", "Inspect an Aspect", "Aspect Sentiment"),
-        ("📱", "Compare Phones", "Phone Comparison"),
-        ("⚔️", "Find Trade-offs", "Conflict Detection"),
-    ]
-
-    for col, (icon, action, destination) in zip(nav_cols, nav_items):
-        with col:
-            st.markdown(
-                f"""
-                <div class="card" style="min-height:120px; text-align:center;">
-                    <div class="card-icon">{icon}</div>
-                    <h3>{action}</h3>
-                    <p>{destination}</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-    st.markdown(
-        """
-        <div class="footer-note">
-            Fine-Grained Consumer Opinion Intelligence · Smartphone Review Analysis
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
 
 
 # ============================================================
@@ -1028,9 +696,9 @@ if page == "🏠 Overview":
 elif page == "📱 Phone Comparison":
 
     page_intro(
-        "Comparative analysis",
-        "Phone Comparison",
-        "Compare aspect-level consumer opinion across two smartphones to see where each product is perceived to lead or fall behind."
+        "Compare the example reviews",
+        "Compare Phones",
+        "Choose phones to see what the generated reviews like and dislike about each feature."
     )
 
 
@@ -1268,7 +936,7 @@ elif page == "📱 Phone Comparison":
 
 
             st.subheader(
-                "📊 Aspect Sentiment Comparison"
+                "Opinions side by side"
             )
 
             st.dataframe(
@@ -1279,7 +947,7 @@ elif page == "📱 Phone Comparison":
 
 
             st.subheader(
-                "😊 Positive Sentiment by Aspect"
+                "Positive comments by feature"
             )
 
 
@@ -1319,7 +987,7 @@ elif page == "📱 Phone Comparison":
                 y="Positive Sentiment (%)",
                 color="Phone",
                 barmode="group",
-                title="Positive Sentiment Comparison"
+                title="Positive comments by phone feature"
             )
 
 
@@ -1335,7 +1003,7 @@ elif page == "📱 Phone Comparison":
 
 
             st.subheader(
-                "😟 Negative Sentiment by Aspect"
+                "Negative comments by feature"
             )
 
 
@@ -1375,7 +1043,7 @@ elif page == "📱 Phone Comparison":
                 y="Negative Sentiment (%)",
                 color="Phone",
                 barmode="group",
-                title="Negative Sentiment Comparison"
+                title="Negative comments by phone feature"
             )
 
 
@@ -1391,7 +1059,7 @@ elif page == "📱 Phone Comparison":
 
 
             st.subheader(
-                "🏆 Aspect Winners"
+                "Which phone has more positive comments?"
             )
 
 
@@ -1474,7 +1142,7 @@ elif page == "📱 Phone Comparison":
                 multi = extra.groupby(["model", "aspect"])["predicted_sentiment"].apply(
                     lambda values: 100 * (values.eq("Positive").mean() - values.eq("Negative").mean())
                 ).reset_index(name="Sentiment score")
-                st.subheader("Multi-phone aspect comparison")
+                st.subheader("Compare more phones by feature")
                 st.dataframe(multi.pivot(index="aspect", columns="model", values="Sentiment score").round(1),
                              width="stretch")
 
@@ -1488,9 +1156,9 @@ elif page == "📱 Phone Comparison":
 elif page == "🔍 Review Analyzer":
 
     page_intro(
-        "AI analysis workspace",
+        "Try it yourself",
         "Review Analyzer",
-        "Enter a smartphone review to identify the product aspects it discusses and the sentiment associated with each one."
+        "Paste a review to see which phone features it mentions and whether each comment sounds positive or negative."
     )
 
     # ============================================================
@@ -2050,7 +1718,7 @@ elif page == "🔍 Review Analyzer":
                 # =================================================
 
                 with st.expander(
-                    "🧠 View aspect detection evidence"
+                    "See the words that mention each feature"
                 ):
 
                     evidence_rows = []
@@ -2207,11 +1875,15 @@ elif page == "🔍 Review Analyzer":
                 st.markdown("---")
 
                 st.subheader(
-                    "🧠 Aspect-Level Sentiment"
+                    "What this review says about each feature"
                 )
 
                 st.dataframe(
-                    results_df,
+                    results_df.rename(columns={
+                        "Aspect": "Phone feature",
+                        "Sentiment Confidence": "Confidence (%)",
+                        "Aspect Relevance": "Feature relevance",
+                    }),
                     width="stretch",
                     hide_index=True
                 )
@@ -2223,7 +1895,7 @@ elif page == "🔍 Review Analyzer":
                 st.markdown("---")
 
                 st.subheader(
-                    "📊 Analysis Summary"
+                    "At a glance"
                 )
 
                 positive_count = sum(
@@ -2271,7 +1943,7 @@ elif page == "🔍 Review Analyzer":
                 st.markdown("---")
 
                 st.subheader(
-                    "🎯 Prediction Confidence"
+                    "How sure the system is"
                 )
 
                 fig = px.bar(
@@ -2280,7 +1952,7 @@ elif page == "🔍 Review Analyzer":
                     y="Sentiment Confidence",
                     color="Sentiment",
                     text="Sentiment Confidence",
-                    title="Model Confidence by Aspect"
+                    title="How sure the system is about each feature"
                 )
 
                 fig.update_yaxes(
@@ -2312,9 +1984,9 @@ elif page == "🔍 Review Analyzer":
 elif page == "🧩 Aspect Sentiment":
 
     page_intro(
-        "Product insight",
-        "Aspect Sentiment",
-        "Understand what customers like and dislike about a selected smartphone across the five core product aspects."
+        "Explore one phone",
+        "Phone Features",
+        "Choose a phone and see what its generated reviews say about battery, camera, speed, design and display."
     )
 
 
@@ -2517,12 +2189,15 @@ elif page == "🧩 Aspect Sentiment":
             # =================================================
 
             st.subheader(
-                "📊 Aspect Sentiment Breakdown"
+                "Positive and negative comments by feature"
             )
 
 
             st.dataframe(
-                phone_table,
+                phone_table.rename(columns={
+                    "Aspect": "Phone feature",
+                    "Sentiment Score": "Positive minus negative (%)",
+                }),
                 width="stretch",
                 hide_index=True
             )
@@ -2533,7 +2208,7 @@ elif page == "🧩 Aspect Sentiment":
             # =================================================
 
             st.subheader(
-                "📈 Sentiment by Aspect"
+                "Opinions about each feature"
             )
 
 
@@ -2564,8 +2239,7 @@ elif page == "🧩 Aspect Sentiment":
                 barmode="group",
                 text="Percentage",
                 title=(
-                    f"Aspect-Level Sentiment "
-                    f"for {selected_phone}"
+                    f"Opinions about each feature of {selected_phone}"
                 )
             )
 
@@ -2577,7 +2251,7 @@ elif page == "🧩 Aspect Sentiment":
 
 
             fig.update_xaxes(
-                title="Aspect"
+                title="Phone feature"
             )
 
 
@@ -2598,7 +2272,7 @@ elif page == "🧩 Aspect Sentiment":
             # =================================================
 
             st.subheader(
-                "🏆 Strongest & Weakest Aspects"
+                "Most liked and most criticized features"
             )
 
 
@@ -2647,11 +2321,11 @@ elif page == "🧩 Aspect Sentiment":
 
                 st.success(
                     f"""
-                    ### 🥇 Strongest Aspect
+                    ### 🥇 Most liked feature
 
                     **{best_aspect["Aspect"].title()}**
 
-                    Sentiment Score:
+                    Positive minus negative comments:
 
                     **{best_aspect["Sentiment Score"]:.2f}**
                     """
@@ -2662,11 +2336,11 @@ elif page == "🧩 Aspect Sentiment":
 
                 st.warning(
                     f"""
-                    ### ⚠️ Weakest Aspect
+                    ### ⚠️ Most criticized feature
 
                     **{weakest_aspect["Aspect"].title()}**
 
-                    Sentiment Score:
+                    Positive minus negative comments:
 
                     **{weakest_aspect["Sentiment Score"]:.2f}**
                     """
@@ -2680,7 +2354,7 @@ elif page == "🧩 Aspect Sentiment":
             st.markdown("---")
 
             st.subheader(
-                "🎯 Aspect Sentiment Scores"
+                "Feature comparison"
             )
 
 
@@ -2707,7 +2381,10 @@ elif page == "🧩 Aspect Sentiment":
 
 
             st.dataframe(
-                score_display,
+                score_display.rename(columns={
+                    "Aspect": "Phone feature",
+                    "Sentiment Score": "Positive minus negative (%)",
+                }),
                 width="stretch",
                 hide_index=True
             )
@@ -2748,9 +2425,9 @@ elif page == "🧩 Aspect Sentiment":
 elif page == "📉 Weakness Analyzer":
 
     page_intro(
-        "Portfolio insight",
-        "Weakness Analyzer",
-        "Identify recurring negative feedback patterns across smartphones, beginning with the aspect that matters most to your analysis."
+        "Explore complaints",
+        "Common Problems",
+        "Find features that receive more negative comments, then read example reviews."
     )
 
     # ============================================================
@@ -2948,7 +2625,7 @@ elif page == "📉 Weakness Analyzer":
             text="Weakness Score",
             title=(
                 f"{selected_aspect.title()} "
-                "Weakness Across Smartphones"
+                "Negative feedback across phones"
             )
         )
 
@@ -2962,7 +2639,7 @@ elif page == "📉 Weakness Analyzer":
         )
 
         fig.update_yaxes(
-            title="Weakness Score"
+            title="Negative feedback score"
         )
 
         st.plotly_chart(
@@ -3025,9 +2702,9 @@ elif page == "📉 Weakness Analyzer":
 elif page == "📈 Sentiment Evolution":
 
     page_intro(
-        "Temporal analysis",
-        "Sentiment Evolution",
-        "Follow how customer opinion moves across earlier and later six-month review periods for a selected smartphone."
+        "Compare time periods",
+        "Review Trends",
+        "See whether the tone of generated reviews changes across six-month periods."
     )
 
     # ============================================================
@@ -3389,7 +3066,7 @@ elif page == "📈 Sentiment Evolution":
                 text="Sentiment Score",
                 title=(
                     f"{selected_model} "
-                    "Sentiment Evolution"
+                    "Review tone over time"
                 )
             )
 
@@ -3399,7 +3076,7 @@ elif page == "📈 Sentiment Evolution":
             )
 
             fig_score.update_yaxes(
-                title="Sentiment Score"
+                title="Positive minus negative comments"
             )
 
             fig_score.update_xaxes(
@@ -3456,7 +3133,7 @@ elif page == "📈 Sentiment Evolution":
                 markers=True,
                 title=(
                     f"{selected_model} "
-                    "Sentiment Distribution Over Time"
+                    "Positive, neutral and negative reviews over time"
                 )
             )
 
@@ -3713,9 +3390,9 @@ elif page == "📈 Sentiment Evolution":
 elif page == "⚔️ Conflict Detection":
 
     page_intro(
-        "Advanced research module",
-        "Conflict Detection",
-        "Surface cross-aspect consumer trade-offs: positive sentiment for one product aspect alongside negative sentiment for another."
+        "Mixed opinions",
+        "Likes & Dislikes",
+        "Find reviews that praise one phone feature while criticizing another."
     )
 
     if review_conflicts.empty:
@@ -3756,32 +3433,32 @@ elif page == "⚔️ Conflict Detection":
 
         with col1:
             st.metric(
-                "⚔️ Conflict Reviews",
+                "Reviews with mixed opinions",
                 f"{conflict_reviews:,}"
             )
 
         with col2:
             st.metric(
-                "🔗 Conflict Pairs",
+                "Positive / negative feature pairs",
                 f"{total_conflict_pairs:,}"
             )
 
         with col3:
             st.metric(
-                "📊 Conflict Rate",
+                "Share with mixed opinions",
                 f"{conflict_rate:.1f}%"
             )
 
         with col4:
             st.metric(
-                "🔥 Top Trade-off",
+                "Most common feature pair",
                 top_pair_name
             )
 
         st.caption(
-            "Conflict rate = reviews containing at least one "
-            "positive-vs-negative aspect trade-off among reviews "
-            "covered by the ABSA analysis."
+            "A mixed-opinion review praises at least one feature and "
+            "criticizes another. The share is calculated from reviews "
+            "covered by the feature analysis."
         )
 
         # --------------------------------------------------------
@@ -3790,7 +3467,7 @@ elif page == "⚔️ Conflict Detection":
 
         st.markdown("---")
 
-        st.subheader("🌍 Most Common Aspect Trade-offs")
+        st.subheader("Most common likes-and-dislikes combinations")
 
         global_pairs = aspect_conflict_summary.copy()
 
@@ -3837,12 +3514,12 @@ elif page == "⚔️ Conflict Detection":
             x="Trade-off",
             y="conflict_count",
             text="conflict_count",
-            title="Most Frequent Consumer Trade-offs"
+            title="Feature pairs with mixed opinions"
         )
 
         fig_global.update_layout(
-            xaxis_title="Aspect Pair",
-            yaxis_title="Number of Conflict Pairs"
+            xaxis_title="Feature pair",
+            yaxis_title="Number of mixed-opinion pairs"
         )
 
         fig_global.update_traces(
@@ -3860,7 +3537,7 @@ elif page == "⚔️ Conflict Detection":
 
         st.markdown("---")
 
-        st.subheader("📱 Conflict Analysis by Smartphone")
+        st.subheader("Mixed opinions for one phone")
 
         available_phones = sorted(
             conflicts_by_phone["model"].dropna().unique()
@@ -3905,19 +3582,19 @@ elif page == "⚔️ Conflict Detection":
 
             with col2:
                 st.metric(
-                    "Conflict Reviews",
+                    "Reviews with mixed opinions",
                     int(phone_row["conflict_reviews"])
                 )
 
             with col3:
                 st.metric(
-                    "Conflict Rate",
+                    "Share with mixed opinions",
                     f"{phone_row['conflict_rate_pct']:.1f}%"
                 )
 
             with col4:
                 st.metric(
-                    "Conflict Pairs",
+                    "Positive / negative pairs",
                     int(phone_row["total_conflict_pairs"])
                 )
 
@@ -3949,7 +3626,7 @@ elif page == "⚔️ Conflict Detection":
                     ascending=False
                 )
 
-                st.subheader("🔗 Trade-offs for This Phone")
+                st.subheader("Feature trade-offs for this phone")
 
                 phone_table = phone_pairs[
                     [
@@ -3986,12 +3663,12 @@ elif page == "⚔️ Conflict Detection":
                     x="Trade-off",
                     y="conflict_count",
                     text="conflict_count",
-                    title=f"Trade-offs Detected in {selected_phone}"
+                    title=f"Mixed opinions about {selected_phone}"
                 )
 
                 fig_phone.update_layout(
-                    xaxis_title="Aspect Pair",
-                    yaxis_title="Conflict Count"
+                    xaxis_title="Feature pair",
+                    yaxis_title="Number of mixed opinions"
                 )
 
                 fig_phone.update_traces(
@@ -4007,7 +3684,7 @@ elif page == "⚔️ Conflict Detection":
                 # EXAMPLE REVIEWS
                 # ------------------------------------------------
 
-                st.subheader("📝 Example Conflict Reviews")
+                st.subheader("Example reviews with mixed opinions")
 
                 phone_reviews = review_conflicts[
                     review_conflicts["model"] == selected_phone
@@ -4053,17 +3730,16 @@ elif page == "⚔️ Conflict Detection":
                 )
 
                 st.markdown("---")
-                st.subheader("🧠 Interpretation")
+                st.subheader("What this pattern means")
 
                 st.info(
                     f"For **{selected_phone}**, the most frequently "
-                    f"observed consumer trade-off is "
+                    f"observed mixed-opinion feature pair is "
                     f"**{strongest_pair}**, appearing in "
                     f"**{int(strongest['unique_reviews'])} review(s)**. "
-                    f"This suggests that customers may perceive a "
-                    f"strength in one aspect alongside a weakness in "
-                    f"another, rather than evaluating the phone as "
-                    f"uniformly good or bad."
+                    f"In this generated dataset, reviews often praise "
+                    f"one feature while criticizing another. This is not "
+                    f"verified feedback about the named phone."
                 )
 
         # --------------------------------------------------------
@@ -4072,7 +3748,7 @@ elif page == "⚔️ Conflict Detection":
 
         st.markdown("---")
 
-        with st.expander("ℹ️ How Conflict Detection Works"):
+        with st.expander("How mixed opinions are found — technical details"):
 
             st.markdown(
                 """
