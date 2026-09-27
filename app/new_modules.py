@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+import ui
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -110,23 +111,25 @@ def comparison_prediction_panel(models: list[str]) -> None:
                  width="stretch", hide_index=True)
 
 
-def aspect_evidence_panel(model: str) -> None:
+def aspect_evidence_panel(model: str, *, show_heading: bool = True,
+                          key_prefix: str = "evidence") -> None:
     aspects = expanded_aspects()
     if aspects.empty:
         return
     selected = aspects[aspects["model"] == model]
     if selected.empty:
         return
-    st.subheader("Example reviews behind these results")
+    if show_heading:
+        st.subheader("Example reviews behind these results")
     left, right = st.columns(2)
-    aspect = left.selectbox("Phone feature", sorted(selected["aspect"].unique()), key="evidence_aspect")
-    sentiment = right.selectbox("Opinion", ["Negative", "Positive", "Neutral"], key="evidence_sentiment")
+    aspect = left.selectbox("Phone feature", sorted(selected["aspect"].unique()), key=f"{key_prefix}_aspect")
+    sentiment = right.selectbox("Opinion", ["Negative", "Positive", "Neutral"], key=f"{key_prefix}_sentiment")
     evidence = selected[(selected["aspect"] == aspect) & (selected["predicted_sentiment"] == sentiment)]
     if evidence.empty:
         st.info("No reviews match this feature and opinion choice.")
     else:
         for _, row in evidence.head(4).iterrows():
-            st.markdown(f"> {row['review_text']}")
+            ui.review_quote(str(row["review_text"]))
         st.caption(f"Showing {min(4, len(evidence))} of {len(evidence)} matching review examples.")
 
 
@@ -144,12 +147,13 @@ def weakness_evidence_panel(aspect: str, model: str | None = None, brand: str | 
         st.info("No negative reviews match these filters.")
     else:
         for _, row in filtered.head(5).iterrows():
-            st.markdown(f"**{row['model']}** — {row['review_text']}")
+            ui.review_quote(str(row["review_text"]), str(row["model"]))
 
 
 def discovery_page(page_intro) -> None:
     page_intro("Explore reviews", "Discover Review Patterns",
                "Group reviews that use similar language, then read examples from each group.")
+    ui.section_header("01", "Choose how to explore", "Filter the generated reviews and pick a grouping style.")
     reviews = expanded_reviews()
     if not EMBEDDINGS.exists():
         st.info("Review patterns are temporarily unavailable because prepared review data is missing.")
@@ -198,7 +202,7 @@ def discovery_page(page_intro) -> None:
     cluster_info = next(item for item in report["clusters"] if item["cluster"] == selected_cluster)
     st.markdown(f"**Common words:** {cluster_info['top_terms']}")
     for review in cluster_info["representative_reviews"]:
-        st.markdown(f"> {review}")
+        ui.review_quote(str(review))
     st.dataframe(labels[labels["cluster"] == selected_cluster][["brand", "model", "review_text", "sentiment"]].head(100),
                  width="stretch", hide_index=True)
     st.caption("A group can contain different phone features and both positive and negative comments.")
@@ -213,6 +217,7 @@ def discovery_page(page_intro) -> None:
 def relationships_page(page_intro) -> None:
     page_intro("Compare review language", "Find Similar Phones",
                "Find phones with similar-sounding reviews and inspect what those reviews discuss.")
+    ui.section_header("01", "Start with a phone", "Choose a model and explore others with similar review wording.")
     reviews = expanded_reviews()
     if not EMBEDDINGS.exists():
         st.info("Similar-phone results are temporarily unavailable because prepared review data is missing.")
@@ -264,6 +269,7 @@ def relationships_page(page_intro) -> None:
 def emerging_page(page_intro, selected_model: str | None = None) -> None:
     page_intro("Changes in complaints", "Spot New Problems",
                "See which complaint themes appear more often in the later review period.")
+    ui.section_header("01", "Check for growing complaints", "Choose the phones, feature and time window to compare.")
     reviews = expanded_reviews()
     topics = complaint_topics()
     if topics.empty:
@@ -283,7 +289,7 @@ def emerging_page(page_intro, selected_model: str | None = None) -> None:
         if len(date_range) != 2:
             st.info("Choose both a start and an end date.")
             return
-        with st.spinner("Comparing complaint prevalence by period..."):
+        with st.spinner("Comparing complaints across the selected periods..."):
             result = detect_issues(reviews, topics, brand=None if brand == "All brands" else brand,
                                    model=None if model == "All models" else model,
                                    aspect=None if aspect == "All features" else aspect,
@@ -309,7 +315,7 @@ def emerging_page(page_intro, selected_model: str | None = None) -> None:
     st.markdown(f"**{row['previous_period']}:** {row['previous_count']} of {row['previous_total']} reviews · "
                 f"**{row['current_period']}:** {row['current_count']} of {row['current_total']} reviews")
     for review in row["evidence"]:
-        st.markdown(f"> {review}")
+        ui.review_quote(str(review))
     st.caption("These changes describe generated reviews, not actual problems with the named phones.")
     with st.expander("How growing complaints are checked — technical details"):
         st.write("Complaint topics are learned from earlier negative reviews. A result requires "

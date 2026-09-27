@@ -1,76 +1,139 @@
-"""Plain-language landing page for the Streamlit application."""
+"""Product landing page, built with Streamlit-native navigation links."""
 
 from __future__ import annotations
 
+from html import escape
+
 import streamlit as st
+
+import ui
+
+
+FEATURES = (
+    ("Compare Phones", "▣", "See how two phones differ across the features people mention.", "Compare phones"),
+    ("Review Analyzer", "✦", "Paste a review and explore its likes, dislikes and estimated rating.", "Analyze a review"),
+    ("Phone Features", "◫", "Explore opinions about battery, camera, speed, design and display.", "Explore features"),
+    ("Common Problems", "◈", "Find recurring negative comments and inspect the reviews behind them.", "Find common problems"),
+    ("Discover Patterns", "◎", "Group reviews with similar wording and explore their shared themes.", "Discover patterns"),
+    ("Find Similar Phones", "⇄", "Compare phones through the language used in their reviews.", "Find similar phones"),
+)
+
+ASPECTS = (
+    ("Battery", "Charge and endurance"),
+    ("Camera", "Photos and video"),
+    ("Performance", "Speed and fluidity"),
+    ("Design", "Look and feel"),
+    ("Display", "Screen experience"),
+)
 
 
 def render_home(pages: dict, review_count: int, model_count: int) -> None:
+    with st.container(key="home-hero-shell"):
+        left, right = st.columns([1.28, 0.9], gap="large", vertical_alignment="center")
+        with left:
+            st.markdown(
+                """
+                <div class="home-hero-copy">
+                  <div class="hero-kicker"><span class="hero-kicker__dot"></span> A clearer view of phone reviews</div>
+                  <h1>Understand what people think about their phones<span class="hero-stop">.</span></h1>
+                  <p>Explore reviews, compare smartphone experiences, discover common problems,
+                  and see how opinions change over time.</p>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+        with right:
+            st.markdown(
+                """
+                <div class="hero-visual" aria-label="Illustration of phone features considered separately">
+                  <div class="hero-visual__orbit hero-visual__orbit--one"></div>
+                  <div class="hero-visual__orbit hero-visual__orbit--two"></div>
+                  <div class="hero-device">
+                    <div class="hero-device__top"><span>REVIEW LENS</span><span class="hero-device__signal">● ● ●</span></div>
+                    <div class="hero-device__screen">
+                      <div class="hero-device__eyebrow">ONE REVIEW, MANY DETAILS</div>
+                      <div class="hero-device__line hero-device__line--long"></div>
+                      <div class="hero-device__line"></div>
+                      <div class="hero-device__line hero-device__line--short"></div>
+                      <div class="hero-device__divider"></div>
+                      <div class="hero-device__feature"><span class="feature-dot feature-dot--indigo"></span>Camera <i></i></div>
+                      <div class="hero-device__feature"><span class="feature-dot feature-dot--teal"></span>Battery <i></i></div>
+                      <div class="hero-device__feature"><span class="feature-dot feature-dot--amber"></span>Display <i></i></div>
+                    </div>
+                    <div class="hero-device__foot">FIVE FEATURE LENSES</div>
+                  </div>
+                  <div class="hero-visual__badge">Insights beyond an overall rating <span>↗</span></div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+        with st.container(key="hero-actions"):
+            links = (
+                ("Compare Phones", "Compare phones"),
+                ("Review Analyzer", "Analyze a review"),
+                ("Review Trends", "Explore review trends"),
+            )
+            for column, (key, label) in zip(st.columns(3, gap="small"), links):
+                with column:
+                    st.page_link(pages[key], label=label, use_container_width=True)
+
     st.markdown(
-        """
-        <section class="home-hero">
-          <div class="home-eyebrow">Explore phone reviews</div>
-          <h1>See what a review says about each part of a phone.</h1>
-          <p>Compare phones, explore comments about battery or camera, and spot
-          patterns that are easy to miss in a long list of reviews.</p>
-        </section>
-        """,
+        '<div class="dataset-ribbon"><span class="dataset-ribbon__icon">i</span>'
+        '<p><strong>Research demonstration.</strong> These reviews, ratings and dates are synthetically '
+        'generated. The named phones are real, but the opinions are not verified customer feedback.</p></div>',
         unsafe_allow_html=True,
     )
+
+    ui.section_header("01", "Explore by task", "Start with a question. Each tool lets you dig into the generated reviews.")
+    for row in (FEATURES[:3], FEATURES[3:]):
+        for column, (page, icon, description, action) in zip(st.columns(3, gap="medium"), row):
+            with column, st.container(border=True, key=f"feature-{page.lower().replace(' ', '-')}"):
+                st.markdown(
+                    f'<div class="feature-card__icon" aria-hidden="true">{escape(icon)}</div>'
+                    f'<h3 class="feature-card__title">{escape(page)}</h3>'
+                    f'<p class="feature-card__description">{escape(description)}</p>',
+                    unsafe_allow_html=True,
+                )
+                st.page_link(pages[page], label=f"{action}  →")
+
+    ui.section_header("02", "A phone is more than one score",
+                      "Explore five parts of the experience, not just a single positive or negative label.")
     st.markdown(
-        '<div class="home-note">These reviews are synthetically generated for research and '
-        'demonstration. They are not actual customer reviews. Real phone names are used only '
-        'as identifiers in the example dataset.</div>',
-        unsafe_allow_html=True,
-    )
-
-    st.markdown('<div class="home-section"><h2>Where would you like to start?</h2>'
-                '<p>Choose a task below, or use the menu at the top.</p></div>', unsafe_allow_html=True)
-    actions = [
-        ("Compare Phones", "Put two or more phones side by side."),
-        ("Review Analyzer", "Paste a review and see what it says."),
-        ("Common Problems", "Explore frequently mentioned complaints."),
-        ("Discover Patterns", "Find groups of reviews that sound alike."),
-    ]
-    for first, second in ((actions[0], actions[1]), (actions[2], actions[3])):
-        cols = st.columns(2)
-        for col, (label, description) in zip(cols, (first, second)):
-            with col:
-                st.markdown(f'<div class="home-card"><h3>{label}</h3><p>{description}</p></div>',
-                            unsafe_allow_html=True)
-                st.page_link(pages[label], label=f"Open {label}")
-
-    st.markdown('<div class="home-section"><h2>Look beyond one overall rating</h2>'
-                '<p>One review can praise the camera and complain about the battery. '
-                'This app looks at five parts of a phone separately.</p></div>', unsafe_allow_html=True)
-    aspects = [
-        ("Battery", "How long it lasts and how charging feels."),
-        ("Camera", "Photos, video, focus and low-light results."),
-        ("Performance", "Speed, apps, multitasking and games."),
-        ("Design", "How the phone looks and feels in the hand."),
-        ("Display", "Brightness, colour, sharpness and touch."),
-    ]
-    for first, second, third in (aspects[:3], (*aspects[3:], None)):
-        items = [item for item in (first, second, third) if item is not None]
-        cols = st.columns(len(items))
-        for col, (name, description) in zip(cols, items):
-            with col:
-                st.markdown(f'<div class="home-card"><h3>{name}</h3><p>{description}</p></div>',
-                            unsafe_allow_html=True)
-
-    st.markdown('<div class="home-section"><h2>About the example data</h2></div>', unsafe_allow_html=True)
-    st.write(
-        f"This research dataset contains {review_count:,} generated reviews across "
-        f"{model_count} commercially released phone models. The review dates, ratings "
-        "and opinions are simulated. A chart or prediction here does not describe "
-        "verified feedback about a real product."
-    )
-    with st.expander("How this works — technical details"):
-        st.write(
-            "The app detects mentions of battery, camera, performance, design and display, "
-            "then uses a saved DistilBERT model to classify each opinion. Separate text-only "
-            "XGBoost models estimate negative-review likelihood and a 1–5 rating. "
-            "Sentence-BERT embeddings support review grouping and similar-phone search. "
-            "SHAP shows which words affected a prediction. All results are based on the "
-            "synthetic dataset and its trained models."
+        '<div class="aspect-strip">'
+        + "".join(
+            f'<div class="aspect-strip__item"><span>{escape(ui.FEATURE_ICONS[name])}</span>'
+            f'<strong>{escape(name)}</strong><small>{escape(detail)}</small></div>'
+            for name, detail in ASPECTS
         )
+        + '</div>',
+        unsafe_allow_html=True,
+    )
+
+    ui.section_header("03", "How the experience works",
+                      "A simple path from written reviews to useful, feature-level views.")
+    st.markdown(
+        '<div class="journey">'
+        '<div><span>01</span><strong>Choose a phone or review</strong><p>Start with a product or your own text.</p></div>'
+        '<div><span>02</span><strong>Explore its features</strong><p>See which parts of the phone are discussed.</p></div>'
+        '<div><span>03</span><strong>Read the evidence</strong><p>Inspect examples behind each result.</p></div>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+
+    with st.container(key="home-data-panel"):
+        st.markdown('<div class="data-panel__eyebrow">ABOUT THIS RESEARCH DATASET</div>', unsafe_allow_html=True)
+        st.markdown(
+            f'<h2>{review_count:,} generated reviews. {model_count} real phone model names.</h2>'
+            '<p>The text, dates, ratings and opinions are simulated. Charts and predictions describe '
+            'this research dataset—not measured performance or actual customer experiences.</p>',
+            unsafe_allow_html=True,
+        )
+        with st.expander("How the analysis works — technical details"):
+            st.write(
+                "The app detects mentions of battery, camera, performance, design and display, "
+                "then uses a saved DistilBERT model to classify each opinion. Separate text-only "
+                "XGBoost models estimate negative-review likelihood and a 1–5 rating. "
+                "Sentence-BERT embeddings support review grouping and similar-phone search. "
+                "SHAP shows which words affected a prediction. All results are based on the "
+                "synthetic dataset and its trained models."
+            )

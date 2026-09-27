@@ -15,6 +15,7 @@ from transformers import (
 from sentence_transformers import SentenceTransformer
 import new_modules as intelligence
 import home
+import ui
 
 
 # ============================================================
@@ -46,32 +47,26 @@ def load_styles():
 
 def page_intro(eyebrow, title, description):
     """Render a consistent title treatment for every analysis module."""
-    st.markdown(
-        f"""
-        <section class="page-intro">
-            <div class="page-eyebrow">{eyebrow}</div>
-            <h1>{title}</h1>
-            <p>{description}</p>
-        </section>
-        """,
-        unsafe_allow_html=True
-    )
+    ui.page_header(eyebrow, title, description)
 
 
 load_styles()
 
 research_template = pio.templates["plotly_white"]
 research_template.layout.update(
-    font={"family": "Inter, Segoe UI, sans-serif", "color": "#1f2937"},
+    font={"family": "Aptos, Segoe UI, sans-serif", "color": "#344256", "size": 13},
     paper_bgcolor="#ffffff",
     plot_bgcolor="#ffffff",
-    colorway=["#4f46e5", "#0f766e", "#d97706", "#c24158", "#64748b"],
-    margin={"l": 20, "r": 20, "t": 60, "b": 30},
-    xaxis={"gridcolor": "#e9edf3", "linecolor": "#cdd4e1"},
-    yaxis={"gridcolor": "#e9edf3", "linecolor": "#cdd4e1"}
+    colorway=["#4f46e5", "#0f766e", "#d97706", "#dc2626", "#64748b"],
+    margin={"l": 36, "r": 30, "t": 72, "b": 45},
+    xaxis={"gridcolor": "#edf0f5", "linecolor": "#d3dae6", "zeroline": False},
+    yaxis={"gridcolor": "#edf0f5", "linecolor": "#d3dae6", "zeroline": False},
+    legend={"orientation": "h", "y": -0.25, "title": {"text": ""}},
+    hoverlabel={"bgcolor": "#172033", "font_color": "#ffffff"},
 )
 pio.templates["consumer_intelligence"] = research_template
 px.defaults.template = "consumer_intelligence"
+SENTIMENT_COLORS = {"Positive": "#15803d", "Negative": "#dc2626", "Neutral": "#b45309"}
 
 
 # ============================================================
@@ -627,16 +622,16 @@ def _show_selected_page():
 
 
 NAV_PAGES = {
-    "Home": st.Page(_show_selected_page, title="Home", icon="🏠", url_path="home", default=True),
-    "Compare Phones": st.Page(_show_selected_page, title="Compare Phones", icon="📱", url_path="compare-phones"),
-    "Review Analyzer": st.Page(_show_selected_page, title="Review Analyzer", icon="✍️", url_path="review-analyzer"),
-    "Phone Features": st.Page(_show_selected_page, title="Phone Features", icon="🔋", url_path="phone-features"),
-    "Common Problems": st.Page(_show_selected_page, title="Common Problems", icon="🔎", url_path="common-problems"),
-    "Review Trends": st.Page(_show_selected_page, title="Review Trends", icon="📈", url_path="review-trends"),
-    "Likes & Dislikes": st.Page(_show_selected_page, title="Likes & Dislikes", icon="⚖️", url_path="likes-dislikes"),
-    "Discover Patterns": st.Page(_show_selected_page, title="Discover Patterns", icon="🧭", url_path="discover-patterns"),
-    "Find Similar Phones": st.Page(_show_selected_page, title="Find Similar Phones", icon="🔗", url_path="similar-phones"),
-    "Spot New Problems": st.Page(_show_selected_page, title="Spot New Problems", icon="🚨", url_path="new-problems"),
+    "Home": st.Page(_show_selected_page, title="Home", url_path="home", default=True),
+    "Compare Phones": st.Page(_show_selected_page, title="Compare Phones", url_path="compare-phones"),
+    "Review Analyzer": st.Page(_show_selected_page, title="Review Analyzer", url_path="review-analyzer"),
+    "Phone Features": st.Page(_show_selected_page, title="Phone Features", url_path="phone-features"),
+    "Common Problems": st.Page(_show_selected_page, title="Common Problems", url_path="common-problems"),
+    "Review Trends": st.Page(_show_selected_page, title="Review Trends", url_path="review-trends"),
+    "Likes & Dislikes": st.Page(_show_selected_page, title="Likes & Dislikes", url_path="likes-dislikes"),
+    "Discover Patterns": st.Page(_show_selected_page, title="Discover Patterns", url_path="discover-patterns"),
+    "Find Similar Phones": st.Page(_show_selected_page, title="Find Similar Phones", url_path="similar-phones"),
+    "Spot New Problems": st.Page(_show_selected_page, title="Spot New Problems", url_path="new-problems"),
 }
 selected_page = st.navigation(
     {
@@ -663,15 +658,7 @@ page = {
     "Spot New Problems": "🚨 Emerging Issues",
 }[selected_page.title]
 
-st.markdown(
-    '<div class="app-wordmark"><span class="app-mark">P</span>'
-    '<span>Product Sentiment Intelligence</span></div>',
-    unsafe_allow_html=True,
-)
-st.caption(
-    "Research demo: these reviews are synthetically generated. "
-    "They are not actual customer reviews of the named phones."
-)
+ui.brand_header()
 with st.expander("About this dataset"):
     st.write(
         "The phone model names identify real released products, but every review, "
@@ -700,6 +687,7 @@ elif page == "📱 Phone Comparison":
         "Compare Phones",
         "Choose phones to see what the generated reviews like and dislike about each feature."
     )
+    ui.section_header("01", "Build your comparison", "Choose two phones to start. Add more below the results.")
 
 
     if reviews.empty or absa.empty:
@@ -723,7 +711,7 @@ elif page == "📱 Phone Comparison":
         with col1:
 
             phone_1 = st.selectbox(
-                "📱 Select Phone 1",
+                "Phone one",
                 available_models,
                 index=0
             )
@@ -732,7 +720,7 @@ elif page == "📱 Phone Comparison":
         with col2:
 
             phone_2 = st.selectbox(
-                "📱 Select Phone 2",
+                "Phone two",
                 available_models,
                 index=min(
                     1,
@@ -766,30 +754,14 @@ elif page == "📱 Phone Comparison":
 
             col1, col2 = st.columns(2)
 
-
             with col1:
-
-                st.subheader(
-                    f"📱 {phone_1}"
-                )
-
-                st.caption(
-                    f"Brand: {brand_1}"
-                )
-
+                ui.phone_card(phone_1, brand_1, "Phone one")
 
             with col2:
+                ui.phone_card(phone_2, brand_2, "Phone two")
 
-                st.subheader(
-                    f"📱 {phone_2}"
-                )
-
-                st.caption(
-                    f"Brand: {brand_2}"
-                )
-
-
-            st.markdown("---")
+            ui.section_header("02", "See the differences",
+                              "Compare positive and negative comments about each feature in the generated reviews.")
 
 
             phone_1_data = absa[
@@ -1147,6 +1119,15 @@ elif page == "📱 Phone Comparison":
                              width="stretch")
 
             intelligence.comparison_prediction_panel([phone_1, phone_2, *additional_phones])
+            ui.section_header("03", "Read the reviews behind the comparison",
+                              "Choose a phone, feature and opinion to inspect generated review examples.")
+            evidence_phone = st.selectbox(
+                "Read examples for",
+                [phone_1, phone_2, *additional_phones],
+                key="comparison_evidence_phone",
+            )
+            intelligence.aspect_evidence_panel(evidence_phone, show_heading=False,
+                                               key_prefix="comparison_evidence")
 
 
 # ============================================================
@@ -1160,6 +1141,7 @@ elif page == "🔍 Review Analyzer":
         "Review Analyzer",
         "Paste a review to see which phone features it mentions and whether each comment sounds positive or negative."
     )
+    ui.section_header("01", "Start with a review", "Write your own text or choose a generated example from the dataset.")
 
     # ============================================================
     # ASPECT SEMANTIC PROFILES
@@ -1354,7 +1336,7 @@ elif page == "🔍 Review Analyzer":
         example_text = str(examples.loc[examples["review_id"].astype(str) == source_id, "review_text"].iloc[0])
 
     review_text = st.text_area(
-        "📝 Enter your smartphone review",
+        "Your smartphone review",
         value=example_text,
         height=150,
         placeholder=(
@@ -1365,8 +1347,9 @@ elif page == "🔍 Review Analyzer":
     )
 
     analyze_button = st.button(
-        "🔎 Analyze Review",
-        width="stretch"
+        "Analyze review",
+        width="stretch",
+        type="primary",
     )
     if analyze_button:
         st.session_state["last_analyzed_text"] = review_text
@@ -1916,25 +1899,13 @@ elif page == "🔍 Review Analyzer":
                 col1, col2, col3 = st.columns(3)
 
                 with col1:
-
-                    st.metric(
-                        "😊 Positive",
-                        positive_count
-                    )
+                    ui.sentiment_card("Positive", positive_count, "positive")
 
                 with col2:
-
-                    st.metric(
-                        "😐 Neutral",
-                        neutral_count
-                    )
+                    ui.sentiment_card("Neutral", neutral_count, "neutral")
 
                 with col3:
-
-                    st.metric(
-                        "😟 Negative",
-                        negative_count
-                    )
+                    ui.sentiment_card("Negative", negative_count, "negative")
 
                 # =================================================
                 # CONFIDENCE CHART
@@ -1952,7 +1923,8 @@ elif page == "🔍 Review Analyzer":
                     y="Sentiment Confidence",
                     color="Sentiment",
                     text="Sentiment Confidence",
-                    title="How sure the system is about each feature"
+                    title="How sure the system is about each feature",
+                    color_discrete_map=SENTIMENT_COLORS,
                 )
 
                 fig.update_yaxes(
@@ -1988,6 +1960,7 @@ elif page == "🧩 Aspect Sentiment":
         "Phone Features",
         "Choose a phone and see what its generated reviews say about battery, camera, speed, design and display."
     )
+    ui.section_header("01", "Choose a phone", "Explore its five features and read example comments behind the results.")
 
 
     # ========================================================
@@ -2014,7 +1987,7 @@ elif page == "🧩 Aspect Sentiment":
 
 
         selected_phone = st.selectbox(
-            "📱 Select a smartphone",
+            "Choose a smartphone",
             available_models,
             key="aspect_sentiment_phone"
         )
@@ -2042,7 +2015,7 @@ elif page == "🧩 Aspect Sentiment":
 
 
         st.markdown(
-            f"### 📱 {selected_phone}"
+            f"### {selected_phone}"
         )
 
         st.caption(
@@ -2240,7 +2213,8 @@ elif page == "🧩 Aspect Sentiment":
                 text="Percentage",
                 title=(
                     f"Opinions about each feature of {selected_phone}"
-                )
+                ),
+                color_discrete_map=SENTIMENT_COLORS,
             )
 
 
@@ -2429,6 +2403,7 @@ elif page == "📉 Weakness Analyzer":
         "Common Problems",
         "Find features that receive more negative comments, then read example reviews."
     )
+    ui.section_header("01", "Find recurring complaints", "Filter by brand and phone feature, then compare where negative comments appear.")
 
     # ============================================================
     # CHECK ABSA DATA
@@ -2603,7 +2578,7 @@ elif page == "📉 Weakness Analyzer":
         # ========================================================
 
         st.subheader(
-            f"📊 {selected_aspect.title()} Weakness Across Smartphones"
+            f"{selected_aspect.title()} complaints across phones"
         )
 
         chart_data = (
@@ -2654,7 +2629,7 @@ elif page == "📉 Weakness Analyzer":
         # ========================================================
 
         st.subheader(
-            f"🔎 Top 5 Weakest Phones for "
+            f"Five phones with the most complaints about "
             f"{selected_aspect.title()}"
         )
 
@@ -2706,6 +2681,7 @@ elif page == "📈 Sentiment Evolution":
         "Review Trends",
         "See whether the tone of generated reviews changes across six-month periods."
     )
+    ui.section_header("01", "Set the time window", "Choose a brand, phone and dates to explore the simulated review timeline.")
 
     # ============================================================
     # CHECK REVIEW DATA
@@ -2808,7 +2784,7 @@ elif page == "📈 Sentiment Evolution":
             )
 
             selected_model = st.selectbox(
-                "📱 Select a smartphone model",
+                "Choose a smartphone",
                 models
             )
 
@@ -2872,7 +2848,7 @@ elif page == "📈 Sentiment Evolution":
             with col3:
 
                 st.metric(
-                    "📝 Total Reviews",
+                    "Reviews in this period",
                     total_reviews
                 )
 
@@ -3045,7 +3021,7 @@ elif page == "📈 Sentiment Evolution":
             st.markdown("---")
 
             st.subheader(
-                "📈 Sentiment Score Over Time"
+                "How opinions change over time"
             )
 
             chart_data = (
@@ -3093,7 +3069,7 @@ elif page == "📈 Sentiment Evolution":
             # ====================================================
 
             st.subheader(
-                "📊 Semi-Annual Sentiment Breakdown"
+                "Positive, neutral and negative reviews"
             )
 
             composition_data = (
@@ -3134,7 +3110,8 @@ elif page == "📈 Sentiment Evolution":
                 title=(
                     f"{selected_model} "
                     "Positive, neutral and negative reviews over time"
-                )
+                ),
+                color_discrete_map=SENTIMENT_COLORS,
             )
 
             fig_composition.update_yaxes(
@@ -3156,7 +3133,7 @@ elif page == "📈 Sentiment Evolution":
             # ====================================================
 
             st.subheader(
-                "📋 Semi-Annual Comparison"
+                "Compare six-month periods"
             )
 
             table_data = (
@@ -3218,7 +3195,7 @@ elif page == "📈 Sentiment Evolution":
             st.markdown("---")
 
             st.subheader(
-                "🧠 Evolution Analysis"
+                "What changed?"
             )
 
             # ----------------------------------------------------
@@ -3291,7 +3268,7 @@ elif page == "📈 Sentiment Evolution":
             if score_change >= 10:
 
                 trend_label = (
-                    "📈 Sentiment Improved"
+                    "More positive over time"
                 )
 
                 trend_message = (
@@ -3303,7 +3280,7 @@ elif page == "📈 Sentiment Evolution":
             elif score_change <= -10:
 
                 trend_label = (
-                    "📉 Sentiment Declined"
+                    "Less positive over time"
                 )
 
                 trend_message = (
@@ -3315,7 +3292,7 @@ elif page == "📈 Sentiment Evolution":
             else:
 
                 trend_label = (
-                    "➡️ Sentiment Remained Stable"
+                    "Little change over time"
                 )
 
                 trend_message = (
@@ -3394,6 +3371,7 @@ elif page == "⚔️ Conflict Detection":
         "Likes & Dislikes",
         "Find reviews that praise one phone feature while criticizing another."
     )
+    ui.section_header("01", "Explore mixed opinions", "See how often one generated review praises a feature and criticizes another.")
 
     if review_conflicts.empty:
 

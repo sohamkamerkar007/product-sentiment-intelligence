@@ -21,6 +21,8 @@ An interactive NLP research application for studying smartphone reviews at both 
 
 The original seven analytical pages and saved ABSA weights remain in place. The new modules use the same Python, Streamlit and Plotly architecture.
 
+The interface uses Streamlit's native top navigation, a shared light design system in `app/assets/style.css`, and reusable presentation helpers in `app/ui.py`. The home page is a guided entry point; technical explanations remain available in optional sections. UI styling does not alter model or dataset outputs.
+
 ## Dataset and provenance
 
 - `data/raw/Mobile_Reviews_GenData.csv`: original 4,200 `Synthetic-V2` reviews, unchanged.
