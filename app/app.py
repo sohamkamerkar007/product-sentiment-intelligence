@@ -1273,7 +1273,7 @@ elif page == "📱 Phone Comparison":
 
             st.dataframe(
                 comparison_df,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True
             )
 
@@ -1330,7 +1330,7 @@ elif page == "📱 Phone Comparison":
 
             st.plotly_chart(
                 fig_positive,
-                use_container_width=True
+                width="stretch"
             )
 
 
@@ -1386,7 +1386,7 @@ elif page == "📱 Phone Comparison":
 
             st.plotly_chart(
                 fig_negative,
-                use_container_width=True
+                width="stretch"
             )
 
 
@@ -1458,7 +1458,7 @@ elif page == "📱 Phone Comparison":
 
             st.dataframe(
                 winner_df,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True
             )
 
@@ -1698,7 +1698,7 @@ elif page == "🔍 Review Analyzer":
 
     analyze_button = st.button(
         "🔎 Analyze Review",
-        use_container_width=True
+        width="stretch"
     )
     if analyze_button:
         st.session_state["last_analyzed_text"] = review_text
@@ -2085,7 +2085,7 @@ elif page == "🔍 Review Analyzer":
 
                     st.dataframe(
                         evidence_df,
-                        use_container_width=True,
+                        width="stretch",
                         hide_index=True
                     )
 
@@ -2212,7 +2212,7 @@ elif page == "🔍 Review Analyzer":
 
                 st.dataframe(
                     results_df,
-                    use_container_width=True,
+                    width="stretch",
                     hide_index=True
                 )
 
@@ -2295,7 +2295,7 @@ elif page == "🔍 Review Analyzer":
 
                 st.plotly_chart(
                     fig,
-                    use_container_width=True
+                    width="stretch"
                 )
 
     if analysis_active and final_results:
@@ -2523,7 +2523,7 @@ elif page == "🧩 Aspect Sentiment":
 
             st.dataframe(
                 phone_table,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True
             )
 
@@ -2589,7 +2589,7 @@ elif page == "🧩 Aspect Sentiment":
 
             st.plotly_chart(
                 fig,
-                use_container_width=True
+                width="stretch"
             )
 
 
@@ -2708,7 +2708,7 @@ elif page == "🧩 Aspect Sentiment":
 
             st.dataframe(
                 score_display,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True
             )
 
@@ -2967,7 +2967,7 @@ elif page == "📉 Weakness Analyzer":
 
         st.plotly_chart(
             fig,
-            use_container_width=True
+            width="stretch"
         )
 
         st.markdown("---")
@@ -3011,7 +3011,7 @@ elif page == "📉 Weakness Analyzer":
 
         st.dataframe(
             top_5_display,
-            use_container_width=True,
+            width="stretch",
             hide_index=True
         )
 
@@ -3408,7 +3408,7 @@ elif page == "📈 Sentiment Evolution":
 
             st.plotly_chart(
                 fig_score,
-                use_container_width=True
+                width="stretch"
             )
 
             # ====================================================
@@ -3471,7 +3471,7 @@ elif page == "📈 Sentiment Evolution":
 
             st.plotly_chart(
                 fig_composition,
-                use_container_width=True
+                width="stretch"
             )
 
             # ====================================================
@@ -3530,7 +3530,7 @@ elif page == "📈 Sentiment Evolution":
 
             st.dataframe(
                 table_data,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True
             )
 
@@ -3822,7 +3822,7 @@ elif page == "⚔️ Conflict Detection":
 
         st.dataframe(
             display_pairs,
-            use_container_width=True,
+            width="stretch",
             hide_index=True
         )
 
@@ -3851,7 +3851,7 @@ elif page == "⚔️ Conflict Detection":
 
         st.plotly_chart(
             fig_global,
-            use_container_width=True
+            width="stretch"
         )
 
         # --------------------------------------------------------
@@ -3973,7 +3973,7 @@ elif page == "⚔️ Conflict Detection":
 
                 st.dataframe(
                     phone_table,
-                    use_container_width=True,
+                    width="stretch",
                     hide_index=True
                 )
 
@@ -4000,7 +4000,7 @@ elif page == "⚔️ Conflict Detection":
 
                 st.plotly_chart(
                     fig_phone,
-                    use_container_width=True
+                    width="stretch"
                 )
 
                 # ------------------------------------------------
