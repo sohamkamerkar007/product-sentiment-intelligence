@@ -138,17 +138,52 @@ hr { border-color: var(--border) !important; margin: 1.9rem 0 !important; }
 }
 [data-testid="stWidgetLabel"] { color: var(--ink); font-weight: 700; }
 .stButton > button,
+[data-testid="stFormSubmitButton"] > button,
 [data-testid="stPageLink"] a {
   border-radius: 11px !important;
-  font-weight: 700 !important;
   min-height: 2.75rem;
   transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
-.stButton > button:hover { transform: translateY(-1px); }
-.stButton > button[kind="primary"] { background: var(--indigo); border: 1px solid var(--indigo); box-shadow: 0 5px 16px rgba(79, 70, 229, .18); color: white; }
-.stButton > button[kind="primary"]:hover { background: var(--indigo-dark); border-color: var(--indigo-dark); color: white; }
-.stButton > button:not([kind="primary"]) { background: white; border-color: #cbd5e1; color: var(--ink); }
-.stButton > button:focus-visible, [data-testid="stPageLink"] a:focus-visible, [data-testid="stTopNavLink"]:focus-visible { outline: 3px solid #a5b4fc !important; outline-offset: 2px; }
+.stButton > button,
+[data-testid="stFormSubmitButton"] > button { font-weight: 600 !important; padding: .55rem 1.1rem; }
+[data-testid="stPageLink"] a { font-weight: 700 !important; }
+/* Streamlit renders button labels in a <p>; the shared paragraph color must not override the button state. */
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button [data-testid="stMarkdownContainer"] p { color: inherit !important; font-weight: inherit; }
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button:hover:not(:disabled) { transform: translateY(-1px); }
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button[kind="primary"] {
+  background: #4f46e5 !important;
+  border: 1px solid #4f46e5 !important;
+  box-shadow: 0 5px 16px rgba(79, 70, 229, .18);
+  color: #fff !important;
+}
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button[kind="primary"]:is(:hover, :active):not(:disabled) {
+  background: #3730a3 !important;
+  border-color: #3730a3 !important;
+  color: #fff !important;
+}
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button[kind="primary"]:disabled {
+  background: #5753a8 !important;
+  border-color: #5753a8 !important;
+  color: #fff !important;
+  opacity: 1;
+}
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button:not([kind="primary"]) {
+  background: #fff !important;
+  border: 1px solid #c7d2fe !important;
+  color: #3730a3 !important;
+}
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button:not([kind="primary"]):is(:hover, :active):not(:disabled) {
+  background: #eef2ff !important;
+  color: #3730a3 !important;
+}
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button:not([kind="primary"]):disabled {
+  background: #f8f9ff !important;
+  color: #4b517e !important;
+  opacity: 1;
+}
+:is(.stButton, [data-testid="stFormSubmitButton"]) > button:focus-visible,
+[data-testid="stPageLink"] a:focus-visible,
+[data-testid="stTopNavLink"]:focus-visible { outline: 3px solid #a5b4fc !important; outline-offset: 2px; }
 [data-testid="stMetric"], [data-testid="stExpander"], [data-testid="stPlotlyChart"] {
   background: var(--surface);
   border: 1px solid var(--border);
