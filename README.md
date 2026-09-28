@@ -21,7 +21,7 @@ An interactive NLP research application for studying smartphone reviews at both 
 
 The original seven analytical pages and saved ABSA weights remain in place. The new modules use the same Python, Streamlit and Plotly architecture.
 
-The interface uses Streamlit's native top navigation, a shared light design system in `app/assets/style.css`, and reusable presentation helpers in `app/ui.py`. The home page is a guided entry point; technical explanations remain available in optional sections. UI styling does not alter model or dataset outputs.
+The interface uses Streamlit's native top navigation, a shared light design system in `app/assets/style.css`, and reusable presentation helpers in `app/ui.py`. The Overview page is a guided entry point and the only place showing dataset provenance. Its review, column, model, brand, feature, rating and date details are calculated from the loaded review table by `app/dataset_info.py`. Technical explanations remain available in an optional section. UI styling does not alter model or dataset outputs.
 
 ## Dataset and provenance
 

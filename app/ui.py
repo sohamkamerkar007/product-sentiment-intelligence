@@ -27,7 +27,7 @@ def brand_header() -> None:
             <span class="brandbar__mark" aria-hidden="true"><i></i><i></i><i></i></span>
             <span class="brandbar__name">PRODUCT <strong>SENTIMENT</strong> INTELLIGENCE</span>
           </div>
-          <span class="brandbar__edition">RESEARCH EDITION <span aria-hidden="true">·</span> SYNTHETIC DATA</span>
+          <span class="brandbar__edition">RESEARCH EDITION</span>
         </div>
         """,
         unsafe_allow_html=True,

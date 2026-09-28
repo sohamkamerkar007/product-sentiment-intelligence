@@ -16,6 +16,7 @@ from sentence_transformers import SentenceTransformer
 import new_modules as intelligence
 import home
 import ui
+from dataset_info import summarize_reviews
 
 
 # ============================================================
@@ -659,12 +660,6 @@ page = {
 }[selected_page.title]
 
 ui.brand_header()
-with st.expander("About this dataset"):
-    st.write(
-        "The phone model names identify real released products, but every review, "
-        "rating, date and opinion in this project is simulated. "
-        "Comparisons and predictions describe this research dataset only."
-    )
 
 
 # ============================================================
@@ -672,7 +667,7 @@ with st.expander("About this dataset"):
 # ============================================================
 
 if page == "🏠 Overview":
-    home.render_home(NAV_PAGES, len(reviews), reviews["model"].nunique() if not reviews.empty else 0)
+    home.render_home(NAV_PAGES, summarize_reviews(reviews))
 
 
 

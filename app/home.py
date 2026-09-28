@@ -27,7 +27,7 @@ ASPECTS = (
 )
 
 
-def render_home(pages: dict, review_count: int, model_count: int) -> None:
+def render_home(pages: dict, dataset: dict) -> None:
     with st.container(key="home-hero-shell"):
         left, right = st.columns([1.28, 0.9], gap="large", vertical_alignment="center")
         with left:
@@ -35,7 +35,7 @@ def render_home(pages: dict, review_count: int, model_count: int) -> None:
                 """
                 <div class="home-hero-copy">
                   <div class="hero-kicker"><span class="hero-kicker__dot"></span> A clearer view of phone reviews</div>
-                  <h1>Understand what people think about their phones<span class="hero-stop">.</span></h1>
+                  <h1>Understand What People Think About Their Phones<span class="hero-stop">.</span></h1>
                   <p>Explore reviews, compare smartphone experiences, discover common problems,
                   and see how opinions change over time.</p>
                 </div>
@@ -77,13 +77,6 @@ def render_home(pages: dict, review_count: int, model_count: int) -> None:
                 with column:
                     st.page_link(pages[key], label=label, use_container_width=True)
 
-    st.markdown(
-        '<div class="dataset-ribbon"><span class="dataset-ribbon__icon">i</span>'
-        '<p><strong>Research demonstration.</strong> These reviews, ratings and dates are synthetically '
-        'generated. The named phones are real, but the opinions are not verified customer feedback.</p></div>',
-        unsafe_allow_html=True,
-    )
-
     ui.section_header("01", "Explore by task", "Start with a question. Each tool lets you dig into the generated reviews.")
     for row in (FEATURES[:3], FEATURES[3:]):
         for column, (page, icon, description, action) in zip(st.columns(3, gap="medium"), row):
@@ -121,19 +114,51 @@ def render_home(pages: dict, review_count: int, model_count: int) -> None:
     )
 
     with st.container(key="home-data-panel"):
-        st.markdown('<div class="data-panel__eyebrow">ABOUT THIS RESEARCH DATASET</div>', unsafe_allow_html=True)
         st.markdown(
-            f'<h2>{review_count:,} generated reviews. {model_count} real phone model names.</h2>'
-            '<p>The text, dates, ratings and opinions are simulated. Charts and predictions describe '
-            'this research dataset—not measured performance or actual customer experiences.</p>',
+            '<div class="data-panel__eyebrow">DATA PROVENANCE</div>'
+            '<h2>About the Dataset</h2>'
+            '<p class="data-panel__intro">A quick look at the review table powering these views.</p>',
             unsafe_allow_html=True,
         )
-        with st.expander("How the analysis works — technical details"):
+        facts = [
+            ("Reviews", f'{dataset["reviews"]:,}'),
+            ("Columns", f'{dataset["columns"]:,}'),
+        ]
+        if dataset["models"] is not None:
+            facts.append(("Smartphone models", f'{dataset["models"]:,}'))
+        if dataset["brands"] is not None:
+            facts.append(("Brands", f'{dataset["brands"]:,}'))
+        st.markdown(
+            '<div class="dataset-facts">' + ''.join(
+                f'<div class="dataset-fact"><strong>{escape(value)}</strong><span>{escape(label)}</span></div>'
+                for label, value in facts
+            ) + '</div>',
+            unsafe_allow_html=True,
+        )
+        details = []
+        if dataset["features"]:
+            details.append('<div><strong>Review features</strong><span>' +
+                           escape(', '.join(dataset["features"])) + '</span></div>')
+        if dataset["rating_range"]:
+            low, high = dataset["rating_range"]
+            details.append(f'<div><strong>Rating range</strong><span>{low:g}–{high:g}</span></div>')
+        if dataset["date_range"]:
+            first, last = dataset["date_range"]
+            details.append('<div><strong>Review dates</strong><span>' +
+                           f'{first:%d %b %Y} – {last:%d %b %Y}</span></div>')
+        if details:
+            st.markdown('<div class="dataset-details">' + ''.join(details) + '</div>',
+                        unsafe_allow_html=True)
+        st.markdown(
+            '<p class="dataset-note">The review text, ratings, dates and opinions are generated for '
+            'research and demonstration. They are not verified customer feedback.</p>',
+            unsafe_allow_html=True,
+        )
+        with st.expander("How the analysis works"):
             st.write(
                 "The app detects mentions of battery, camera, performance, design and display, "
                 "then uses a saved DistilBERT model to classify each opinion. Separate text-only "
                 "XGBoost models estimate negative-review likelihood and a 1–5 rating. "
                 "Sentence-BERT embeddings support review grouping and similar-phone search. "
-                "SHAP shows which words affected a prediction. All results are based on the "
-                "synthetic dataset and its trained models."
+                "SHAP shows which words affected a prediction."
             )
