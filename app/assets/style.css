@@ -84,17 +84,6 @@ html, body, .stApp {
 .brandbar__mark i:nth-child(3) { height: 11px; }
 .brandbar__name { color: var(--ink); font-size: .93rem; font-weight: 750; letter-spacing: -.035em; line-height: 1.25; }
 .brandbar__name strong { color: var(--indigo-dark); }
-.brandbar__edition {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  color: var(--muted);
-  font-size: .66rem;
-  font-weight: 750;
-  letter-spacing: .12em;
-  padding: .48rem .75rem;
-  white-space: nowrap;
-}
 
 /* Shared page framing and typography. */
 h1, h2, h3 { color: var(--ink) !important; letter-spacing: -.035em; }
@@ -252,8 +241,8 @@ hr { border-color: var(--border) !important; margin: 1.9rem 0 !important; }
 .journey strong { color: var(--ink); font-size: .97rem; }
 .journey p { color: var(--muted); font-size: .85rem; line-height: 1.5; margin: .3rem 0 0; }
 .st-key-home-data-panel { background: linear-gradient(120deg, #f5f6ff, #eef7f5); border: 1px solid #dfe5f1; border-radius: 20px; margin-top: 3.4rem; padding: clamp(1.3rem, 3vw, 2rem); }
-.data-panel__eyebrow { color: var(--indigo-dark); font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
-.st-key-home-data-panel h2 { font-size: 1.8rem; margin: .45rem 0 .2rem !important; }
+.st-key-home-data-panel [data-testid="stExpander"] { background: transparent; border: 0; box-shadow: none; }
+.st-key-home-data-panel [data-testid="stExpander"] summary { color: var(--ink); font-size: 1.35rem; font-weight: 750; }
 .st-key-home-data-panel p { color: #4d5873; margin: 0 0 .65rem; max-width: 850px; }
 .dataset-facts { display: grid; gap: .75rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 1.35rem 0 1rem; }
 .dataset-fact { background: white; border: 1px solid #dde4f0; border-radius: 14px; display: flex; flex-direction: column; gap: .3rem; min-width: 0; padding: 1rem 1.15rem; }

@@ -680,7 +680,7 @@ elif page == "📱 Phone Comparison":
     page_intro(
         "Compare the example reviews",
         "Compare Phones",
-        "Choose phones to see what the generated reviews like and dislike about each feature."
+        "Choose phones to see what the reviews like and dislike about each feature."
     )
     ui.section_header("01", "Build your comparison", "Choose two phones to start. Add more below the results.")
 
@@ -756,7 +756,7 @@ elif page == "📱 Phone Comparison":
                 ui.phone_card(phone_2, brand_2, "Phone two")
 
             ui.section_header("02", "See the differences",
-                              "Compare positive and negative comments about each feature in the generated reviews.")
+                              "Compare positive and negative comments about each feature in the reviews.")
 
 
             phone_1_data = absa[
@@ -1115,7 +1115,7 @@ elif page == "📱 Phone Comparison":
 
             intelligence.comparison_prediction_panel([phone_1, phone_2, *additional_phones])
             ui.section_header("03", "Read the reviews behind the comparison",
-                              "Choose a phone, feature and opinion to inspect generated review examples.")
+                              "Choose a phone, feature and opinion to inspect review examples.")
             evidence_phone = st.selectbox(
                 "Read examples for",
                 [phone_1, phone_2, *additional_phones],
@@ -1136,7 +1136,7 @@ elif page == "🔍 Review Analyzer":
         "Review Analyzer",
         "Paste a review to see which phone features it mentions and whether each comment sounds positive or negative."
     )
-    ui.section_header("01", "Start with a review", "Write your own text or choose a generated example from the dataset.")
+    ui.section_header("01", "Start with a review", "Write your own text or choose a review example from the dataset.")
 
     # ============================================================
     # ASPECT SEMANTIC PROFILES
@@ -1953,7 +1953,7 @@ elif page == "🧩 Aspect Sentiment":
     page_intro(
         "Explore one phone",
         "Phone Features",
-        "Choose a phone and see what its generated reviews say about battery, camera, speed, design and display."
+        "Choose a phone and see what its reviews say about battery, camera, speed, design and display."
     )
     ui.section_header("01", "Choose a phone", "Explore its five features and read example comments behind the results.")
 
@@ -2674,7 +2674,7 @@ elif page == "📈 Sentiment Evolution":
     page_intro(
         "Compare time periods",
         "Review Trends",
-        "See whether the tone of generated reviews changes across six-month periods."
+        "See whether the tone of reviews changes across six-month periods."
     )
     ui.section_header("01", "Set the time window", "Choose a brand, phone and dates to explore the simulated review timeline.")
 
@@ -3366,7 +3366,7 @@ elif page == "⚔️ Conflict Detection":
         "Likes & Dislikes",
         "Find reviews that praise one phone feature while criticizing another."
     )
-    ui.section_header("01", "Explore mixed opinions", "See how often one generated review praises a feature and criticizes another.")
+    ui.section_header("01", "Explore mixed opinions", "See how often one review praises a feature and criticizes another.")
 
     if review_conflicts.empty:
 
@@ -3710,7 +3710,7 @@ elif page == "⚔️ Conflict Detection":
                     f"observed mixed-opinion feature pair is "
                     f"**{strongest_pair}**, appearing in "
                     f"**{int(strongest['unique_reviews'])} review(s)**. "
-                    f"In this generated dataset, reviews often praise "
+                    f"In this review dataset, examples often praise "
                     f"one feature while criticizing another. This is not "
                     f"verified feedback about the named phone."
                 )

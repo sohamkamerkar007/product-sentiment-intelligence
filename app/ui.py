@@ -27,7 +27,6 @@ def brand_header() -> None:
             <span class="brandbar__mark" aria-hidden="true"><i></i><i></i><i></i></span>
             <span class="brandbar__name">PRODUCT <strong>SENTIMENT</strong> INTELLIGENCE</span>
           </div>
-          <span class="brandbar__edition">RESEARCH EDITION</span>
         </div>
         """,
         unsafe_allow_html=True,
@@ -68,7 +67,7 @@ def phone_card(name: str, brand: str, label: str) -> None:
     )
 
 
-def review_quote(text: str, source: str = "Generated review example") -> None:
+def review_quote(text: str, source: str = "Review example") -> None:
     st.markdown(
         f'<blockquote class="review-quote"><p>{escape(text)}</p>'
         f'<footer>{escape(source)}</footer></blockquote>',

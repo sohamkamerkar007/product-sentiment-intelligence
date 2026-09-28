@@ -56,7 +56,7 @@ def predictors():
 
 def prediction_panel(review_text: str) -> None:
     st.markdown("### What this review suggests")
-    st.caption("These estimates come from generated research data, not a real buyer's experience.")
+    st.caption("These estimates describe the research dataset, not a real buyer's experience.")
     try:
         dissatisfied, rating = predictors()
         outcome = dissatisfied.predict(review_text)
@@ -66,7 +66,7 @@ def prediction_panel(review_text: str) -> None:
         return
     first, second = st.columns(2)
     first.metric("Chance of a negative review", f"{outcome['probability']:.0%}",
-                 help="An estimate based on the words in this review and synthetic training examples.")
+                 help="An estimate based on the words in this review and the research training examples.")
     second.metric("Estimated rating", f"{rating_outcome['predicted_rating']:.1f} / 5",
                   help="An estimate on the dataset's 1–5 scale, not an observed rating.")
     st.caption("The negative-review estimate is " + ("above" if outcome["dissatisfied"] else "below") +
@@ -103,7 +103,7 @@ def comparison_prediction_panel(models: list[str]) -> None:
         mean_predicted_rating=("predicted_rating", "mean")
     ).reset_index()
     st.subheader("Estimated review patterns")
-    st.caption("Averages across generated reviews. These are not observed customer ratings.")
+    st.caption("Averages across review examples. These are not observed customer ratings.")
     summary["mean_dissatisfaction_probability"] = (100 * summary["mean_dissatisfaction_probability"]).round(1)
     st.dataframe(summary.rename(columns={"model": "Phone", "reviews": "Reviews",
                                          "mean_dissatisfaction_probability": "Estimated negative reviews (%)",
@@ -153,7 +153,7 @@ def weakness_evidence_panel(aspect: str, model: str | None = None, brand: str | 
 def discovery_page(page_intro) -> None:
     page_intro("Explore reviews", "Discover Review Patterns",
                "Group reviews that use similar language, then read examples from each group.")
-    ui.section_header("01", "Choose how to explore", "Filter the generated reviews and pick a grouping style.")
+    ui.section_header("01", "Choose how to explore", "Filter the reviews and pick a grouping style.")
     reviews = expanded_reviews()
     if not EMBEDDINGS.exists():
         st.info("Review patterns are temporarily unavailable because prepared review data is missing.")
@@ -263,7 +263,7 @@ def relationships_page(page_intro) -> None:
     with st.expander("How similarity is calculated — technical details"):
         st.write("Each phone is represented by the mean of its saved Sentence-BERT review "
                  "embeddings. Cosine similarity compares those representations. Review wording "
-                 "in this synthetic dataset does not establish equivalent product performance.")
+                 "in this research dataset does not establish equivalent product performance.")
 
 
 def emerging_page(page_intro, selected_model: str | None = None) -> None:
@@ -316,7 +316,7 @@ def emerging_page(page_intro, selected_model: str | None = None) -> None:
                 f"**{row['current_period']}:** {row['current_count']} of {row['current_total']} reviews")
     for review in row["evidence"]:
         ui.review_quote(str(review))
-    st.caption("These changes describe generated reviews, not actual problems with the named phones.")
+    st.caption("These changes describe review examples, not actual problems with the named phones.")
     with st.expander("How growing complaints are checked — technical details"):
         st.write("Complaint topics are learned from earlier negative reviews. A result requires "
                  "at least 40 reviews in each calendar year, five later complaints, and a "

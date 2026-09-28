@@ -77,7 +77,7 @@ def render_home(pages: dict, dataset: dict) -> None:
                 with column:
                     st.page_link(pages[key], label=label, use_container_width=True)
 
-    ui.section_header("01", "Explore by task", "Start with a question. Each tool lets you dig into the generated reviews.")
+    ui.section_header("01", "Explore by task", "Start with a question. Each tool lets you dig into the reviews.")
     for row in (FEATURES[:3], FEATURES[3:]):
         for column, (page, icon, description, action) in zip(st.columns(3, gap="medium"), row):
             with column, st.container(border=True, key=f"feature-{page.lower().replace(' ', '-')}"):
@@ -114,12 +114,8 @@ def render_home(pages: dict, dataset: dict) -> None:
     )
 
     with st.container(key="home-data-panel"):
-        st.markdown(
-            '<div class="data-panel__eyebrow">DATA PROVENANCE</div>'
-            '<h2>About the Dataset</h2>'
-            '<p class="data-panel__intro">A quick look at the review table powering these views.</p>',
-            unsafe_allow_html=True,
-        )
+      with st.expander("About the Dataset", expanded=True):
+        st.caption("A quick look at the review table powering these views.")
         facts = [
             ("Reviews", f'{dataset["reviews"]:,}'),
             ("Columns", f'{dataset["columns"]:,}'),
@@ -150,11 +146,11 @@ def render_home(pages: dict, dataset: dict) -> None:
             st.markdown('<div class="dataset-details">' + ''.join(details) + '</div>',
                         unsafe_allow_html=True)
         st.markdown(
-            '<p class="dataset-note">The review text, ratings, dates and opinions are generated for '
+            '<p class="dataset-note">The review text, ratings, dates and opinions are simulated for '
             'research and demonstration. They are not verified customer feedback.</p>',
             unsafe_allow_html=True,
         )
-        with st.expander("How the analysis works"):
+        with st.popover("How the analysis works"):
             st.write(
                 "The app detects mentions of battery, camera, performance, design and display, "
                 "then uses a saved DistilBERT model to classify each opinion. Separate text-only "
